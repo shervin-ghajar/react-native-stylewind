@@ -2,7 +2,7 @@ import { PROJECT_ROOT_PATH } from '../configs/constatns';
 import { defaultTheme } from '../configs/defaultTheme';
 import { Theme } from '../types';
 import merge from 'lodash/merge';
-import path, { resolve } from 'path';
+import { resolve } from 'path';
 
 /* -------------------------------------------------------------------------- */
 export const createTheme = (): Theme => {
