@@ -1,7 +1,7 @@
-import { colors } from '../configs/colors';
-import { spacingConfigs } from '../configs/spacing';
-import { typography } from '../configs/typography';
 import { Theme } from '../types';
+import { colors } from './colors';
+import { spacingConfigs } from './spacing';
+import { typography } from './typography';
 
 /* -------------------------------------------------------------------------- */
 export const defaultTheme: Theme = {

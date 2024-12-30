@@ -4,5 +4,4 @@ import { themeConfigWatcher } from './utils/themeWatcher';
 
 export const theme: Theme = createTheme();
 
-if(process.env.NODE_ENV !== 'production')
-themeConfigWatcher()
+if (process.env.NODE_ENV !== 'production') themeConfigWatcher();

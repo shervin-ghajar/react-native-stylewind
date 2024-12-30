@@ -1,5 +1,5 @@
-import { colors } from '../configs/colors';
 import { spacing } from '../utils/spacing';
+import { colors } from './colors';
 
 /* -------------------------------------------------------------------------- */
 export const defaultUtilities: Record<string, any> = {
@@ -33,12 +33,12 @@ export const defaultUtilities: Record<string, any> = {
   /* -------------------------------------------------------------------------- */
   absolute: { position: 'absolute' },
   relative: { position: 'relative' },
-  "top-0": { top: 0 },
-  "right-0": { right: 0 },
-  "bottom-0": { bottom: 0 },
-  "left-0": { left: 0 },
-  "zIndex-1": { zIndex: 1 },
-  "zIndex-10": { zIndex: 10 },
+  'top-0': { top: 0 },
+  'right-0': { right: 0 },
+  'bottom-0': { bottom: 0 },
+  'left-0': { left: 0 },
+  'zIndex-1': { zIndex: 1 },
+  'zIndex-10': { zIndex: 10 },
   /* -------------------------------------------------------------------------- */
   /*                                    Text                                    */
   /* -------------------------------------------------------------------------- */
@@ -125,9 +125,9 @@ export const defaultUtilities: Record<string, any> = {
   /* -------------------------------------------------------------------------- */
   /*                                   Opacity                                  */
   /* -------------------------------------------------------------------------- */
-  "opacity-0": { opacity: 0 },
-  "opacity-25": { opacity: 0.25 },
-  "opacity-50": { opacity: 0.5 },
-  "opacity-75": { opacity: 0.75 },
-  "opacity-100": { opacity: 1 },
+  'opacity-0': { opacity: 0 },
+  'opacity-25': { opacity: 0.25 },
+  'opacity-50': { opacity: 0.5 },
+  'opacity-75': { opacity: 0.75 },
+  'opacity-100': { opacity: 1 },
 };
