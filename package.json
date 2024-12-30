@@ -21,7 +21,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "chokidar": "^4.0.3",
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21",
     "react": "18.2.0",
