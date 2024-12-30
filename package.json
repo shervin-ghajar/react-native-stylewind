@@ -21,6 +21,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "debug": "^4.4.0",
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21",
     "react": "18.2.0",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.0",
+    "@types/debug": "^4.1.12",
     "@types/lodash": "^4.17.13",
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.18",
