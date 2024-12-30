@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "module": "ESNext",
+    "target": "ES6",
+    "outDir": "./dist",
+    "declaration": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
     "useDefineForClassFields": true,
     "lib": ["ES2020"],
-    "module": "ESNext",
-    "skipLibCheck": true,
     /* Bundler mode */
-    "moduleResolution": "bundler",
     "isolatedModules": true,
     "moduleDetection": "force",
-    "jsx": "react-jsx",
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -17,8 +20,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     /* Output Options */
-    "outDir": "./dist", // The output directory for compiled files
-    "declaration": true, // Generate `.d.ts` files for type declarations
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]

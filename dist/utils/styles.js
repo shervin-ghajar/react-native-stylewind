@@ -16,6 +16,7 @@ import { Platform, StyleSheet } from 'react-native';
  * ```
  */
 export const styles = (stylesArray) => {
+    var _a;
     const { theme } = useTheme();
     const styleAccumulator = {};
     for (const style of stylesArray) {
@@ -23,8 +24,7 @@ export const styles = (stylesArray) => {
             // Add utility style if it exists
             const capitalizedMode = theme.mode !== 'default' ? capitalize(theme.mode) : '';
             // Retrieve utilitie based on theme mode(Light/Dark)
-            const utilityStyle = utilities?.[(style + capitalizedMode)] ??
-                utilities[style];
+            const utilityStyle = (_a = utilities === null || utilities === void 0 ? void 0 : utilities[(style + capitalizedMode)]) !== null && _a !== void 0 ? _a : utilities[style];
             if (utilityStyle) {
                 Object.assign(styleAccumulator, utilityStyle);
             }

@@ -4,6 +4,13 @@
   "version": "0.0.1",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs"
+    }
+  },
   "files": [
     "dist/**/*",
     "theme.config.example.ts"

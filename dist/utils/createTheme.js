@@ -9,7 +9,7 @@ export const createTheme = () => {
         // eslint-disable-next-line @typescript-eslint/no-require-imports
         theme = require(PROJECT_ROOT_PATH).default; // Adjust the path based on your app structure
     }
-    catch {
+    catch (_a) {
         console.warn('No theme.config.ts found, using default theme configs.');
     }
     console.log("createTheme", { theme });
