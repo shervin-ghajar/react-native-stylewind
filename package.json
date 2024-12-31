@@ -16,14 +16,15 @@
     "theme.config.example.ts"
   ],
   "scripts": {
-    "dev": "vite",
     "build": "tsc",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "init-rnt": "tsx ./src/scripts/generateUtilities.ts"
   },
   "bin": {
     "init-rnt": "./dist/generateUtilities.js"
   },
   "dependencies": {
+    "@types/debug": "^4.1.12",
     "debug": "^4.4.0",
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21",
@@ -32,7 +33,7 @@
     "react-native": "0.74.3",
     "react-native-fs": "^2.20.0",
     "react-native-web": "^0.19.13",
-    "@types/debug": "^4.1.12"
+    "tsx": "^4.19.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
