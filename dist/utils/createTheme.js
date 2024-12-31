@@ -13,13 +13,8 @@ const createTheme = () => {
     let theme = {};
     try {
         // Try to import theme.config.ts
-        console.log(111);
-        console.log('Current theme configuration:1', path_1.default.resolve(path_1.default.dirname('')));
-        console.log(222);
-        console.log(333);
         // eslint-disable-next-line @typescript-eslint/no-require-imports
-        theme = require(index_1.PROJECT_ROOT_PATH).default; // Adjust the path based on your app structure
-        console.log('Current theme configuration:1', { PROJECT_ROOT_PATH: index_1.PROJECT_ROOT_PATH, theme });
+        theme = require(path_1.default.resolve(index_1.CONSUMER_ROOT_PATH, index_1.THEME_CONFIG_FILE)).default; // Adjust the path based on your app structure
     }
     catch {
         console.warn('No theme.config.ts found, using default theme configs.');
