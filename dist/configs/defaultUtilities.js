@@ -1,7 +1,10 @@
-import { spacing } from '../utils/spacing';
-import { colors } from './colors';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.defaultUtilities = void 0;
+const spacing_1 = require("../utils/spacing");
+const index_1 = require("./colors/index");
 /* -------------------------------------------------------------------------- */
-export const defaultUtilities = {
+exports.defaultUtilities = {
     /* -------------------------------------------------------------------------- */
     /*                                   Flexbox                                  */
     /* -------------------------------------------------------------------------- */
@@ -57,27 +60,27 @@ export const defaultUtilities = {
     /* -------------------------------------------------------------------------- */
     /*                                   Border                                   */
     /* -------------------------------------------------------------------------- */
-    border: { borderWidth: 1, borderColor: colors.grey.default },
+    border: { borderWidth: 1, borderColor: index_1.colors.grey.default },
     borderTop: { borderTopWidth: 1 },
     borderBottom: { borderBottomWidth: 1 },
     borderLeft: { borderLeftWidth: 1 },
     borderRight: { borderRightWidth: 1 },
-    roundedSm: { borderRadius: spacing('small') },
-    rounded: { borderRadius: spacing('default') },
-    roundedLg: { borderRadius: spacing('large') },
+    roundedSm: { borderRadius: (0, spacing_1.spacing)('small') },
+    rounded: { borderRadius: (0, spacing_1.spacing)('default') },
+    roundedLg: { borderRadius: (0, spacing_1.spacing)('large') },
     roundedFull: { borderRadius: 9999 },
     /* -------------------------------------------------------------------------- */
     /*                                 Background                                 */
     /* -------------------------------------------------------------------------- */
-    bgWhite: { backgroundColor: colors.common.white },
-    bgBlack: { backgroundColor: colors.common.black },
+    bgWhite: { backgroundColor: index_1.colors.common.white },
+    bgBlack: { backgroundColor: index_1.colors.common.black },
     bgTransparent: { backgroundColor: 'transparent' },
     /* -------------------------------------------------------------------------- */
     /*                                    Text                                    */
     /* -------------------------------------------------------------------------- */
-    text: { color: colors.text.default },
-    textDark: { color: colors.text.dark },
-    textLight: { color: colors.text.light },
+    text: { color: index_1.colors.text.default },
+    textDark: { color: index_1.colors.text.dark },
+    textLight: { color: index_1.colors.text.light },
     /* -------------------------------------------------------------------------- */
     /*                                   Shadow                                   */
     /* -------------------------------------------------------------------------- */

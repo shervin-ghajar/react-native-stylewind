@@ -1,5 +1,5 @@
-import { defaultUtilities } from '../configs';
 import { ThemeColorValues } from '../configs/colors/types';
+import { defaultUtilities } from '../configs/index';
 import { theme } from '../theme';
 import { isColorShade } from '../utils/isColorShade';
 import { spacing } from '../utils/spacing';

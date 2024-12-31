@@ -1,4 +1,4 @@
-import { PROJECT_ROOT_PATH } from '../configs/constatns';
+import { PROJECT_ROOT_PATH } from '../configs/constatns/index';
 import { defaultTheme } from '../configs/defaultTheme';
 import { Theme } from '../types';
 import merge from 'lodash/merge';

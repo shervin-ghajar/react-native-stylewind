@@ -1,11 +1,14 @@
+"use strict";
 // watchTheme.ts
 // To run the style generation command
 // import { PROJECT_ROOT_PATH } from '../configs/constatns';
 // import { exec } from 'child_process';
 // import chokidar from 'chokidar';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.themeConfigWatcher = void 0;
 // const regenerateStylesCommand = 'npm run generate:theme'; // Command to regenerate styles
 // Initialize file watcher
-export const themeConfigWatcher = () => {
+const themeConfigWatcher = () => {
     //   console.log('themeConfigWatcher');
     //   const watcher = chokidar.watch(PROJECT_ROOT_PATH, {
     //     persistent: true,
@@ -23,3 +26,4 @@ export const themeConfigWatcher = () => {
     //   });
     //   console.log(`Watching for changes in ${PROJECT_ROOT_PATH}...`);
 };
+exports.themeConfigWatcher = themeConfigWatcher;

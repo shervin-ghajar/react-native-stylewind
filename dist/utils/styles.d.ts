@@ -1,4 +1,4 @@
-import { UtilityKeys } from '../configs/generated/utilities';
+import { UtilityKeys } from '../configs/generated/utilities/index';
 import { ThemeViewStyle } from '../types';
 import { StyleProp, StyleSheet } from 'react-native';
 /**

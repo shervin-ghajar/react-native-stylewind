@@ -1,7 +1,10 @@
-import { utilities } from '../configs/generated/utilities';
-import { useTheme } from '../hooks';
-import { capitalize } from 'lodash';
-import { Platform, StyleSheet } from 'react-native';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.styles = void 0;
+const index_1 = require("../configs/generated/utilities/index");
+const index_2 = require("../hooks/index");
+const lodash_1 = require("lodash");
+const react_native_1 = require("react-native");
 /* -------------------------------------------------------------------------- */
 /* eslint-disable react-hooks/rules-of-hooks */
 /**
@@ -15,16 +18,16 @@ import { Platform, StyleSheet } from 'react-native';
  * styles(["absolute", { color: "red",backgroundColor:(theme)=> theme.colors.primary.light }]);
  * ```
  */
-export const styles = (stylesArray) => {
-    const { theme } = useTheme();
+const styles = (stylesArray) => {
+    const { theme } = (0, index_2.useTheme)();
     const styleAccumulator = {};
     for (const style of stylesArray) {
         if (typeof style === 'string') {
             // Add utility style if it exists
-            const capitalizedMode = theme.mode !== 'default' ? capitalize(theme.mode) : '';
+            const capitalizedMode = theme.mode !== 'default' ? (0, lodash_1.capitalize)(theme.mode) : '';
             // Retrieve utilitie based on theme mode(Light/Dark)
-            const utilityStyle = utilities?.[(style + capitalizedMode)] ??
-                utilities[style];
+            const utilityStyle = index_1.utilities?.[(style + capitalizedMode)] ??
+                index_1.utilities[style];
             if (utilityStyle) {
                 Object.assign(styleAccumulator, utilityStyle);
             }
@@ -33,11 +36,12 @@ export const styles = (stylesArray) => {
             for (const [attrKey, atrrValue] of Object.entries(style)) {
                 if (typeof atrrValue !== 'function')
                     continue;
-                style[attrKey] = atrrValue(theme, Platform);
+                style[attrKey] = atrrValue(theme, react_native_1.Platform);
             }
             // Merge custom style objects
             Object.assign(styleAccumulator, style);
         }
     }
-    return StyleSheet.create({ styleAccumulator }).styleAccumulator;
+    return react_native_1.StyleSheet.create({ styleAccumulator }).styleAccumulator;
 };
+exports.styles = styles;

@@ -1,27 +1,33 @@
-import { defaultUtilities } from '../configs';
-import { theme } from '../theme';
-import { isColorShade } from '../utils/isColorShade';
-import { spacing } from '../utils/spacing';
-import chalk from 'chalk';
-import fs from 'fs';
-import { capitalize } from 'lodash-es';
-import { resolve } from 'path';
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateUtilities = generateUtilities;
+const index_1 = require("../configs/index");
+const theme_1 = require("../theme");
+const isColorShade_1 = require("../utils/isColorShade");
+const spacing_1 = require("../utils/spacing");
+const chalk_1 = __importDefault(require("chalk"));
+const fs_1 = __importDefault(require("fs"));
+const lodash_es_1 = require("lodash-es");
+const path_1 = require("path");
 // Generates Theme Utilities
-export function generateUtilities() {
+function generateUtilities() {
     try {
-        const { colors } = theme;
-        const utilities = defaultUtilities;
-        const types = new Set([...Object.keys(defaultUtilities).map((du) => `'${du}'`)]);
+        const { colors } = theme_1.theme;
+        const utilities = index_1.defaultUtilities;
+        const types = new Set([...Object.keys(index_1.defaultUtilities).map((du) => `'${du}'`)]);
         // /* -------------------------- Color-based Utilities ------------------------- */
         const colorKeyWhiteList = ['grey'];
         const colorKeyBlackList = ['text'];
         const addColorUtilities = (colorKey, colorValue) => {
-            if ((isColorShade(colorValue) || colorKeyWhiteList.includes(colorKey)) &&
+            if (((0, isColorShade_1.isColorShade)(colorValue) || colorKeyWhiteList.includes(colorKey)) &&
                 !colorKeyBlackList.includes(colorKey)) {
                 for (const shadeKey in colorValue) {
                     const shadeValue = colorValue[shadeKey];
-                    const capitalizedShadeKey = shadeKey === 'default' ? '' : capitalize(shadeKey);
-                    const capitalizedColorKey = capitalize(colorKey);
+                    const capitalizedShadeKey = shadeKey === 'default' ? '' : (0, lodash_es_1.capitalize)(shadeKey);
+                    const capitalizedColorKey = (0, lodash_es_1.capitalize)(colorKey);
                     utilities[`bg${capitalizedColorKey}${capitalizedShadeKey}`] = {
                         backgroundColor: shadeValue,
                     };
@@ -43,7 +49,7 @@ export function generateUtilities() {
         /* ------------------------- Spacing-based Utilities ------------------------ */
         const spacingLimit = 10;
         for (let i = 0; i <= spacingLimit; i++) {
-            const spacingValue = spacing(i);
+            const spacingValue = (0, spacing_1.spacing)(i);
             // Padding & Margin Utilities
             const pmDictionary = { p: 'padding', m: 'margin' }; // Padding & Margin dictionary
             const directionsDictionary = {
@@ -65,12 +71,12 @@ export function generateUtilities() {
             }
         }
         /* ------------------------------- Write file ------------------------------- */
-        const generatedDirPath = resolve('./src/theme/configs/generated/utilities');
-        const utilitiesFilePath = resolve(generatedDirPath, 'utilities.ts');
-        const shakenUtilitiesFilePath = resolve(generatedDirPath, 'shakenUtilities.ts');
-        const typesFilePath = resolve(generatedDirPath, 'types.ts');
+        const generatedDirPath = (0, path_1.resolve)('./src/theme/configs/generated/utilities');
+        const utilitiesFilePath = (0, path_1.resolve)(generatedDirPath, 'utilities.ts');
+        const shakenUtilitiesFilePath = (0, path_1.resolve)(generatedDirPath, 'shakenUtilities.ts');
+        const typesFilePath = (0, path_1.resolve)(generatedDirPath, 'types.ts');
         const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
-        const utilitiesIndexFilePath = resolve(generatedDirPath, 'index.ts');
+        const utilitiesIndexFilePath = (0, path_1.resolve)(generatedDirPath, 'index.ts');
         const utilitiesIndexFile = `/* eslint-disable @typescript-eslint/no-require-imports */\n${warningText}export  * from './types';\nlet utilities: typeof import('./utilities');\n
 if (process.env.NODE_ENV === 'production') {
   utilities = require('./shakenUtilities').utilities;
@@ -82,22 +88,22 @@ export { utilities };
 
 export type UtilitiesType = typeof utilities;
 `;
-        if (!fs.existsSync(generatedDirPath)) {
-            fs.mkdirSync(generatedDirPath, { recursive: true });
-            console.log(chalk.greenBright('Directory created successfully.'));
+        if (!fs_1.default.existsSync(generatedDirPath)) {
+            fs_1.default.mkdirSync(generatedDirPath, { recursive: true });
+            console.log(chalk_1.default.greenBright('Directory created successfully.'));
         }
         // Wrtie all utilities
-        fs.writeFileSync(utilitiesFilePath, `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`);
+        fs_1.default.writeFileSync(utilitiesFilePath, `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`);
         // Write all utility keys type
-        fs.writeFileSync(typesFilePath, `${warningText}export type UtilityKeys = ${[...types].join(' | ')};\n`);
+        fs_1.default.writeFileSync(typesFilePath, `${warningText}export type UtilityKeys = ${[...types].join(' | ')};\n`);
         // Write duplicated utilities for tree shaking
-        fs.writeFileSync(shakenUtilitiesFilePath, `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`);
+        fs_1.default.writeFileSync(shakenUtilitiesFilePath, `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`);
         // Write index file for handling utilities dynamic import
-        fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
-        console.log(chalk.greenBright('Theme utilities and types generated successfully!'));
+        fs_1.default.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
+        console.log(chalk_1.default.greenBright('Theme utilities and types generated successfully!'));
     }
     catch (error) {
-        console.log(chalk.red(`Utilitie generator faild! \nError:${error}`));
+        console.log(chalk_1.default.red(`Utilitie generator faild! \nError:${error}`));
     }
 }
 generateUtilities();

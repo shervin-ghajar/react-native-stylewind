@@ -1,4 +1,4 @@
-import { spacingConfigs } from '../configs/spacing';
+import { spacingConfigs } from '../configs/spacing/index';
 import { SpacingTypes } from '../configs/spacing/types';
 import { theme } from '../theme';
 

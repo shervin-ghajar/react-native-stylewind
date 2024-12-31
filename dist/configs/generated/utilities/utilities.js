@@ -1,8 +1,11 @@
+"use strict";
 /**
 * AUTO GENERATED
 * <---DO NOT MODIFY THIS FILE--->
 */
-export const utilities = {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.utilities = void 0;
+exports.utilities = {
     "flex-1": {
         "flex": 1
     },

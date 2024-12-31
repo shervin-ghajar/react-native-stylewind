@@ -1,4 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.typography = void 0;
 /* -------------------------------------------------------------------------- */
-export const typography = {
+exports.typography = {
     fontFamily: ['Roboto'],
 };

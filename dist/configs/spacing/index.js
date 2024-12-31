@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.spacingConfigs = void 0;
 /* -------------------------------------------------------------------------- */
 const defaultSpacing = 4;
 /* -------------------------------------------------------------------------- */
@@ -15,7 +18,7 @@ const defaultSpacing = 4;
  * @property {number} xLarge - Extra large spacing value: {@link defaultSpacing} * 4.
  * @property {number} xxLarge - Double extra large spacing value: {@link defaultSpacing} * 5.
  */
-export const spacingConfigs = {
+exports.spacingConfigs = {
     none: 0,
     default: defaultSpacing,
     xSmall: defaultSpacing * 0.5,

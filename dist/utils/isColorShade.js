@@ -1,4 +1,7 @@
-export function isColorShade(value) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isColorShade = isColorShade;
+function isColorShade(value) {
     return (typeof value === 'object' &&
         value !== null &&
         value.default !== undefined &&

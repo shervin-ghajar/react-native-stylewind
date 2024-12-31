@@ -1,5 +1,5 @@
-import { utilities, UtilitiesType, UtilityKeys } from '../configs/generated/utilities';
-import { useTheme } from '../hooks';
+import { utilities, UtilitiesType, UtilityKeys } from '../configs/generated/utilities/index';
+import { useTheme } from '../hooks/index';
 import { ThemeViewStyle } from '../types';
 import { capitalize } from 'lodash';
 import { StyleProp, Platform, StyleSheet } from 'react-native';
