@@ -1,7 +1,7 @@
 import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns/index';
 import { defaultTheme } from '../configs/defaultTheme';
 import { Theme } from '../types';
-import merge from 'lodash/merge';
+import {merge} from 'lodash';
 import path from 'path';
 
 /* -------------------------------------------------------------------------- */
