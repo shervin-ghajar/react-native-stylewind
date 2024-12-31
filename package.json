@@ -1,7 +1,7 @@
 {
   "name": "react-native-tailwind",
   "private": false,
-  "version": "0.0.53",
+  "version": "0.0.55",
   "main": "./dist/main.js",
   "module": "./dist/main.esm.js",
   "types": "./dist/main.d.ts",
