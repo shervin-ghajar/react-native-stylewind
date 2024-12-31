@@ -4,7 +4,7 @@ import { isColorShade } from '../utils/isColorShade';
 import { spacing } from '../utils/spacing';
 import chalk from 'chalk';
 import fs from 'fs';
-import { capitalize } from 'lodash';
+import { capitalize } from 'lodash-es';
 import { resolve } from 'path';
 // Generates Theme Utilities
 export function generateUtilities() {

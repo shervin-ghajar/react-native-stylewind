@@ -15,7 +15,7 @@ export const createTheme = () => {
         theme = require(PROJECT_ROOT_PATH).default; // Adjust the path based on your app structure
         console.log('Current theme configuration:1', { PROJECT_ROOT_PATH, theme });
     }
-    catch (_a) {
+    catch {
         console.warn('No theme.config.ts found, using default theme configs.');
     }
     console.log('createTheme', { theme });

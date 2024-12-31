@@ -5,7 +5,7 @@ import { isColorShade } from '../utils/isColorShade';
 import { spacing } from '../utils/spacing';
 import chalk from 'chalk';
 import fs from 'fs';
-import { capitalize } from 'lodash';
+import { capitalize } from 'lodash-es';
 import { resolve } from 'path';
 
 /* -------------------------------------------------------------------------- */
@@ -28,8 +28,8 @@ export function generateUtilities() {
       ) {
         for (const shadeKey in colorValue) {
           const shadeValue = colorValue[shadeKey as keyof ThemeColorValues];
-          const capitalizedShadeKey = shadeKey === 'default' ? '' :capitalize(shadeKey);
-          const capitalizedColorKey=capitalize(colorKey)
+          const capitalizedShadeKey = shadeKey === 'default' ? '' : capitalize(shadeKey);
+          const capitalizedColorKey = capitalize(colorKey);
           utilities[`bg${capitalizedColorKey}${capitalizedShadeKey}`] = {
             backgroundColor: shadeValue,
           };
@@ -81,10 +81,7 @@ export function generateUtilities() {
     /* ------------------------------- Write file ------------------------------- */
     const generatedDirPath = resolve('./src/theme/configs/generated/utilities');
     const utilitiesFilePath = resolve(generatedDirPath, 'utilities.ts');
-    const shakenUtilitiesFilePath = resolve(
-      generatedDirPath,
-      'shakenUtilities.ts',
-    );
+    const shakenUtilitiesFilePath = resolve(generatedDirPath, 'shakenUtilities.ts');
 
     const typesFilePath = resolve(generatedDirPath, 'types.ts');
     const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
