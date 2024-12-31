@@ -1,8 +1,8 @@
-import { ThemeContextType, ThemeProviderType } from './types';
 import { defaultTheme } from '../configs/defaultTheme';
 import { theme } from '../theme';
 import { ThemeMode } from '../types';
-import  { createContext, useState } from 'react';
+import { ThemeContextType, ThemeProviderType } from './types';
+import { createContext, useState } from 'react';
 
 export const ThemeContext = createContext<ThemeContextType>({
   theme: defaultTheme,

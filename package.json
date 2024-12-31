@@ -20,6 +20,9 @@
     "build": "tsc",
     "lint": "eslint ."
   },
+  "bin": {
+    "init-rnt": "./dist/generateUtilities.js"
+  },
   "dependencies": {
     "debug": "^4.4.0",
     "fs": "^0.0.1-security",
