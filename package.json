@@ -21,7 +21,7 @@
     "init-rnt": "tsx ./src/scripts/generateUtilities.ts"
   },
   "bin": {
-    "init-rnt": "./dist/generateUtilities.js"
+    "init-rnt": "./dist/scripts/generateUtilities.js"
   },
   "dependencies": {
     "@types/debug": "^4.1.12",
