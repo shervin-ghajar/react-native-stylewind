@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { ThemeColorValues } from '../configs/colors/types';
 import { defaultUtilities } from '../configs/index';
 import { theme } from '../theme';
