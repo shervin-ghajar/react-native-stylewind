@@ -12,7 +12,7 @@
     }
   },
   "files": [
-    "./dist/main.js"
+    "dist/**/*"
   ],
   "scripts": {
     "build": "rollup -c rollup.config.mjs",

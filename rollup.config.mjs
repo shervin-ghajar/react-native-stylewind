@@ -1,24 +1,26 @@
-// rollup.config.js
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 
 export default {
-  input: 'src/main.tsx', // Your entry point
+  input: {
+    main: 'src/main.tsx', // Your main entry point
+    generateUtilities: 'src/scripts/generateUtilities.ts', // Your CLI entry point
+  },
   output: [
     {
-      file: 'dist/main.js', // CommonJS format
-      format: 'cjs',
+      dir: 'dist', // Output directory for all files
+      format: 'cjs', // CommonJS format for all outputs
       sourcemap: true,
     },
     {
-      file: 'dist/main.esm.js', // ES module format
-      format: 'es',
+      dir: 'dist', // Output directory for ES module format
+      format: 'es', // ES module format for all outputs
       sourcemap: true,
     },
   ],
   plugins: [
     typescript({
-      tsconfig: './tsconfig.json', // Path to your tsconfig.json
+      tsconfig: './tsconfig.json',
     }),
     terser(), // Optional: Minify the output
   ],
