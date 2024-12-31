@@ -2,9 +2,9 @@
   "name": "react-native-tailwind",
   "private": false,
   "version": "0.0.1",
-  "main": "dist/main.js",
-  "types": "dist/main.d.ts",
-  "type": "module",
+  "main": "./dist/main.js",
+  "module": "./dist/main.esm.js",
+  "types": "./dist/main.d.ts",
   "exports": {
     ".": {
       "import": "./dist/main.js",
@@ -12,7 +12,7 @@
     }
   },
   "files": [
-    "dist/**/*"
+    "./dist/main.js"
   ],
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
