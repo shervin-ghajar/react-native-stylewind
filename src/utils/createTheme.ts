@@ -1,7 +1,7 @@
 import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns/index';
 import { defaultTheme } from '../configs/defaultTheme';
 import { Theme } from '../types';
-import {merge} from 'lodash';
+import _ from 'lodash';
 import path from 'path';
 
 /* -------------------------------------------------------------------------- */
@@ -15,5 +15,5 @@ export const createTheme = (): Theme => {
     console.warn('No theme.config.ts found, using default theme configs.');
   }
   console.log('createTheme', { theme });
-  return merge(defaultTheme, theme);
+  return _.merge(defaultTheme, theme);
 };
