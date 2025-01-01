@@ -1,18 +1,26 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 /**
-* AUTO GENERATED
-* <---DO NOT MODIFY THIS FILE--->
-*/
+ * AUTO GENERATED
+ * <---DO NOT MODIFY THIS FILE--->
+ */
 
-export  * from './types';
-let utilities: typeof import('./utilities');
+export * from './types';
 
+let utilities: any; // Use 'any' or a specific type if you know it
+
+// Use dynamic import instead of require
 if (process.env.NODE_ENV === 'production') {
-  utilities = require('./shakenUtilities').utilities;
+  import('./shakenUtilities').then((module) => {
+    utilities = module.utilities;
+  });
 } else {
-  utilities = require('./utilities').utilities;
+  import('./utilities').then((module) => {
+    utilities = module.utilities;
+  });
 }
 
+// Export the utilities after they are set
 export { utilities };
 
+// Define the type for UtilitiesType
 export type UtilitiesType = typeof utilities;

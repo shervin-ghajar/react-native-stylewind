@@ -205,31 +205,31 @@ export const utilities = {
     "opacity": 1
   },
   "bgPrimary": {
-    "backgroundColor": "#C62300"
+    "backgroundColor": "#1D4ED8"
   },
   "borderPrimary": {
-    "borderColor": "#C62300"
+    "borderColor": "#1D4ED8"
   },
   "textPrimary": {
-    "color": "#C62300"
+    "color": "#1D4ED8"
   },
   "bgPrimaryLight": {
-    "backgroundColor": "#F14A00"
+    "backgroundColor": "#93C5FD"
   },
   "borderPrimaryLight": {
-    "borderColor": "#F14A00"
+    "borderColor": "#93C5FD"
   },
   "textPrimaryLight": {
-    "color": "#F14A00"
+    "color": "#93C5FD"
   },
   "bgPrimaryDark": {
-    "backgroundColor": "#500073"
+    "backgroundColor": "#1E3A8A"
   },
   "borderPrimaryDark": {
-    "borderColor": "#500073"
+    "borderColor": "#1E3A8A"
   },
   "textPrimaryDark": {
-    "color": "#500073"
+    "color": "#1E3A8A"
   },
   "bgSecondary": {
     "backgroundColor": "#e1effc"

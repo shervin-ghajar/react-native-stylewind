@@ -1,8 +1,8 @@
 /**
-* AUTO GENERATED
-* <---DO NOT MODIFY THIS FILE--->
-*/
+ * AUTO GENERATED
+ * <---DO NOT MODIFY THIS FILE--->
+ */
 export * from './types';
-declare let utilities: typeof import('./utilities');
+declare let utilities: any;
 export { utilities };
 export type UtilitiesType = typeof utilities;
