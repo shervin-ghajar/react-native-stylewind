@@ -591,7 +591,7 @@ const chalk = createChalk();
 createChalk({level: stderrColor ? stderrColor.level : 0});
 
 path.resolve(path.dirname(''));
-const THEME_CONFIG_FILE = 'theme.config.ts';
+const THEME_CONFIG_FILE = 'theme.config';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -17980,4 +17980,4 @@ function isColorShade(value) {
 }
 
 export { defaultUtilities as a, chalk as b, createTheme as c, defaultTheme as d, isColorShade as i, lodashExports as l, spacing as s, theme as t };
-//# sourceMappingURL=isColorShade-wtxapBjL.js.map
+//# sourceMappingURL=isColorShade-8KH7ZiKw.js.map
