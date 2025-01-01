@@ -1,6 +1,4 @@
-'use strict';
-
-var path = require('path');
+import path from 'path';
 
 const colors = {
     // Primary colors
@@ -592,7 +590,7 @@ Object.defineProperties(createChalk.prototype, styles);
 const chalk = createChalk();
 createChalk({level: stderrColor ? stderrColor.level : 0});
 
-const CONSUMER_ROOT_PATH = path.resolve(path.dirname(''));
+path.resolve(path.dirname(''));
 const THEME_CONFIG_FILE = 'theme.config.ts';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -17814,14 +17812,17 @@ var lodashExports = requireLodash();
 var _ = /*@__PURE__*/getDefaultExportFromCjs(lodashExports);
 
 /* -------------------------------------------------------------------------- */
-const createTheme = () => {
+const createTheme = async () => {
     let theme = {};
     try {
         // Try to import theme.config.ts
-        const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
+        // const themeConfigPath =path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
         // Use dynamic import
         // eslint-disable-next-line @typescript-eslint/no-require-imports
-        const themeConfigFile = require(themeConfigPath);
+        const themeConfigFile = await import(`../../../../${THEME_CONFIG_FILE}`);
+        console.log({ themeConfigFile });
+        if (!themeConfigFile)
+            throw new Error("theme.config.ts not defined");
         theme = themeConfigFile.default; // Access the default export
     }
     catch (error) {
@@ -17833,7 +17834,7 @@ const createTheme = () => {
     return _.merge(defaultTheme, theme);
 };
 
-const theme = createTheme();
+const theme = await createTheme();
 if (process.env.NODE_ENV !== 'production')
     ;
 
@@ -17978,12 +17979,5 @@ function isColorShade(value) {
         typeof value.dark === 'string');
 }
 
-exports.chalk = chalk;
-exports.createTheme = createTheme;
-exports.defaultTheme = defaultTheme;
-exports.defaultUtilities = defaultUtilities;
-exports.isColorShade = isColorShade;
-exports.lodashExports = lodashExports;
-exports.spacing = spacing;
-exports.theme = theme;
-//# sourceMappingURL=isColorShade-CloLn7Wv.js.map
+export { defaultUtilities as a, chalk as b, createTheme as c, defaultTheme as d, isColorShade as i, lodashExports as l, spacing as s, theme as t };
+//# sourceMappingURL=isColorShade-6R5kjgD2.js.map

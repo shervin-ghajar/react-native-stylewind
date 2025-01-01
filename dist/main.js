@@ -1,9 +1,8 @@
-'use strict';
-
-var isColorShade = require('./isColorShade-CloLn7Wv.js');
-var require$$0 = require('react');
-var reactNative = require('react-native');
-require('path');
+import { d as defaultTheme, l as lodashExports, t as theme } from './isColorShade-6R5kjgD2.js';
+export { c as createTheme, a as defaultUtilities, i as isColorShade, s as spacing } from './isColorShade-6R5kjgD2.js';
+import require$$0, { createContext, useContext, useState } from 'react';
+import { Platform, StyleSheet } from 'react-native';
+import 'path';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 /**
@@ -18,15 +17,15 @@ else {
     utilities = require('./utilities').utilities;
 }
 
-const ThemeContext = require$$0.createContext({
-    theme: isColorShade.defaultTheme,
-    isDarkMode: isColorShade.defaultTheme.mode === 'dark',
+const ThemeContext = createContext({
+    theme: defaultTheme,
+    isDarkMode: defaultTheme.mode === 'dark',
     setMode: (mode) => mode,
 });
 
 /* -------------------------------------------------------------------------- */
 const useTheme = () => {
-    const themeContext = require$$0.useContext(ThemeContext);
+    const themeContext = useContext(ThemeContext);
     return themeContext;
 };
 
@@ -49,7 +48,7 @@ const styles = (stylesArray) => {
     for (const style of stylesArray) {
         if (typeof style === 'string') {
             // Add utility style if it exists
-            const capitalizedMode = theme.mode !== 'default' ? isColorShade.lodashExports.capitalize(theme.mode) : '';
+            const capitalizedMode = theme.mode !== 'default' ? lodashExports.capitalize(theme.mode) : '';
             // Retrieve utilitie based on theme mode(Light/Dark)
             const utilityStyle = utilities?.[(style + capitalizedMode)] ??
                 utilities[style];
@@ -61,13 +60,13 @@ const styles = (stylesArray) => {
             for (const [attrKey, atrrValue] of Object.entries(style)) {
                 if (typeof atrrValue !== 'function')
                     continue;
-                style[attrKey] = atrrValue(theme, reactNative.Platform);
+                style[attrKey] = atrrValue(theme, Platform);
             }
             // Merge custom style objects
             Object.assign(styleAccumulator, style);
         }
     }
-    return reactNative.StyleSheet.create({ styleAccumulator }).styleAccumulator;
+    return StyleSheet.create({ styleAccumulator }).styleAccumulator;
 };
 
 /* -------------------------------------------------------------------------- */
@@ -1418,19 +1417,10 @@ function requireJsxRuntime () {
 var jsxRuntimeExports = requireJsxRuntime();
 
 const ThemeProvider = ({ children }) => {
-    const [mode, setMode] = require$$0.useState(isColorShade.theme.mode);
+    const [mode, setMode] = useState(theme.mode);
     const isDarkMode = mode === 'dark';
-    return (jsxRuntimeExports.jsx(ThemeContext.Provider, { value: { theme: isColorShade.theme, isDarkMode, setMode }, children: children }));
+    return (jsxRuntimeExports.jsx(ThemeContext.Provider, { value: { theme, isDarkMode, setMode }, children: children }));
 };
 
-exports.createTheme = isColorShade.createTheme;
-exports.defaultTheme = isColorShade.defaultTheme;
-exports.defaultUtilities = isColorShade.defaultUtilities;
-exports.isColorShade = isColorShade.isColorShade;
-exports.spacing = isColorShade.spacing;
-exports.theme = isColorShade.theme;
-exports.ThemeProvider = ThemeProvider;
-exports.createStyle = createStyle;
-exports.styles = styles;
-exports.useTheme = useTheme;
+export { ThemeProvider, createStyle, defaultTheme, styles, theme, useTheme };
 //# sourceMappingURL=main.js.map

@@ -1,19 +1,19 @@
 import chalk from 'chalk';
-import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns/index';
+import {  THEME_CONFIG_FILE } from '../configs/constatns/index';
 import { defaultTheme } from '../configs/defaultTheme';
 import { Theme } from '../types';
 import _ from 'lodash';
-import path from 'path';
-import fs from 'fs';
 /* -------------------------------------------------------------------------- */
-export const createTheme =  (): Theme => {
+export const createTheme = async (): Promise<Theme> => {
   let theme = {};
   try {
     // Try to import theme.config.ts
-    const themeConfigPath =path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
+    // const themeConfigPath =path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
     // Use dynamic import
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const themeConfigFile =  require(themeConfigPath);
+    const themeConfigFile =await import(`../../../../${THEME_CONFIG_FILE}`);
+    console.log({themeConfigFile})
+    if(!themeConfigFile) throw new Error("theme.config.ts not defined")
     theme = themeConfigFile.default; // Access the default export
   } catch (error) {
     console.warn('No theme.config.ts found, using default theme configs.');
