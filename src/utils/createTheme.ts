@@ -6,7 +6,7 @@ import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
 /* -------------------------------------------------------------------------- */
-export const createTheme =  (): Theme => {
+export const createTheme = async (): Promise<Theme> => {
   let theme = {};
   try {
     // Try to import theme.config.ts
@@ -15,8 +15,7 @@ export const createTheme =  (): Theme => {
     console.log("PATH", themeConfigPath, CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
 
     // Use dynamic import
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const themeConfigFile = require(themeConfigPath);
+    const themeConfigFile = await import(themeConfigPath);
     console.log({ themeConfigFile });
     theme = themeConfigFile.default; // Access the default export
   } catch (error) {
