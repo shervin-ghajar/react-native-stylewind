@@ -11,7 +11,7 @@ export const createTheme = async (): Promise<Theme> => {
     // const themeConfigPath =path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
     // Use dynamic import
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const themeConfigFile =await import(`../../../../${THEME_CONFIG_FILE}`);
+    const themeConfigFile =await import(`../../../${THEME_CONFIG_FILE}`);
     console.log({themeConfigFile})
     if(!themeConfigFile) throw new Error("theme.config.ts not defined")
     theme = themeConfigFile.default; // Access the default export
