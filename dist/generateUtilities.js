@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-var isColorShade = require('./isColorShade-COYPCEfd.js');
+var isColorShade = require('./isColorShade-CloLn7Wv.js');
 var fs = require('fs');
 var path = require('path');
 

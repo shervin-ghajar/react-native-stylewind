@@ -1,10 +1,9 @@
 'use strict';
 
-var isColorShade = require('./isColorShade-COYPCEfd.js');
+var isColorShade = require('./isColorShade-CloLn7Wv.js');
 var require$$0 = require('react');
 var reactNative = require('react-native');
 require('path');
-require('fs');
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 /**

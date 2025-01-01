@@ -10,13 +10,10 @@ export const createTheme =  (): Theme => {
   let theme = {};
   try {
     // Try to import theme.config.ts
-    const themeConfigPath ="file://"+ (path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE));
-    console.log("resolve",  themeConfigPath,123, { existsSync: fs.existsSync(themeConfigPath) });
-
+    const themeConfigPath =path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
     // Use dynamic import
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const themeConfigFile =  require(`../../../${THEME_CONFIG_FILE}`);
-    console.log({ themeConfigFile });
+    const themeConfigFile =  require(themeConfigPath);
     theme = themeConfigFile.default; // Access the default export
   } catch (error) {
     console.warn('No theme.config.ts found, using default theme configs.');
