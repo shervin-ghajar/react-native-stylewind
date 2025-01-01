@@ -88,7 +88,7 @@ export function generateUtilities() {
     const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
 
     const utilitiesIndexFilePath = resolve(generatedDirPath, 'index.ts');
-    const utilitiesIndexFile = `/* eslint-disable @typescript-eslint/no-require-imports */\n${warningText}export  export * from './types';
+    const utilitiesIndexFile = `/* eslint-disable @typescript-eslint/no-require-imports */\n${warningText}export * from './types';
 
 let utilities: any; // Use 'any' or a specific type if you know it
 
