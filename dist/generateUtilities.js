@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-import { t as theme, a as defaultUtilities, i as isColorShade, s as spacing, b as chalk } from './isColorShade-zGsATcjG.js';
+import { t as theme, a as defaultUtilities, i as isColorShade, s as spacing, b as chalk } from './isColorShade-CJAZcCKe.js';
 import fs from 'fs';
 import { resolve } from 'path';
-import 'url';
 
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;

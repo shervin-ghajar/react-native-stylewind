@@ -1,5 +1,5 @@
 import path from 'path';
-import { pathToFileURL } from 'url';
+import fs from 'fs';
 
 const colors = {
     // Primary colors
@@ -17813,18 +17813,18 @@ var lodashExports = requireLodash();
 var _ = /*@__PURE__*/getDefaultExportFromCjs(lodashExports);
 
 /* -------------------------------------------------------------------------- */
-const createTheme = async () => {
+const createTheme = () => {
     let theme = {};
     try {
         // Try to import theme.config.ts
         const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
         // Use dynamic import
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
-        console.log({ themeConfigFile });
-        if (!themeConfigFile)
+        // const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
+        if (!fs.existsSync(themeConfigPath))
             throw new Error('theme.config.ts not defined');
-        theme = themeConfigFile.default; // Access the default export
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const themeConfigFile = require(themeConfigPath);
+        theme = themeConfigFile;
     }
     catch (error) {
         console.warn('No theme.config.ts found, using default theme configs.');
@@ -17981,4 +17981,4 @@ function isColorShade(value) {
 }
 
 export { defaultUtilities as a, chalk as b, createTheme as c, defaultTheme as d, isColorShade as i, lodashExports as l, spacing as s, theme as t };
-//# sourceMappingURL=isColorShade-zGsATcjG.js.map
+//# sourceMappingURL=isColorShade-CJAZcCKe.js.map
