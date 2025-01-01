@@ -2,6 +2,7 @@ import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import del from 'rollup-plugin-delete'
 
 export default {
   input: {
@@ -26,6 +27,7 @@ export default {
     typescript({
       tsconfig: './tsconfig.json',
     }),
+    del({ targets: 'dist/*' }),
     terser(), // Optional: Minify the output
   ],
   external: ['react', 'react-native'], // Mark these as external dependencies

@@ -11,10 +11,10 @@ export const createTheme = async (): Promise<Theme> => {
   try {
     // Try to import theme.config.ts
     const themeConfigPath ="file://"+ (path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE));
-    console.log("resolve",  themeConfigPath,123, { existsSync: fs.existsSync(themeConfigPath) });
+    console.log("resolve",  path.resolve(`../../../${THEME_CONFIG_FILE}`),123, { existsSync: fs.existsSync(themeConfigPath) });
 
     // Use dynamic import
-    const themeConfigFile = await import(`../../../../${THEME_CONFIG_FILE}`);
+    const themeConfigFile = await import(`../../../${THEME_CONFIG_FILE}`);
     console.log({ themeConfigFile });
     theme = themeConfigFile.default; // Access the default export
   } catch (error) {
