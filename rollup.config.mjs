@@ -5,10 +5,7 @@ import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 
 export default {
-  input: {
-    main: 'src/main.tsx', // Your main entry point
-    generateUtilities: 'src/scripts/generateUtilities.ts', // Your CLI entry point
-  },
+  input: 'src/main.tsx',
   output: [
     {
       dir: 'dist', // Output directory for all files
