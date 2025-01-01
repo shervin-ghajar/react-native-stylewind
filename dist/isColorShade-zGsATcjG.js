@@ -1,4 +1,5 @@
 import path from 'path';
+import { pathToFileURL } from 'url';
 
 const colors = {
     // Primary colors
@@ -108,6 +109,9 @@ const defaultTheme = {
     spacing: spacingConfigs,
     typography,
 };
+
+const CONSUMER_ROOT_PATH = path.resolve(path.dirname(''));
+const THEME_CONFIG_FILE = 'theme.config.ts';
 
 const ANSI_BACKGROUND_OFFSET = 10;
 
@@ -589,9 +593,6 @@ Object.defineProperties(createChalk.prototype, styles);
 
 const chalk = createChalk();
 createChalk({level: stderrColor ? stderrColor.level : 0});
-
-path.resolve(path.dirname(''));
-const THEME_CONFIG_FILE = 'theme.config';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -17816,13 +17817,13 @@ const createTheme = async () => {
     let theme = {};
     try {
         // Try to import theme.config.ts
-        // const themeConfigPath =path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
+        const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
         // Use dynamic import
         // eslint-disable-next-line @typescript-eslint/no-require-imports
-        const themeConfigFile = await import(`../../../${THEME_CONFIG_FILE}`);
+        const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
         console.log({ themeConfigFile });
         if (!themeConfigFile)
-            throw new Error("theme.config.ts not defined");
+            throw new Error('theme.config.ts not defined');
         theme = themeConfigFile.default; // Access the default export
     }
     catch (error) {
@@ -17980,4 +17981,4 @@ function isColorShade(value) {
 }
 
 export { defaultUtilities as a, chalk as b, createTheme as c, defaultTheme as d, isColorShade as i, lodashExports as l, spacing as s, theme as t };
-//# sourceMappingURL=isColorShade-8KH7ZiKw.js.map
+//# sourceMappingURL=isColorShade-zGsATcjG.js.map

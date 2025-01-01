@@ -5,6 +5,7 @@
   "main": "./dist/main.js",
   "module": "./dist/main.esm.js",
   "types": "./dist/main.d.ts",
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/main.js",
