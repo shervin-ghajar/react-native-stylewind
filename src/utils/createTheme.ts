@@ -10,7 +10,7 @@ export const createTheme = async (): Promise<Theme> => {
   let theme = {};
   try {
     // Try to import theme.config.ts
-    const themeConfigPath = "file://"+(path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE)).replace(/\\/g, '/');
+    const themeConfigPath = "file:///"+(path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE)).replace(/\\/g, '/');
     console.log("resolve",  themeConfigPath,123, { existsSync: fs.existsSync(themeConfigPath) });
 
     // Use dynamic import
