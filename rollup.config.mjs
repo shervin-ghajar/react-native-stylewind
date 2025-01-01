@@ -28,7 +28,7 @@ export default {
       tsconfig: './tsconfig.json',
     }),
     del({ targets: 'dist/*' }),
-    terser(), // Optional: Minify the output
+    // terser(), // Optional: Minify the output
   ],
   external: ['react', 'react-native'], // Mark these as external dependencies
 };
