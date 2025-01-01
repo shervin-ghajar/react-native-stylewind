@@ -15,11 +15,11 @@ export default {
       format: 'cjs', // CommonJS format for all outputs
       sourcemap: true,
     },
-    {
-      dir: 'dist', // Output directory for ES module format
-      format: 'es', // ES module format for all outputs
-      sourcemap: true,
-    },
+    // {
+    //   dir: 'dist', // Output directory for ES module format
+    //   format: 'es', // ES module format for all outputs
+    //   sourcemap: true,
+    // },
   ],
   plugins: [
     resolve(), // Helps Rollup find external modules
@@ -28,7 +28,7 @@ export default {
       tsconfig: './tsconfig.json',
     }),
     del({ targets: 'dist/*' }),
-    // terser(), // Optional: Minify the output
+    terser(), // Optional: Minify the output
   ],
   external: ['react', 'react-native'], // Mark these as external dependencies
 };
