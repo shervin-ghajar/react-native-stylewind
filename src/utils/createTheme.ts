@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-require('ts-node/register');
 import chalk from 'chalk';
 import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns/index';
 import { defaultTheme } from '../configs/defaultTheme';
@@ -8,7 +6,7 @@ import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
 /* -------------------------------------------------------------------------- */
-export const createTheme = (): Theme => {
+export const createTheme = async (): Promise<Theme> => {
   let theme = {};
   try {
     // Try to import theme.config.ts
@@ -17,7 +15,7 @@ export const createTheme = (): Theme => {
     console.log("PATH", themeConfigPath, CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
 
     // Use dynamic import
-    const themeConfigFile = require(themeConfigPath);
+    const themeConfigFile = await import(themeConfigPath);
     console.log({ themeConfigFile });
     theme = themeConfigFile.default; // Access the default export
   } catch (error) {
