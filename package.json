@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.55",
   "main": "./dist/main.js",
-  "module": "./dist/main.esm.js",
+  "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "exports": {
     ".": {
