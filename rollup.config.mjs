@@ -10,6 +10,11 @@ export default {
   },
   output: [
     {
+      dir: 'dist', // Output directory for all files
+      format: 'cjs', // CommonJS format for all outputs
+      sourcemap: true,
+    },
+    {
       dir: 'dist', // Output directory for ES module format
       format: 'es', // ES module format for all outputs
       sourcemap: true,
