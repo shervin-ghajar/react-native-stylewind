@@ -1,5 +1,7 @@
-import path from 'path';
-import fs from 'fs';
+'use strict';
+
+var path = require('path');
+var fs = require('fs');
 
 const colors = {
     // Primary colors
@@ -17835,7 +17837,7 @@ const createTheme = () => {
     return _.merge(defaultTheme, theme);
 };
 
-const theme = await createTheme();
+const theme = createTheme();
 if (process.env.NODE_ENV !== 'production')
     ;
 
@@ -17980,5 +17982,12 @@ function isColorShade(value) {
         typeof value.dark === 'string');
 }
 
-export { defaultUtilities as a, chalk as b, createTheme as c, defaultTheme as d, isColorShade as i, lodashExports as l, spacing as s, theme as t };
-//# sourceMappingURL=isColorShade-CJAZcCKe.js.map
+exports.chalk = chalk;
+exports.createTheme = createTheme;
+exports.defaultTheme = defaultTheme;
+exports.defaultUtilities = defaultUtilities;
+exports.isColorShade = isColorShade;
+exports.lodashExports = lodashExports;
+exports.spacing = spacing;
+exports.theme = theme;
+//# sourceMappingURL=isColorShade-Sq4X3pbi.js.map
