@@ -18,11 +18,12 @@
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
     "lint": "eslint .",
-    "init-rn-tailwind": "tsx ./src/scripts/generateUtilities.ts",
+    "init-rn-tailwind": "tsx ./src/scripts/init.ts",
+    "generate": "tsx ./src/scripts/generateUtilities.ts",
     "compile": "tsx ./src/scripts/treeShakeUtilities.ts"
   },
   "bin": {
-    "init-rn-tailwind": "./dist/generateUtilities.js",
+    "init-rn-tailwind": "./dist/init.js",
     "compile-rn-tailwind": "./dist/treeShakeUtilities.js"
   },
   "dependencies": {

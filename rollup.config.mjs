@@ -7,6 +7,7 @@ import typescript from 'rollup-plugin-typescript2';
 export default {
   input: {
     main: 'src/main.tsx', // Your main entry point
+    init: 'src/scripts/init.ts', // Your CLI entry point
     generateUtilities: 'src/scripts/generateUtilities.ts', // Your CLI entry point
     treeShakeUtilities: 'src/scripts/treeShakeUtilities.ts', // Your CLI entry point
   },
