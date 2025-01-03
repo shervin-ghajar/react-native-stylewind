@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE } from './index-BtSyWlPe.js';
+import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE } from './index-DLednyAs.js';
 import { c as chalk } from './index-D0Mvf1ZH.js';
 import { execSync } from 'child_process';
 import fs from 'fs';
-import require$$0 from 'path';
+import path from 'path';
+import 'url';
 
 (function init() {
-    const themeConfigPath = require$$0.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
+    const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
     const themeConfigFile = `import { createTheme } from 'react-native-tailwind';\n\nexport default await createTheme({
   colors: {
     primary: {

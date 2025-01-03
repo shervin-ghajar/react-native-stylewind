@@ -1,11 +1,12 @@
 #!/usr/bin/env node
+import { R as ROOT_PATH } from './index-DLednyAs.js';
 import { execSync } from 'child_process';
-import require$$0 from 'path';
-import { fileURLToPath } from 'url';
+import path from 'path';
+import 'url';
 
 try {
     console.log('Regenerating theme...');
-    const configPath = require$$0.resolve(fileURLToPath(import.meta.url), '../../rollup.config.mjs');
+    const configPath = path.resolve(ROOT_PATH, 'rollup.config.mjs');
     // Run the build script defined in package.json
     console.log('Regenerating theme...');
     execSync(`npx rollup -c ${configPath}`, { stdio: 'inherit' });
