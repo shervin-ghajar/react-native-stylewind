@@ -1,4 +1,4 @@
-import { utilities, UtilitiesType, UtilityKeys } from '../configs/generated/utilities';
+import { UtilitiesType, UtilityKeys } from '../configs/generated/utilities';
 import { useTheme } from '../hooks';
 import { ThemeViewStyle } from '../types';
 import { capitalize } from 'lodash';
@@ -19,7 +19,7 @@ import { StyleProp } from 'react-native';
  */
 
 export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(stylesArray: T[]) => {
-  const { theme } = useTheme();
+  const { theme, utilities } = useTheme();
   console.log({ theme, utilities });
   const styleAccumulator: any = {};
 

@@ -6,22 +6,16 @@
 export * from './types';
 
 // Use dynamic import instead of require
-export async function getUtilities() {
-  let utilities: any; // Use 'any' or a specific type if you know it
+// Define the function to get utilities
+const utilitiesConfig = {
+  production: () => import('./shakenUtilities'),
+  development: () => import('./utilities'),
+};
 
-  if (process.env.NODE_ENV === 'production') {
-    const utilsFile = await import('./shakenUtilities');
-    utilities = utilsFile.utilities;
-  } else {
-    const utilsFile = await import('./utilities');
-    console.log(123, 'is development', utilsFile);
-    utilities = utilsFile.utilities;
-  }
-  return utilities;
+export async function getUtilities() {
+  const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+  const utilsFile = await utilitiesConfig[environment]();
+  return utilsFile.utilities;
 }
-// Export utilities based on NODE_ENV
-const utilities = await getUtilities();
-console.log('getUtilities', utilities);
-export { utilities };
 // Define the type for UtilitiesType
-export type UtilitiesType = typeof utilities;
+export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
