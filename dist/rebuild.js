@@ -4,7 +4,7 @@ import { execSync } from 'child_process';
 try {
     console.log('Regenerating theme...');
     // Run the build script defined in package.json
-    execSync('npm run build', { stdio: 'inherit' });
+    execSync('rollup -c rollup.config.mjs', { stdio: 'inherit' });
     console.log('Theme regeneration complete!');
 }
 catch (error) {
