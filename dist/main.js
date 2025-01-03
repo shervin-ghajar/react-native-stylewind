@@ -1,7 +1,7 @@
-import { c as colors, s as spacingConfigs, t as theme } from './isColorShade-CVp10Dkz.js';
-export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CVp10Dkz.js';
+import { c as colors, s as spacingConfigs, t as theme } from './isColorShade.js';
+export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade.js';
 import require$$0, { createContext, useContext, useState, useEffect } from 'react';
-import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-BFTU3MAI.js';
+import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers.js';
 import './theme.js';
 
 /* -------------------------------------------------------------------------- */
@@ -19614,7 +19614,7 @@ var jsxRuntimeExports = requireJsxRuntime();
 // Define the function to get utilities
 const utilitiesConfig = {
     production: () => Promise.resolve().then(function () { return shakenUtilities; }),
-    development: () => import('./utilities-Btx9h9Sx.js'),
+    development: () => import('./utilities.js'),
 };
 async function getUtilities() {
     const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';

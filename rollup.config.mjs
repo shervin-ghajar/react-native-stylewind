@@ -7,7 +7,7 @@ import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import { fileURLToPath } from 'url';
 
-const ROOT_PATH = path.resolve(fileURLToPath(import.meta.url), '../');
+export const ROOT_PATH = path.resolve(fileURLToPath(import.meta.url), '../');
 console.log({ ROOT_PATH });
 export default {
   input: {
@@ -23,6 +23,9 @@ export default {
       dir: path.resolve(ROOT_PATH, 'dist'), // Output directory for ES module format
       format: 'es', // ES module format for all outputs
       sourcemap: true,
+      entryFileNames: '[name].js', // Ensure entry files do not include hashes
+      chunkFileNames: '[name].js', // Ensure dynamically generated chunks do not include hashes
+      assetFileNames: '[name].[ext]', // Ensure assets (like CSS) do not include hashes
     },
   ],
   external: [

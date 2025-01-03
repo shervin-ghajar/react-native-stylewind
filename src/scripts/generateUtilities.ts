@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { ThemeColorValues } from '../configs/colors/types';
-import { CONSUMER_ROOT_PATH, ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
+import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
 import { defaultUtilities } from '../configs/index';
 import { theme } from '../theme';
 import { Theme } from '../types';
@@ -10,9 +10,10 @@ import chalk from 'chalk';
 import fs from 'fs';
 import { capitalize } from 'lodash-es';
 import path, { resolve } from 'path';
+import { fileURLToPath } from 'url';
 
-// import { fileURLToPath } from 'url';
-
+const PATH = path.resolve(fileURLToPath(import.meta.url));
+const isDir = PATH.includes('dist');
 /* -------------------------------------------------------------------------- */
 type ThemeColors = NonNullable<typeof theme.colors>;
 // Generates Theme Utilities
@@ -88,11 +89,9 @@ export async function generateUtilities() {
 
     const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
     /* --------------------------- Write utility & theme files -------------------------- */
-    // const pathname = fileURLToPath(import.meta.url);
-    console.log({ ROOT_PATH });
-    const generatedUtilsDirPath = resolve(ROOT_PATH, 'src/configs/generated/utilities'); // utils path
-    const generatedThemeDirPath = resolve(ROOT_PATH, 'src/configs/generated/theme'); // theme path
-    const generatedDistThemeDirPath = resolve(ROOT_PATH, 'dist'); // theme path
+    const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
+    const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
+    const generatedDistThemeDirPath = resolve('./dist'); // theme path
 
     // Utility files dir
     const utilitiesFilePath = resolve(generatedUtilsDirPath, 'utilities.ts');
@@ -122,46 +121,56 @@ export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
     const distThemeFilePath = resolve(generatedDistThemeDirPath, 'theme.js');
 
     // Make direction and write files
-    if (!fs.existsSync(generatedUtilsDirPath)) {
-      fs.mkdirSync(generatedUtilsDirPath, { recursive: true });
-      console.log(chalk.greenBright('Utilities directory created successfully.'));
+    if (!isDir) {
+      if (!fs.existsSync(generatedUtilsDirPath)) {
+        fs.mkdirSync(generatedUtilsDirPath, { recursive: true });
+        console.log(chalk.greenBright('Utilities directory created successfully.'));
+      }
+      if (!fs.existsSync(generatedThemeDirPath)) {
+        fs.mkdirSync(generatedThemeDirPath, { recursive: true });
+        console.log(chalk.greenBright('Theme directory created successfully.'));
+      }
+      // Wrtie all utilities
+      fs.writeFileSync(
+        utilitiesFilePath,
+        `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`,
+      );
+
+      // Write all utility keys type
+      fs.writeFileSync(
+        typesFilePath,
+        `${warningText}export type UtilityKeys = ${[...types].join(' | ')};\n`,
+      );
+
+      // Write duplicated utilities for tree shaking
+      fs.writeFileSync(
+        shakenUtilitiesFilePath,
+        `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`,
+      );
+
+      // Write index file for handling utilities dynamic import
+      fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
+
+      // Write theme index file
+      fs.writeFileSync(
+        themeFilePath,
+        `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
+      );
+
+      fs.writeFileSync(
+        distThemeFilePath,
+        `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
+      );
+    } else {
+      fs.writeFileSync(
+        path.resolve(PATH, '../', 'utilities.js'),
+        `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
+      );
+      fs.writeFileSync(
+        path.resolve(PATH, '../', 'theme.js'),
+        `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
+      );
     }
-    if (!fs.existsSync(generatedThemeDirPath)) {
-      fs.mkdirSync(generatedThemeDirPath, { recursive: true });
-      console.log(chalk.greenBright('Theme directory created successfully.'));
-    }
-
-    // Wrtie all utilities
-    fs.writeFileSync(
-      utilitiesFilePath,
-      `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`,
-    );
-
-    // Write all utility keys type
-    fs.writeFileSync(
-      typesFilePath,
-      `${warningText}export type UtilityKeys = ${[...types].join(' | ')};\n`,
-    );
-
-    // Write duplicated utilities for tree shaking
-    fs.writeFileSync(
-      shakenUtilitiesFilePath,
-      `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`,
-    );
-
-    // Write index file for handling utilities dynamic import
-    fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
-
-    // Write theme index file
-    fs.writeFileSync(
-      themeFilePath,
-      `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
-    );
-
-    fs.writeFileSync(
-      distThemeFilePath,
-      `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
-    );
 
     console.log(chalk.greenBright('Theme utilities and types generated successfully!'));
   } catch (error) {
