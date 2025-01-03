@@ -2,7 +2,7 @@
   "name": "react-native-tailwind",
   "private": false,
   "version": "0.0.55",
-  "main": "./dist/main.js",
+  "main": "./main.tsx",
   "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "type": "module",
@@ -25,7 +25,8 @@
   "bin": {
     "init-rn-tailwind": "./dist/init.js",
     "generate-rn-tailwind": "./dist/generateUtilities.js",
-    "compile-rn-tailwind": "./dist/treeShakeUtilities.js"
+    "compile-rn-tailwind": "./dist/treeShakeUtilities.js",
+    "rebuild-rn-tailwind": "./dist/rebuild.js"
   },
   "dependencies": {
     "@types/debug": "^4.1.12",

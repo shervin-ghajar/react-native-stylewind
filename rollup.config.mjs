@@ -11,6 +11,7 @@ export default {
     init: 'src/scripts/init.ts', // Your CLI entry point
     generateUtilities: 'src/scripts/generateUtilities.ts', // Your CLI entry point
     treeShakeUtilities: 'src/scripts/treeShakeUtilities.ts', // Your CLI entry point
+    rebuild: 'src/scripts/rebuild.ts', // Your CLI entry point
     theme: 'src/configs/generated/theme/index.ts',
   },
   output: [

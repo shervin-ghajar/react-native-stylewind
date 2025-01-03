@@ -11,6 +11,8 @@ import fs from 'fs';
 import { capitalize } from 'lodash-es';
 import path, { resolve } from 'path';
 
+// import { fileURLToPath } from 'url';
+
 /* -------------------------------------------------------------------------- */
 type ThemeColors = NonNullable<typeof theme.colors>;
 // Generates Theme Utilities
@@ -86,9 +88,8 @@ export async function generateUtilities() {
 
     const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
     /* --------------------------- Write utility & theme files -------------------------- */
-    const pathname = path.resolve(path.dirname('../../dist'));
-    console.log({ pathname }, import.meta);
-    const generatedUtilsDirPath = resolve(pathname + './src/configs/generated/utilities'); // utils path
+    // const pathname = fileURLToPath(import.meta.url);
+    const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
     const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
     const generatedDistThemeDirPath = resolve('./dist'); // theme path
 

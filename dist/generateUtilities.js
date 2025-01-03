@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE } from './index-Bhs8BoX6.js';
+import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE } from './index-BtSyWlPe.js';
 import { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CVp10Dkz.js';
 import { c as chalk } from './index-D0Mvf1ZH.js';
 import fs from 'fs';
-import path, { resolve } from 'path';
+import require$$0, { resolve } from 'path';
 import './theme.js';
 
 /** Detect free variable `global` from Node.js. */
@@ -460,7 +460,7 @@ function capitalize(string) {
 // Generates Theme Utilities
 async function generateUtilities() {
     try {
-        const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
+        const themeConfigPath = require$$0.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
         const themeConfigFile = await import(themeConfigPath);
         const theme = themeConfigFile.default;
         const { colors } = theme;
@@ -520,9 +520,8 @@ async function generateUtilities() {
         }
         const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
         /* --------------------------- Write utility & theme files -------------------------- */
-        const pathname = path.resolve(path.dirname('../../dist'));
-        console.log({ pathname }, import.meta);
-        const generatedUtilsDirPath = resolve(pathname + './src/configs/generated/utilities'); // utils path
+        // const pathname = fileURLToPath(import.meta.url);
+        const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
         const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
         const generatedDistThemeDirPath = resolve('./dist'); // theme path
         // Utility files dir
