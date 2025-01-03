@@ -5,10 +5,8 @@ import del from 'rollup-plugin-delete';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
-import { fileURLToPath } from 'url';
 
-const ROOT_PATH = path.resolve(fileURLToPath(import.meta.url), '../');
-console.log({ ROOT_PATH });
+const ROOT_PATH = process.cwd();
 export default {
   input: {
     main: path.resolve(ROOT_PATH, 'src/main.tsx'), // Your main entry point
