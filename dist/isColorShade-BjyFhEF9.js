@@ -99,7 +99,7 @@ const spacingConfigs = {
 * <---DO NOT MODIFY THIS FILE--->
 */
 const theme$1 = {
-    "mode": "dark",
+    "mode": "light",
     "colors": {
         "primary": {
             "default": "#1D4ED8",
@@ -321,4 +321,4 @@ function isColorShade(value) {
 }
 
 export { spacing as a, colors as c, defaultUtilities as d, isColorShade as i, spacingConfigs as s, theme as t };
-//# sourceMappingURL=isColorShade-CBd5gJjA.js.map
+//# sourceMappingURL=isColorShade-BjyFhEF9.js.map

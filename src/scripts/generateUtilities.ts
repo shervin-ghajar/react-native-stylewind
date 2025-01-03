@@ -96,25 +96,20 @@ export async function generateUtilities() {
     const utilitiesIndexFilePath = resolve(generatedUtilsDirPath, 'index.ts');
     const utilitiesIndexFile = `${warningText}export * from './types';
 
-let utilities: any; // Use 'any' or a specific type if you know it
-
 // Use dynamic import instead of require
-if (process.env.NODE_ENV === 'production') {
-  import('./shakenUtilities').then(module => {
-    utilities = module.utilities;
-  });
-} else {
-  import('./utilities').then(module => {
-    utilities = module.utilities;
-  });
+// Define the function to get utilities
+const utilitiesConfig = {
+  production: () => import('./shakenUtilities'),
+  development: () => import('./utilities'),
+};
+
+export async function getUtilities() {
+  const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+  const utilsFile = await utilitiesConfig[environment]();
+  return utilsFile.utilities;
 }
-
-// Export the utilities after they are set
-export { utilities };
-
 // Define the type for UtilitiesType
-export type UtilitiesType = typeof utilities;
-
+export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
 `;
 
     // Theme file dir

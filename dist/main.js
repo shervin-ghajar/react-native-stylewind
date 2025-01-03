@@ -1,5 +1,5 @@
-import { c as colors, s as spacingConfigs, t as theme } from './isColorShade-CBd5gJjA.js';
-export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CBd5gJjA.js';
+import { c as colors, s as spacingConfigs, t as theme } from './isColorShade-BjyFhEF9.js';
+export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-BjyFhEF9.js';
 import require$$0, { createContext, useContext, useState, useEffect } from 'react';
 import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-BFTU3MAI.js';
 

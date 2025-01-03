@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE } from './index-BtSyWlPe.js';
-import { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CBd5gJjA.js';
+import { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-BjyFhEF9.js';
 import { c as chalk } from './index-D0Mvf1ZH.js';
 import fs from 'fs';
 import require$$0, { resolve } from 'path';
@@ -528,25 +528,20 @@ async function generateUtilities() {
         const utilitiesIndexFilePath = resolve(generatedUtilsDirPath, 'index.ts');
         const utilitiesIndexFile = `${warningText}export * from './types';
 
-let utilities: any; // Use 'any' or a specific type if you know it
-
 // Use dynamic import instead of require
-if (process.env.NODE_ENV === 'production') {
-  import('./shakenUtilities').then(module => {
-    utilities = module.utilities;
-  });
-} else {
-  import('./utilities').then(module => {
-    utilities = module.utilities;
-  });
+// Define the function to get utilities
+const utilitiesConfig = {
+  production: () => import('./shakenUtilities'),
+  development: () => import('./utilities'),
+};
+
+export async function getUtilities() {
+  const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+  const utilsFile = await utilitiesConfig[environment]();
+  return utilsFile.utilities;
 }
-
-// Export the utilities after they are set
-export { utilities };
-
 // Define the type for UtilitiesType
-export type UtilitiesType = typeof utilities;
-
+export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
 `;
         // Theme file dir
         const themeFilePath = resolve(generatedThemeDirPath, 'index.ts');
