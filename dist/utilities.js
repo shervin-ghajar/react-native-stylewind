@@ -2,7 +2,7 @@
 * AUTO GENERATED
 * <---DO NOT MODIFY THIS FILE--->
 */
-const utilities = {
+var utilities = {
     "flex-1": {
         "flex": 1
     },
@@ -963,5 +963,5 @@ const utilities = {
     }
 };
 
-export { utilities };
+export { utilities as default };
 //# sourceMappingURL=utilities.js.map

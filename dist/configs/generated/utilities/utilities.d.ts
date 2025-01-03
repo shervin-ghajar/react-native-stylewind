@@ -2,7 +2,7 @@
 * AUTO GENERATED
 * <---DO NOT MODIFY THIS FILE--->
 */
-export declare const utilities: {
+declare const _default: {
     "flex-1": {
         flex: number;
     };
@@ -962,3 +962,4 @@ export declare const utilities: {
         marginVertical: number;
     };
 };
+export default _default;

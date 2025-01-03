@@ -15,7 +15,7 @@ const utilitiesConfig = {
 export async function getUtilities() {
   const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
   const utilsFile = await utilitiesConfig[environment]();
-  return utilsFile.utilities;
+  return utilsFile.default;
 }
 // Define the type for UtilitiesType
 export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;

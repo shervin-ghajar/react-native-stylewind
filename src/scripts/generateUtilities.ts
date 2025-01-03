@@ -133,7 +133,7 @@ export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
       // Wrtie all utilities
       fs.writeFileSync(
         utilitiesFilePath,
-        `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`,
+        `${warningText}\nexport default ${JSON.stringify(utilities, null, 2)};\n`,
       );
 
       // Write all utility keys type
@@ -145,7 +145,7 @@ export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
       // Write duplicated utilities for tree shaking
       fs.writeFileSync(
         shakenUtilitiesFilePath,
-        `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`,
+        `${warningText}\nexport default ${JSON.stringify(utilities, null, 2)};\n`,
       );
 
       // Write index file for handling utilities dynamic import

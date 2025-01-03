@@ -562,11 +562,11 @@ export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
                 console.log(chalk.greenBright('Theme directory created successfully.'));
             }
             // Wrtie all utilities
-            fs.writeFileSync(utilitiesFilePath, `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`);
+            fs.writeFileSync(utilitiesFilePath, `${warningText}\nexport default ${JSON.stringify(utilities, null, 2)};\n`);
             // Write all utility keys type
             fs.writeFileSync(typesFilePath, `${warningText}export type UtilityKeys = ${[...types].join(' | ')};\n`);
             // Write duplicated utilities for tree shaking
-            fs.writeFileSync(shakenUtilitiesFilePath, `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`);
+            fs.writeFileSync(shakenUtilitiesFilePath, `${warningText}\nexport default ${JSON.stringify(utilities, null, 2)};\n`);
             // Write index file for handling utilities dynamic import
             fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
             // Write theme index file

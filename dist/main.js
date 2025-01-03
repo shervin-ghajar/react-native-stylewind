@@ -21,7 +21,7 @@ const defaultTheme = {
 * AUTO GENERATED
 * <---DO NOT MODIFY THIS FILE--->
 */
-const utilities = {
+var shakenUtilities = {
     "flex-1": {
         "flex": 1
     },
@@ -982,14 +982,14 @@ const utilities = {
     }
 };
 
-var shakenUtilities = /*#__PURE__*/Object.freeze({
+var shakenUtilities$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  utilities: utilities
+  default: shakenUtilities
 });
 
 const ThemeContext = createContext({
     theme: defaultTheme,
-    utilities,
+    utilities: shakenUtilities,
     isDarkMode: defaultTheme.mode === 'dark',
     setMode: (mode) => mode,
 });
@@ -19613,17 +19613,17 @@ var jsxRuntimeExports = requireJsxRuntime();
 // Use dynamic import instead of require
 // Define the function to get utilities
 const utilitiesConfig = {
-    production: () => Promise.resolve().then(function () { return shakenUtilities; }),
+    production: () => Promise.resolve().then(function () { return shakenUtilities$1; }),
     development: () => import('./utilities.js'),
 };
 async function getUtilities() {
     const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
     const utilsFile = await utilitiesConfig[environment]();
-    return utilsFile.utilities;
+    return utilsFile.default;
 }
 
 const ThemeProvider = ({ children }) => {
-    const [utilities$1, setUtilities] = useState(utilities);
+    const [utilities, setUtilities] = useState(shakenUtilities);
     const [mode, setMode] = useState(theme.mode);
     const isDarkMode = mode === 'dark';
     useEffect(() => {
@@ -19634,7 +19634,7 @@ const ThemeProvider = ({ children }) => {
             console.log('getUtilities err', error);
         });
     }, []);
-    return (jsxRuntimeExports.jsx(ThemeContext.Provider, { value: { theme, utilities: utilities$1, isDarkMode, setMode }, children: children }));
+    return (jsxRuntimeExports.jsx(ThemeContext.Provider, { value: { theme, utilities, isDarkMode, setMode }, children: children }));
 };
 
 export { ThemeProvider, createStyle, createTheme, defaultTheme, styles, theme, useTheme };

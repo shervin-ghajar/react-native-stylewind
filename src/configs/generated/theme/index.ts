@@ -5,7 +5,7 @@
 
 
 export const theme = {
-  "mode": "dark",
+  "mode": "default",
   "colors": {
     "primary": {
       "default": "#1D4ED8",

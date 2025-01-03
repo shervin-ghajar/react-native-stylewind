@@ -4,7 +4,7 @@
 */
 
 
-export const utilities = {
+export default {
   "flex-1": {
     "flex": 1
   },
