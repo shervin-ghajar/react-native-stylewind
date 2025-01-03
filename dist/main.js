@@ -22,8 +22,8 @@ async function getUtilities() {
     return utilities;
 }
 // Export utilities based on NODE_ENV
-console.log('getUtilities', await getUtilities());
 const utilities = await getUtilities();
+console.log('getUtilities', utilities);
 
 /* -------------------------------------------------------------------------- */
 const typography = {
