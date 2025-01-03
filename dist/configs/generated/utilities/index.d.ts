@@ -3,6 +3,6 @@
  * <---DO NOT MODIFY THIS FILE--->
  */
 export * from './types';
-declare let utilities: any;
-export { utilities };
+export declare function getUtilities(): Promise<any>;
+export declare const utilities: Promise<any>;
 export type UtilitiesType = typeof utilities;
