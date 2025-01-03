@@ -24,6 +24,6 @@ export async function getUtilities() {
   return utilities;
 }
 //
-export const utilities = getUtilities();
+export const utilities = await getUtilities();
 // Define the type for UtilitiesType
 export type UtilitiesType = typeof utilities;

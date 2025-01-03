@@ -26,7 +26,7 @@ async function getUtilities() {
     return utilities;
 }
 //
-const utilities = getUtilities();
+const utilities = await getUtilities();
 
 /* -------------------------------------------------------------------------- */
 const typography = {
