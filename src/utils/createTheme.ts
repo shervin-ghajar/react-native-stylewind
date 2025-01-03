@@ -6,7 +6,7 @@ import _ from 'lodash';
 import path from 'path';
 
 /* -------------------------------------------------------------------------- */
-export const createTheme = (): Theme => {
+export const createTheme = async (): Promise<Theme> => {
   let theme = {};
   try {
     // Try to import theme.config.ts
@@ -14,9 +14,9 @@ export const createTheme = (): Theme => {
     // Use dynamic import
     // const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
     if (!themeConfigPath) throw new Error('theme.config.ts not defined');
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const themeConfigFile = require(themeConfigPath);
-    theme = themeConfigFile;
+
+    const themeConfigFile = await import(themeConfigPath);
+    theme = themeConfigFile.default;
   } catch (error) {
     console.warn('No theme.config.ts found, using default theme configs.');
     console.log(chalk.yellow(`WARN: No theme.config.ts found, using default theme configs.`));

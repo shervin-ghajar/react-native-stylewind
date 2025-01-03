@@ -17326,7 +17326,7 @@ var lodashExports = requireLodash();
 var _ = /*@__PURE__*/getDefaultExportFromCjs(lodashExports);
 
 /* -------------------------------------------------------------------------- */
-const createTheme = () => {
+const createTheme = async () => {
     let theme = {};
     try {
         // Try to import theme.config.ts
@@ -17335,9 +17335,8 @@ const createTheme = () => {
         // const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
         if (!themeConfigPath)
             throw new Error('theme.config.ts not defined');
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        const themeConfigFile = require(themeConfigPath);
-        theme = themeConfigFile;
+        const themeConfigFile = await import(themeConfigPath);
+        theme = themeConfigFile.default;
     }
     catch (error) {
         console.warn('No theme.config.ts found, using default theme configs.');
@@ -17348,7 +17347,7 @@ const createTheme = () => {
     return _.merge(defaultTheme, theme);
 };
 
-const theme = createTheme();
+const theme = await createTheme();
 if (process.env.NODE_ENV !== 'production')
     ;
 
@@ -17494,4 +17493,4 @@ function isColorShade(value) {
 }
 
 export { defaultUtilities as a, createTheme as c, defaultTheme as d, isColorShade as i, lodashExports as l, spacing as s, theme as t };
-//# sourceMappingURL=isColorShade-BcQ09QXp.js.map
+//# sourceMappingURL=isColorShade-CdpJQQKH.js.map
