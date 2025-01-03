@@ -13,7 +13,10 @@ export const ThemeProvider = ({ children }: ThemeProviderType) => {
   useEffect(() => {
     console.log('ThemeProvider Effect');
     getUtilities()
-      .then(setUtilities)
+      .then((utilities) => {
+        console.log('getUtilities');
+        setUtilities(utilities);
+      })
       .catch((error) => {
         console.log('getUtilities err', error);
       });
