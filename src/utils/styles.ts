@@ -1,11 +1,10 @@
 import { utilities, UtilitiesType, UtilityKeys } from '../configs/generated/utilities';
 import { useTheme } from '../hooks';
 import { ThemeViewStyle } from '../types';
+import StyleSheet from './sheet';
 import { capitalize } from 'lodash';
 import { StyleProp } from 'react-native';
-import pkg from 'react-native';
 
-const { StyleSheet } = pkg;
 /* -------------------------------------------------------------------------- */
 /* eslint-disable react-hooks/rules-of-hooks */
 /**
@@ -19,10 +18,13 @@ const { StyleSheet } = pkg;
  * styles(["absolute", { color: "red",backgroundColor:(theme)=> theme.colors.primary.light }]);
  * ```
  */
-export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(stylesArray: T[]) => {
+
+export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(
+  stylesArray: T[],
+): StyleSheet.NamedStyles<unknown> => {
   const { theme } = useTheme();
   console.log({ theme, utilities });
-  const styleAccumulator: any = {};
+  const styleAccumulator: StyleSheet.NamedStyles<unknown> = {};
 
   for (const style of stylesArray) {
     if (typeof style === 'string') {

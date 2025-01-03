@@ -1,8 +1,8 @@
 import { c as colors, s as spacingConfigs, t as theme } from './isColorShade-CBd5gJjA.js';
 export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CBd5gJjA.js';
 import require$$0, { createContext, useContext, useState } from 'react';
-import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-BFTU3MAI.js';
 import pkg from 'react-native';
+import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-BFTU3MAI.js';
 
 /**
  * AUTO GENERATED
@@ -45,6 +45,8 @@ const useTheme = () => {
     const themeContext = useContext(ThemeContext);
     return themeContext;
 };
+
+var StyleSheet = pkg.StyleSheet;
 
 var lodash$1 = {exports: {}};
 
@@ -17258,7 +17260,6 @@ function requireLodash () {
 var lodashExports = requireLodash();
 var _ = /*@__PURE__*/getDefaultExportFromCjs(lodashExports);
 
-const { StyleSheet } = pkg;
 /* -------------------------------------------------------------------------- */
 /* eslint-disable react-hooks/rules-of-hooks */
 /**
