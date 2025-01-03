@@ -6,18 +6,19 @@ import { StyleSheet } from 'react-native';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 /**
-* AUTO GENERATED
-* <---DO NOT MODIFY THIS FILE--->
-*/
+ * AUTO GENERATED
+ * <---DO NOT MODIFY THIS FILE--->
+ */
 let utilities; // Use 'any' or a specific type if you know it
+console.log({ NodeEnv: process.env.NODE_ENV });
 // Use dynamic import instead of require
 if (process.env.NODE_ENV === 'production') {
-    import('./shakenUtilities-Btx9h9Sx.js').then(module => {
+    import('./shakenUtilities-Btx9h9Sx.js').then((module) => {
         utilities = module.utilities;
     });
 }
 else {
-    import('./utilities-Btx9h9Sx.js').then(module => {
+    import('./utilities-Btx9h9Sx.js').then((module) => {
         utilities = module.utilities;
     });
 }
@@ -17274,7 +17275,7 @@ var _ = /*@__PURE__*/getDefaultExportFromCjs(lodashExports);
  */
 const styles = (stylesArray) => {
     const { theme } = useTheme();
-    console.log({ theme });
+    console.log({ theme, utilities });
     const styleAccumulator = {};
     for (const style of stylesArray) {
         if (typeof style === 'string') {

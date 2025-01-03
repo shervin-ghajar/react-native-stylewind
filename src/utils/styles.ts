@@ -22,7 +22,7 @@ export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(
   stylesArray: T[],
 ): StyleSheet.NamedStyles<unknown> => {
   const { theme } = useTheme();
-  console.log({ theme });
+  console.log({ theme, utilities });
   const styleAccumulator: StyleSheet.NamedStyles<unknown> = {};
 
   for (const style of stylesArray) {
