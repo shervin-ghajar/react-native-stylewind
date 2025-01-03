@@ -19619,6 +19619,7 @@ const utilitiesConfig = {
 async function getUtilities() {
     const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
     const utilsFile = await utilitiesConfig[environment]();
+    console.log({ getUtilities: utilsFile });
     return utilsFile.default;
 }
 
