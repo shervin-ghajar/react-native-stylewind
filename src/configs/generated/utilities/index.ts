@@ -21,6 +21,7 @@ export async function getUtilities() {
 }
 // Export utilities based on NODE_ENV
 console.log('getUtilities', await getUtilities());
-export const utilities = await getUtilities();
+const utilities = await getUtilities();
+export { utilities };
 // Define the type for UtilitiesType
 export type UtilitiesType = typeof utilities;
