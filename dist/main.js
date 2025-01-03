@@ -8,26 +8,22 @@ import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHe
  * <---DO NOT MODIFY THIS FILE--->
  */
 // Use dynamic import instead of require
-function getUtilities() {
+async function getUtilities() {
     let utilities; // Use 'any' or a specific type if you know it
     if (process.env.NODE_ENV === 'production') {
-        import('./shakenUtilities-Btx9h9Sx.js').then((module) => {
-            console.log('shakenUtilitiesPath', module);
-            utilities = module.utilities;
-        });
+        const utilsFile = await import('./shakenUtilities-Btx9h9Sx.js');
+        utilities = utilsFile.utilities;
     }
     else {
-        console.log(123, 'is development');
-        import('./utilities-Btx9h9Sx.js').then((module) => {
-            console.log('utilitiesPath', module);
-            utilities = module.utilities;
-        });
+        const utilsFile = await import('./utilities-Btx9h9Sx.js');
+        console.log(123, 'is development', utilsFile);
+        utilities = utilsFile.utilities;
     }
     return utilities;
 }
 // Export utilities based on NODE_ENV
-console.log('getUtilities', getUtilities());
-const utilities = getUtilities();
+console.log('getUtilities', await getUtilities());
+const utilities = await getUtilities();
 
 /* -------------------------------------------------------------------------- */
 const typography = {
