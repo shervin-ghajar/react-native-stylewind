@@ -111,7 +111,7 @@ const defaultTheme = {
 };
 
 const CONSUMER_ROOT_PATH = require$$0.resolve(require$$0.dirname(''));
-const THEME_CONFIG_FILE = 'theme.config.ts';
+const THEME_CONFIG_FILE = 'theme.config.mjs';
 
 var lodash$1 = {exports: {}};
 
@@ -17493,4 +17493,4 @@ function isColorShade(value) {
 }
 
 export { defaultUtilities as a, createTheme as c, defaultTheme as d, isColorShade as i, lodashExports as l, spacing as s, theme as t };
-//# sourceMappingURL=isColorShade-CdpJQQKH.js.map
+//# sourceMappingURL=isColorShade-80-kFp1g.js.map
