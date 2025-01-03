@@ -1,7 +1,8 @@
 #!/usr/bin/env node
+import { ROOT_PATH } from '../configs/constatns';
 import chalk from 'chalk';
 import fs from 'fs';
-import { resolve } from 'path';
+import path, { resolve } from 'path';
 import { Project, Node, SyntaxKind } from 'ts-morph';
 
 // Define the path to your generated styles file
@@ -61,7 +62,10 @@ let generatedUtilities: Record<string, unknown>;
   }
   /* ------------------------------ Rewrite file ------------------------------ */
   // Rewrite the filtered utils back to the generated utils file
-  const shakenUtilitiesPath = './src/configs/generated/utilities/shakenUtilities.ts';
+  const shakenUtilitiesPath = path.resolve(
+    ROOT_PATH,
+    './src/configs/generated/utilities/shakenUtilities.ts',
+  );
   const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
   try {
     fs.writeFileSync(

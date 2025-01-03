@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { ThemeColorValues } from '../configs/colors/types';
-import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
+import { CONSUMER_ROOT_PATH, ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
 import { defaultUtilities } from '../configs/index';
 import { theme } from '../theme';
 import { Theme } from '../types';
@@ -89,9 +89,10 @@ export async function generateUtilities() {
     const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
     /* --------------------------- Write utility & theme files -------------------------- */
     // const pathname = fileURLToPath(import.meta.url);
-    const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
-    const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
-    const generatedDistThemeDirPath = resolve('./dist'); // theme path
+    console.log({ ROOT_PATH });
+    const generatedUtilsDirPath = resolve(ROOT_PATH, 'src/configs/generated/utilities'); // utils path
+    const generatedThemeDirPath = resolve(ROOT_PATH, 'src/configs/generated/theme'); // theme path
+    const generatedDistThemeDirPath = resolve(ROOT_PATH, 'dist'); // theme path
 
     // Utility files dir
     const utilitiesFilePath = resolve(generatedUtilsDirPath, 'utilities.ts');

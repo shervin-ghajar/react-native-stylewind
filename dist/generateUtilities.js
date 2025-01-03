@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE } from './index-CBiG3sss.js';
+import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE, R as ROOT_PATH, c as chalk } from './index-D7XzVvNo.js';
 import { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CVp10Dkz.js';
-import { c as chalk } from './index-D0Mvf1ZH.js';
 import fs from 'fs';
 import path, { resolve } from 'path';
 import 'url';
@@ -522,9 +521,10 @@ async function generateUtilities() {
         const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
         /* --------------------------- Write utility & theme files -------------------------- */
         // const pathname = fileURLToPath(import.meta.url);
-        const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
-        const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
-        const generatedDistThemeDirPath = resolve('./dist'); // theme path
+        console.log({ ROOT_PATH });
+        const generatedUtilsDirPath = resolve(ROOT_PATH, 'src/configs/generated/utilities'); // utils path
+        const generatedThemeDirPath = resolve(ROOT_PATH, 'src/configs/generated/theme'); // theme path
+        const generatedDistThemeDirPath = resolve(ROOT_PATH, 'dist'); // theme path
         // Utility files dir
         const utilitiesFilePath = resolve(generatedUtilsDirPath, 'utilities.ts');
         const shakenUtilitiesFilePath = resolve(generatedUtilsDirPath, 'shakenUtilities.ts');
