@@ -17,7 +17,8 @@
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
     "lint": "eslint .",
-    "init-rn-tailwind": "tsx ./src/scripts/generateUtilities.ts"
+    "init-rn-tailwind": "tsx ./src/scripts/generateUtilities.ts",
+    "compile": "tsx ./src/scripts/treeShakeUtilities.ts"
   },
   "bin": {
     "init-rn-tailwind": "./dist/generateUtilities.js"

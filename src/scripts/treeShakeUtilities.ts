@@ -1,21 +1,18 @@
 #!/usr/bin/env node
-
 import chalk from 'chalk';
 import fs from 'fs';
 import { resolve } from 'path';
 import { Project, Node, SyntaxKind } from 'ts-morph';
 
 // Define the path to your generated styles file
-const generatedUtilitiesPath = resolve("./src/theme/configs/generated/utilities/utilities.ts");
+const generatedUtilitiesPath = resolve('./src/configs/generated/utilities/utilities.ts');
 
 // Load the generated styles using dynamic import
 let generatedUtilities: Record<string, unknown>;
 
 (async () => {
   try {
-
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const module = require(generatedUtilitiesPath);
+    const module = await import(generatedUtilitiesPath);
     generatedUtilities = module.utilities; // Access the 'utilities' export
   } catch (error) {
     console.error('Error loading generated utils:', error);
@@ -58,12 +55,13 @@ let generatedUtilities: Record<string, unknown>;
   });
   // Filter the generated styles to keep only the used ones
   const filteredUtilities: Record<string, unknown> = {};
+  console.log({ filteredUtilities });
   for (const [key, value] of Object.entries(generatedUtilities)) {
     if (usedStyles.has(key)) filteredUtilities[key] = value;
   }
   /* ------------------------------ Rewrite file ------------------------------ */
   // Rewrite the filtered utils back to the generated utils file
-  const shakenUtilitiesPath = './src/theme/configs/generated/utilities/shakenUtilities.ts';
+  const shakenUtilitiesPath = './src/configs/generated/utilities/shakenUtilities.ts';
   const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
   try {
     fs.writeFileSync(

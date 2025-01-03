@@ -80,7 +80,7 @@ export function generateUtilities() {
     }
 
     /* ------------------------------- Write file ------------------------------- */
-    const generatedDirPath = resolve('./src/theme/configs/generated/utilities');
+    const generatedDirPath = resolve('./src/configs/generated/utilities');
     const utilitiesFilePath = resolve(generatedDirPath, 'utilities.ts');
     const shakenUtilitiesFilePath = resolve(generatedDirPath, 'shakenUtilities.ts');
 
