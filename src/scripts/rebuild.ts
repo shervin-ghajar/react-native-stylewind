@@ -1,12 +1,10 @@
 #!/usr/bin/env node
-import { ROOT_PATH } from '../configs/constatns';
 import { execSync } from 'child_process';
 import path from 'path';
 
 try {
   console.log('Regenerating theme...');
-  const configPath = path.resolve(ROOT_PATH, 'rollup.config.mjs');
-  console.log({ ROOT_PATH });
+  const configPath = path.resolve(import.meta.url, '../../rollup.config.mjs');
   // Run the build script defined in package.json
   console.log('Regenerating theme...');
   execSync(`npx rollup -c ${configPath}`, { stdio: 'inherit' });
