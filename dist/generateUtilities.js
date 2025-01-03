@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE } from './index-BtSyWlPe.js';
-import { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-BjyFhEF9.js';
+import { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CVp10Dkz.js';
 import { c as chalk } from './index-D0Mvf1ZH.js';
 import fs from 'fs';
 import require$$0, { resolve } from 'path';
+import './theme.js';
 
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -521,6 +522,7 @@ async function generateUtilities() {
         /* --------------------------- Write utility & theme files -------------------------- */
         const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
         const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
+        const generatedDistThemeDirPath = resolve('./dist'); // theme path
         // Utility files dir
         const utilitiesFilePath = resolve(generatedUtilsDirPath, 'utilities.ts');
         const shakenUtilitiesFilePath = resolve(generatedUtilsDirPath, 'shakenUtilities.ts');
@@ -545,6 +547,7 @@ export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
 `;
         // Theme file dir
         const themeFilePath = resolve(generatedThemeDirPath, 'index.ts');
+        const distThemeFilePath = resolve(generatedDistThemeDirPath, 'theme.js');
         // Make direction and write files
         if (!fs.existsSync(generatedUtilsDirPath)) {
             fs.mkdirSync(generatedUtilsDirPath, { recursive: true });
@@ -564,6 +567,7 @@ export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
         fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
         // Write theme index file
         fs.writeFileSync(themeFilePath, `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`);
+        fs.writeFileSync(distThemeFilePath, `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`);
         console.log(chalk.greenBright('Theme utilities and types generated successfully!'));
     }
     catch (error) {

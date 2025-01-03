@@ -1,7 +1,7 @@
 /**
-* AUTO GENERATED
-* <---DO NOT MODIFY THIS FILE--->
-*/
+ * AUTO GENERATED
+ * <---DO NOT MODIFY THIS FILE--->
+ */
 export declare const theme: {
     mode: string;
     colors: {
@@ -46,17 +46,17 @@ export declare const theme: {
             dark: string;
         };
         grey: {
-            "0": string;
-            "10": string;
-            "20": string;
-            "30": string;
-            "40": string;
-            "50": string;
-            "60": string;
-            "70": string;
-            "80": string;
-            "90": string;
-            "100": string;
+            '0': string;
+            '10': string;
+            '20': string;
+            '30': string;
+            '40': string;
+            '50': string;
+            '60': string;
+            '70': string;
+            '80': string;
+            '90': string;
+            '100': string;
             default: string;
         };
         common: {

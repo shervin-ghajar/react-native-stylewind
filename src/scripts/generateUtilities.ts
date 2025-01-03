@@ -88,6 +88,7 @@ export async function generateUtilities() {
     /* --------------------------- Write utility & theme files -------------------------- */
     const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
     const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
+    const generatedDistThemeDirPath = resolve('./dist'); // theme path
 
     // Utility files dir
     const utilitiesFilePath = resolve(generatedUtilsDirPath, 'utilities.ts');
@@ -114,6 +115,7 @@ export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
 
     // Theme file dir
     const themeFilePath = resolve(generatedThemeDirPath, 'index.ts');
+    const distThemeFilePath = resolve(generatedDistThemeDirPath, 'theme.js');
 
     // Make direction and write files
     if (!fs.existsSync(generatedUtilsDirPath)) {
@@ -149,6 +151,11 @@ export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
     // Write theme index file
     fs.writeFileSync(
       themeFilePath,
+      `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
+    );
+
+    fs.writeFileSync(
+      distThemeFilePath,
       `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
     );
 
