@@ -11,11 +11,13 @@ let utilities; // Use 'any' or a specific type if you know it
 // Use dynamic import instead of require
 if (process.env.NODE_ENV === 'production') {
     import('./shakenUtilities-Btx9h9Sx.js').then((module) => {
+        console.log('shakenUtilitiesPath', module);
         utilities = module.utilities;
     });
 }
 else {
     import('./utilities-Btx9h9Sx.js').then((module) => {
+        console.log('utilitiesPath', module);
         utilities = module.utilities;
     });
 }
@@ -17257,6 +17259,7 @@ function requireLodash () {
 var lodashExports = requireLodash();
 var _ = /*@__PURE__*/getDefaultExportFromCjs(lodashExports);
 
+console.log({ ENV: process.env.NODE_ENV });
 /* -------------------------------------------------------------------------- */
 /* eslint-disable react-hooks/rules-of-hooks */
 /**

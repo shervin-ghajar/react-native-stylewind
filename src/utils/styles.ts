@@ -4,6 +4,7 @@ import { ThemeViewStyle } from '../types';
 import { capitalize } from 'lodash';
 import { StyleProp } from 'react-native';
 
+console.log({ ENV: process.env.NODE_ENV });
 /* -------------------------------------------------------------------------- */
 /* eslint-disable react-hooks/rules-of-hooks */
 /**
