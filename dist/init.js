@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE, c as chalk } from './index-D7XzVvNo.js';
+import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE, c as chalk } from './index-DUTdSjpo.js';
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
