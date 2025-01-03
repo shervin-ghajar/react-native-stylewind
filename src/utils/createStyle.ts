@@ -1,7 +1,7 @@
 import { ThemeViewStyle } from '../types';
-import { StyleProp } from 'react-native';
+import RN from 'react-native';
 
 /* -------------------------------------------------------------------------- */
 export const createStyle = <T extends string>(
-  styles: Record<T, StyleProp<ThemeViewStyle>>,
-): Record<T, StyleProp<ThemeViewStyle>> => styles;
+  styles: Record<T, RN.StyleProp<ThemeViewStyle>>,
+): Record<T, RN.StyleProp<ThemeViewStyle>> => styles;

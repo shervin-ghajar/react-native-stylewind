@@ -2,7 +2,7 @@ import { c as colors, s as spacingConfigs, t as theme } from './isColorShade-CBd
 export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CBd5gJjA.js';
 import require$$0, { createContext, useContext, useState } from 'react';
 import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-BFTU3MAI.js';
-import { StyleSheet } from 'react-native';
+import RN from 'react-native';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 /**
@@ -17299,7 +17299,7 @@ const styles = (stylesArray) => {
             Object.assign(styleAccumulator, style);
         }
     }
-    return StyleSheet.create({ styleAccumulator }).styleAccumulator;
+    return RN.StyleSheet.create({ styleAccumulator }).styleAccumulator;
 };
 
 /* -------------------------------------------------------------------------- */
