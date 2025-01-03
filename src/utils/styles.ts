@@ -1,7 +1,6 @@
 import { utilities, UtilitiesType, UtilityKeys } from '../configs/generated/utilities';
 import { useTheme } from '../hooks';
 import { ThemeViewStyle } from '../types';
-import StyleSheet from './sheet';
 import { capitalize } from 'lodash';
 import { StyleProp } from 'react-native';
 
@@ -19,12 +18,10 @@ import { StyleProp } from 'react-native';
  * ```
  */
 
-export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(
-  stylesArray: T[],
-): StyleSheet.NamedStyles<unknown> => {
+export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(stylesArray: T[]) => {
   const { theme } = useTheme();
   console.log({ theme, utilities });
-  const styleAccumulator: StyleSheet.NamedStyles<unknown> = {};
+  const styleAccumulator: any = {};
 
   for (const style of stylesArray) {
     if (typeof style === 'string') {
@@ -50,5 +47,5 @@ export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(
       Object.assign(styleAccumulator, style);
     }
   }
-  return StyleSheet.create({ styleAccumulator }).styleAccumulator;
+  return styleAccumulator;
 };

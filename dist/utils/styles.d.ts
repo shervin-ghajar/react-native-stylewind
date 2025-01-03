@@ -1,6 +1,5 @@
 import { UtilityKeys } from '../configs/generated/utilities';
 import { ThemeViewStyle } from '../types';
-import StyleSheet from './sheet';
 import { StyleProp } from 'react-native';
 /**
  * Combines utility styles and custom styles into a single style object.
@@ -13,4 +12,4 @@ import { StyleProp } from 'react-native';
  * styles(["absolute", { color: "red",backgroundColor:(theme)=> theme.colors.primary.light }]);
  * ```
  */
-export declare const styles: <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(stylesArray: T[]) => StyleSheet.NamedStyles<unknown>;
+export declare const styles: <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(stylesArray: T[]) => any;

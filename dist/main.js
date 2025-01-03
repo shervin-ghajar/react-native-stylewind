@@ -1,7 +1,6 @@
 import { c as colors, s as spacingConfigs, t as theme } from './isColorShade-CBd5gJjA.js';
 export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CBd5gJjA.js';
 import require$$0, { createContext, useContext, useState } from 'react';
-import pkg from 'react-native';
 import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-BFTU3MAI.js';
 
 /**
@@ -45,8 +44,6 @@ const useTheme = () => {
     const themeContext = useContext(ThemeContext);
     return themeContext;
 };
-
-var StyleSheet = pkg.StyleSheet;
 
 var lodash$1 = {exports: {}};
 
@@ -17299,7 +17296,7 @@ const styles = (stylesArray) => {
             Object.assign(styleAccumulator, style);
         }
     }
-    return StyleSheet.create({ styleAccumulator }).styleAccumulator;
+    return styleAccumulator;
 };
 
 /* -------------------------------------------------------------------------- */
