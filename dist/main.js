@@ -19627,7 +19627,14 @@ const ThemeProvider = ({ children }) => {
     const [mode, setMode] = useState(theme.mode);
     const isDarkMode = mode === 'dark';
     useEffect(() => {
-        getUtilities().then(setUtilities);
+        getUtilities()
+            .then((utilities) => {
+            console.log('provider', { utilities });
+            setUtilities(utilities);
+        })
+            .catch((err) => {
+            console.log('provider err', err);
+        });
     }, []);
     return (jsxRuntimeExports.jsx(ThemeContext.Provider, { value: { theme, utilities: utilities$1, isDarkMode, setMode }, children: children }));
 };

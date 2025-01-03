@@ -99,9 +99,9 @@ const spacingConfigs = {
 const theme = theme$1;
 
 /* -------------------------------------------------------------------------- */
-const spacing = (space) => {
+const spacing = (space, theme$1) => {
     if (typeof space === 'number')
-        return theme.spacing.default * space;
+        return (theme$1 ?? theme).spacing.default * space;
     return spacingConfigs[space];
 };
 

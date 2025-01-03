@@ -500,7 +500,7 @@ async function generateUtilities() {
         /* ------------------------- Spacing-based Utilities ------------------------ */
         const spacingLimit = 10;
         for (let i = 0; i <= spacingLimit; i++) {
-            const spacingValue = spacing(i);
+            const spacingValue = spacing(i, theme);
             // Padding & Margin Utilities
             const pmDictionary = { p: 'padding', m: 'margin' }; // Padding & Margin dictionary
             const directionsDictionary = {
