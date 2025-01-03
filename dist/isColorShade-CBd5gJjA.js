@@ -178,8 +178,6 @@ const theme$1 = {
 };
 
 const theme = theme$1;
-if (process.env.NODE_ENV !== 'production')
-    ;
 
 /* -------------------------------------------------------------------------- */
 const spacing = (space) => {
@@ -323,4 +321,4 @@ function isColorShade(value) {
 }
 
 export { spacing as a, colors as c, defaultUtilities as d, isColorShade as i, spacingConfigs as s, theme as t };
-//# sourceMappingURL=isColorShade-CvLOjO_2.js.map
+//# sourceMappingURL=isColorShade-CBd5gJjA.js.map

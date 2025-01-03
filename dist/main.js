@@ -1,5 +1,5 @@
-import { c as colors, s as spacingConfigs, t as theme } from './isColorShade-CvLOjO_2.js';
-export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CvLOjO_2.js';
+import { c as colors, s as spacingConfigs, t as theme } from './isColorShade-CBd5gJjA.js';
+export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CBd5gJjA.js';
 import require$$0, { createContext, useContext, useState } from 'react';
 import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-BFTU3MAI.js';
 import { StyleSheet } from 'react-native';
@@ -17274,6 +17274,7 @@ var _ = /*@__PURE__*/getDefaultExportFromCjs(lodashExports);
  */
 const styles = (stylesArray) => {
     const { theme } = useTheme();
+    console.log({ theme });
     const styleAccumulator = {};
     for (const style of stylesArray) {
         if (typeof style === 'string') {
