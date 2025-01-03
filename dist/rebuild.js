@@ -1,11 +1,13 @@
 #!/usr/bin/env node
-import { R as ROOT_PATH } from './index-WSPmohhc.js';
+import { R as ROOT_PATH } from './index-DLednyAs.js';
 import { execSync } from 'child_process';
-import require$$0 from 'path';
+import path from 'path';
+import 'url';
 
 try {
     console.log('Regenerating theme...');
-    const configPath = require$$0.resolve(ROOT_PATH, 'rollup.config.mjs');
+    const configPath = path.resolve(ROOT_PATH, 'rollup.config.mjs');
+    console.log({ ROOT_PATH });
     // Run the build script defined in package.json
     console.log('Regenerating theme...');
     execSync(`npx rollup -c ${configPath}`, { stdio: 'inherit' });
