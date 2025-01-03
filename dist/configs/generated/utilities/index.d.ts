@@ -1,7 +1,7 @@
 /**
- * AUTO GENERATED
- * <---DO NOT MODIFY THIS FILE--->
- */
+* AUTO GENERATED
+* <---DO NOT MODIFY THIS FILE--->
+*/
 export * from './types';
 export declare function getUtilities(): Promise<{
     "flex-1": {

@@ -19607,9 +19607,9 @@ function requireJsxRuntime () {
 var jsxRuntimeExports = requireJsxRuntime();
 
 /**
- * AUTO GENERATED
- * <---DO NOT MODIFY THIS FILE--->
- */
+* AUTO GENERATED
+* <---DO NOT MODIFY THIS FILE--->
+*/
 // Use dynamic import instead of require
 // Define the function to get utilities
 const utilitiesConfig = {

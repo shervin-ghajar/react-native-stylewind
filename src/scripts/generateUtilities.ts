@@ -86,7 +86,9 @@ export async function generateUtilities() {
 
     const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
     /* --------------------------- Write utility & theme files -------------------------- */
-    const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
+    const pathname = path.resolve(path.dirname('../../dist'));
+    console.log({ pathname }, import.meta);
+    const generatedUtilsDirPath = resolve(pathname + './src/configs/generated/utilities'); // utils path
     const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
     const generatedDistThemeDirPath = resolve('./dist'); // theme path
 
