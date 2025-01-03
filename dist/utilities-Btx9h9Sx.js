@@ -542,426 +542,426 @@ const utilities = {
         "marginVertical": 0
     },
     "p-1": {
-        "padding": 4
-    },
-    "pt-1": {
-        "paddingTop": 4
-    },
-    "pr-1": {
-        "paddingRight": 4
-    },
-    "pb-1": {
-        "paddingBottom": 4
-    },
-    "pl-1": {
-        "paddingLeft": 4
-    },
-    "px-1": {
-        "paddingHorizontal": 4
-    },
-    "py-1": {
-        "paddingVertical": 4
-    },
-    "m-1": {
-        "margin": 4
-    },
-    "mt-1": {
-        "marginTop": 4
-    },
-    "mr-1": {
-        "marginRight": 4
-    },
-    "mb-1": {
-        "marginBottom": 4
-    },
-    "ml-1": {
-        "marginLeft": 4
-    },
-    "mx-1": {
-        "marginHorizontal": 4
-    },
-    "my-1": {
-        "marginVertical": 4
-    },
-    "p-2": {
         "padding": 8
     },
-    "pt-2": {
+    "pt-1": {
         "paddingTop": 8
     },
-    "pr-2": {
+    "pr-1": {
         "paddingRight": 8
     },
-    "pb-2": {
+    "pb-1": {
         "paddingBottom": 8
     },
-    "pl-2": {
+    "pl-1": {
         "paddingLeft": 8
     },
-    "px-2": {
+    "px-1": {
         "paddingHorizontal": 8
     },
-    "py-2": {
+    "py-1": {
         "paddingVertical": 8
     },
-    "m-2": {
+    "m-1": {
         "margin": 8
     },
-    "mt-2": {
+    "mt-1": {
         "marginTop": 8
     },
-    "mr-2": {
+    "mr-1": {
         "marginRight": 8
     },
-    "mb-2": {
+    "mb-1": {
         "marginBottom": 8
     },
-    "ml-2": {
+    "ml-1": {
         "marginLeft": 8
     },
-    "mx-2": {
+    "mx-1": {
         "marginHorizontal": 8
     },
-    "my-2": {
+    "my-1": {
         "marginVertical": 8
     },
-    "p-3": {
-        "padding": 12
-    },
-    "pt-3": {
-        "paddingTop": 12
-    },
-    "pr-3": {
-        "paddingRight": 12
-    },
-    "pb-3": {
-        "paddingBottom": 12
-    },
-    "pl-3": {
-        "paddingLeft": 12
-    },
-    "px-3": {
-        "paddingHorizontal": 12
-    },
-    "py-3": {
-        "paddingVertical": 12
-    },
-    "m-3": {
-        "margin": 12
-    },
-    "mt-3": {
-        "marginTop": 12
-    },
-    "mr-3": {
-        "marginRight": 12
-    },
-    "mb-3": {
-        "marginBottom": 12
-    },
-    "ml-3": {
-        "marginLeft": 12
-    },
-    "mx-3": {
-        "marginHorizontal": 12
-    },
-    "my-3": {
-        "marginVertical": 12
-    },
-    "p-4": {
+    "p-2": {
         "padding": 16
     },
-    "pt-4": {
+    "pt-2": {
         "paddingTop": 16
     },
-    "pr-4": {
+    "pr-2": {
         "paddingRight": 16
     },
-    "pb-4": {
+    "pb-2": {
         "paddingBottom": 16
     },
-    "pl-4": {
+    "pl-2": {
         "paddingLeft": 16
     },
-    "px-4": {
+    "px-2": {
         "paddingHorizontal": 16
     },
-    "py-4": {
+    "py-2": {
         "paddingVertical": 16
     },
-    "m-4": {
+    "m-2": {
         "margin": 16
     },
-    "mt-4": {
+    "mt-2": {
         "marginTop": 16
     },
-    "mr-4": {
+    "mr-2": {
         "marginRight": 16
     },
-    "mb-4": {
+    "mb-2": {
         "marginBottom": 16
     },
-    "ml-4": {
+    "ml-2": {
         "marginLeft": 16
     },
-    "mx-4": {
+    "mx-2": {
         "marginHorizontal": 16
     },
-    "my-4": {
+    "my-2": {
         "marginVertical": 16
     },
-    "p-5": {
-        "padding": 20
-    },
-    "pt-5": {
-        "paddingTop": 20
-    },
-    "pr-5": {
-        "paddingRight": 20
-    },
-    "pb-5": {
-        "paddingBottom": 20
-    },
-    "pl-5": {
-        "paddingLeft": 20
-    },
-    "px-5": {
-        "paddingHorizontal": 20
-    },
-    "py-5": {
-        "paddingVertical": 20
-    },
-    "m-5": {
-        "margin": 20
-    },
-    "mt-5": {
-        "marginTop": 20
-    },
-    "mr-5": {
-        "marginRight": 20
-    },
-    "mb-5": {
-        "marginBottom": 20
-    },
-    "ml-5": {
-        "marginLeft": 20
-    },
-    "mx-5": {
-        "marginHorizontal": 20
-    },
-    "my-5": {
-        "marginVertical": 20
-    },
-    "p-6": {
+    "p-3": {
         "padding": 24
     },
-    "pt-6": {
+    "pt-3": {
         "paddingTop": 24
     },
-    "pr-6": {
+    "pr-3": {
         "paddingRight": 24
     },
-    "pb-6": {
+    "pb-3": {
         "paddingBottom": 24
     },
-    "pl-6": {
+    "pl-3": {
         "paddingLeft": 24
     },
-    "px-6": {
+    "px-3": {
         "paddingHorizontal": 24
     },
-    "py-6": {
+    "py-3": {
         "paddingVertical": 24
     },
-    "m-6": {
+    "m-3": {
         "margin": 24
     },
-    "mt-6": {
+    "mt-3": {
         "marginTop": 24
     },
-    "mr-6": {
+    "mr-3": {
         "marginRight": 24
     },
-    "mb-6": {
+    "mb-3": {
         "marginBottom": 24
     },
-    "ml-6": {
+    "ml-3": {
         "marginLeft": 24
     },
-    "mx-6": {
+    "mx-3": {
         "marginHorizontal": 24
     },
-    "my-6": {
+    "my-3": {
         "marginVertical": 24
     },
-    "p-7": {
-        "padding": 28
-    },
-    "pt-7": {
-        "paddingTop": 28
-    },
-    "pr-7": {
-        "paddingRight": 28
-    },
-    "pb-7": {
-        "paddingBottom": 28
-    },
-    "pl-7": {
-        "paddingLeft": 28
-    },
-    "px-7": {
-        "paddingHorizontal": 28
-    },
-    "py-7": {
-        "paddingVertical": 28
-    },
-    "m-7": {
-        "margin": 28
-    },
-    "mt-7": {
-        "marginTop": 28
-    },
-    "mr-7": {
-        "marginRight": 28
-    },
-    "mb-7": {
-        "marginBottom": 28
-    },
-    "ml-7": {
-        "marginLeft": 28
-    },
-    "mx-7": {
-        "marginHorizontal": 28
-    },
-    "my-7": {
-        "marginVertical": 28
-    },
-    "p-8": {
+    "p-4": {
         "padding": 32
     },
-    "pt-8": {
+    "pt-4": {
         "paddingTop": 32
     },
-    "pr-8": {
+    "pr-4": {
         "paddingRight": 32
     },
-    "pb-8": {
+    "pb-4": {
         "paddingBottom": 32
     },
-    "pl-8": {
+    "pl-4": {
         "paddingLeft": 32
     },
-    "px-8": {
+    "px-4": {
         "paddingHorizontal": 32
     },
-    "py-8": {
+    "py-4": {
         "paddingVertical": 32
     },
-    "m-8": {
+    "m-4": {
         "margin": 32
     },
-    "mt-8": {
+    "mt-4": {
         "marginTop": 32
     },
-    "mr-8": {
+    "mr-4": {
         "marginRight": 32
     },
-    "mb-8": {
+    "mb-4": {
         "marginBottom": 32
     },
-    "ml-8": {
+    "ml-4": {
         "marginLeft": 32
     },
-    "mx-8": {
+    "mx-4": {
         "marginHorizontal": 32
     },
-    "my-8": {
+    "my-4": {
         "marginVertical": 32
     },
-    "p-9": {
-        "padding": 36
-    },
-    "pt-9": {
-        "paddingTop": 36
-    },
-    "pr-9": {
-        "paddingRight": 36
-    },
-    "pb-9": {
-        "paddingBottom": 36
-    },
-    "pl-9": {
-        "paddingLeft": 36
-    },
-    "px-9": {
-        "paddingHorizontal": 36
-    },
-    "py-9": {
-        "paddingVertical": 36
-    },
-    "m-9": {
-        "margin": 36
-    },
-    "mt-9": {
-        "marginTop": 36
-    },
-    "mr-9": {
-        "marginRight": 36
-    },
-    "mb-9": {
-        "marginBottom": 36
-    },
-    "ml-9": {
-        "marginLeft": 36
-    },
-    "mx-9": {
-        "marginHorizontal": 36
-    },
-    "my-9": {
-        "marginVertical": 36
-    },
-    "p-10": {
+    "p-5": {
         "padding": 40
     },
-    "pt-10": {
+    "pt-5": {
         "paddingTop": 40
     },
-    "pr-10": {
+    "pr-5": {
         "paddingRight": 40
     },
-    "pb-10": {
+    "pb-5": {
         "paddingBottom": 40
     },
-    "pl-10": {
+    "pl-5": {
         "paddingLeft": 40
     },
-    "px-10": {
+    "px-5": {
         "paddingHorizontal": 40
     },
-    "py-10": {
+    "py-5": {
         "paddingVertical": 40
     },
-    "m-10": {
+    "m-5": {
         "margin": 40
     },
-    "mt-10": {
+    "mt-5": {
         "marginTop": 40
     },
-    "mr-10": {
+    "mr-5": {
         "marginRight": 40
     },
-    "mb-10": {
+    "mb-5": {
         "marginBottom": 40
     },
-    "ml-10": {
+    "ml-5": {
         "marginLeft": 40
     },
-    "mx-10": {
+    "mx-5": {
         "marginHorizontal": 40
     },
-    "my-10": {
+    "my-5": {
         "marginVertical": 40
+    },
+    "p-6": {
+        "padding": 48
+    },
+    "pt-6": {
+        "paddingTop": 48
+    },
+    "pr-6": {
+        "paddingRight": 48
+    },
+    "pb-6": {
+        "paddingBottom": 48
+    },
+    "pl-6": {
+        "paddingLeft": 48
+    },
+    "px-6": {
+        "paddingHorizontal": 48
+    },
+    "py-6": {
+        "paddingVertical": 48
+    },
+    "m-6": {
+        "margin": 48
+    },
+    "mt-6": {
+        "marginTop": 48
+    },
+    "mr-6": {
+        "marginRight": 48
+    },
+    "mb-6": {
+        "marginBottom": 48
+    },
+    "ml-6": {
+        "marginLeft": 48
+    },
+    "mx-6": {
+        "marginHorizontal": 48
+    },
+    "my-6": {
+        "marginVertical": 48
+    },
+    "p-7": {
+        "padding": 56
+    },
+    "pt-7": {
+        "paddingTop": 56
+    },
+    "pr-7": {
+        "paddingRight": 56
+    },
+    "pb-7": {
+        "paddingBottom": 56
+    },
+    "pl-7": {
+        "paddingLeft": 56
+    },
+    "px-7": {
+        "paddingHorizontal": 56
+    },
+    "py-7": {
+        "paddingVertical": 56
+    },
+    "m-7": {
+        "margin": 56
+    },
+    "mt-7": {
+        "marginTop": 56
+    },
+    "mr-7": {
+        "marginRight": 56
+    },
+    "mb-7": {
+        "marginBottom": 56
+    },
+    "ml-7": {
+        "marginLeft": 56
+    },
+    "mx-7": {
+        "marginHorizontal": 56
+    },
+    "my-7": {
+        "marginVertical": 56
+    },
+    "p-8": {
+        "padding": 64
+    },
+    "pt-8": {
+        "paddingTop": 64
+    },
+    "pr-8": {
+        "paddingRight": 64
+    },
+    "pb-8": {
+        "paddingBottom": 64
+    },
+    "pl-8": {
+        "paddingLeft": 64
+    },
+    "px-8": {
+        "paddingHorizontal": 64
+    },
+    "py-8": {
+        "paddingVertical": 64
+    },
+    "m-8": {
+        "margin": 64
+    },
+    "mt-8": {
+        "marginTop": 64
+    },
+    "mr-8": {
+        "marginRight": 64
+    },
+    "mb-8": {
+        "marginBottom": 64
+    },
+    "ml-8": {
+        "marginLeft": 64
+    },
+    "mx-8": {
+        "marginHorizontal": 64
+    },
+    "my-8": {
+        "marginVertical": 64
+    },
+    "p-9": {
+        "padding": 72
+    },
+    "pt-9": {
+        "paddingTop": 72
+    },
+    "pr-9": {
+        "paddingRight": 72
+    },
+    "pb-9": {
+        "paddingBottom": 72
+    },
+    "pl-9": {
+        "paddingLeft": 72
+    },
+    "px-9": {
+        "paddingHorizontal": 72
+    },
+    "py-9": {
+        "paddingVertical": 72
+    },
+    "m-9": {
+        "margin": 72
+    },
+    "mt-9": {
+        "marginTop": 72
+    },
+    "mr-9": {
+        "marginRight": 72
+    },
+    "mb-9": {
+        "marginBottom": 72
+    },
+    "ml-9": {
+        "marginLeft": 72
+    },
+    "mx-9": {
+        "marginHorizontal": 72
+    },
+    "my-9": {
+        "marginVertical": 72
+    },
+    "p-10": {
+        "padding": 80
+    },
+    "pt-10": {
+        "paddingTop": 80
+    },
+    "pr-10": {
+        "paddingRight": 80
+    },
+    "pb-10": {
+        "paddingBottom": 80
+    },
+    "pl-10": {
+        "paddingLeft": 80
+    },
+    "px-10": {
+        "paddingHorizontal": 80
+    },
+    "py-10": {
+        "paddingVertical": 80
+    },
+    "m-10": {
+        "margin": 80
+    },
+    "mt-10": {
+        "marginTop": 80
+    },
+    "mr-10": {
+        "marginRight": 80
+    },
+    "mb-10": {
+        "marginBottom": 80
+    },
+    "ml-10": {
+        "marginLeft": 80
+    },
+    "mx-10": {
+        "marginHorizontal": 80
+    },
+    "my-10": {
+        "marginVertical": 80
     }
 };
 
 export { utilities };
-//# sourceMappingURL=shakenUtilities-C1nchmit.js.map
+//# sourceMappingURL=utilities-Btx9h9Sx.js.map

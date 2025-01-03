@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
 import chalk from 'chalk';
 import { execSync } from 'child_process';

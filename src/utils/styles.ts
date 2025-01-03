@@ -2,7 +2,7 @@ import { utilities, UtilitiesType, UtilityKeys } from '../configs/generated/util
 import { useTheme } from '../hooks';
 import { ThemeViewStyle } from '../types';
 import { capitalize } from 'lodash';
-import { StyleProp, Platform, StyleSheet } from 'react-native';
+import { StyleProp, StyleSheet } from 'react-native';
 
 /* -------------------------------------------------------------------------- */
 /* eslint-disable react-hooks/rules-of-hooks */
@@ -40,7 +40,8 @@ export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(
       for (const [attrKey, atrrValue] of Object.entries(style!)) {
         if (typeof atrrValue !== 'function') continue;
 
-        (style as any)[attrKey] = atrrValue(theme, Platform);
+        // (style as any)[attrKey] = atrrValue(theme, Platform);
+        (style as any)[attrKey] = atrrValue(theme);
       }
 
       // Merge custom style objects

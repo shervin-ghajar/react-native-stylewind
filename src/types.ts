@@ -1,7 +1,7 @@
 import { ThemeColors } from './configs/colors/types';
 import { ThemeSpacing } from './configs/spacing/types';
 import { ThemeTypography } from './configs/typography/types';
-import { Platform, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 /* -------------------------------------------------------------------------- */
 export interface Theme {
@@ -14,11 +14,7 @@ export interface Theme {
 export type ThemeConfig = Partial<{ [P in keyof Theme]: Partial<Theme[P]> }>;
 
 export type ThemeMode = 'light' | 'dark' | 'default';
-
+//platform: typeof Platform
 export type ThemeViewStyle = {
-  [P in keyof ViewStyle]:
-    | ((theme: Theme, platform: typeof Platform) => ViewStyle[P])
-    | ViewStyle[P]
-    | number
-    | string;
+  [P in keyof ViewStyle]: ((theme: Theme) => ViewStyle[P]) | ViewStyle[P] | number | string;
 };

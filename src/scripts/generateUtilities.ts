@@ -1,19 +1,24 @@
 #!/usr/bin/env node
 import { ThemeColorValues } from '../configs/colors/types';
+import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
 import { defaultUtilities } from '../configs/index';
 import { theme } from '../theme';
+import { Theme } from '../types';
 import { isColorShade } from '../utils/isColorShade';
 import { spacing } from '../utils/spacing';
 import chalk from 'chalk';
 import fs from 'fs';
 import { capitalize } from 'lodash-es';
-import { resolve } from 'path';
+import path, { resolve } from 'path';
 
 /* -------------------------------------------------------------------------- */
 type ThemeColors = NonNullable<typeof theme.colors>;
 // Generates Theme Utilities
-export function generateUtilities() {
+export async function generateUtilities() {
   try {
+    const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
+    const themeConfigFile = await import(themeConfigPath);
+    const theme = themeConfigFile.default as Theme;
     const { colors } = theme;
     const utilities: Record<string, unknown> = defaultUtilities;
 
@@ -79,15 +84,16 @@ export function generateUtilities() {
       }
     }
 
-    /* ------------------------------- Write file ------------------------------- */
-    const generatedDirPath = resolve('./src/configs/generated/utilities');
-    const utilitiesFilePath = resolve(generatedDirPath, 'utilities.ts');
-    const shakenUtilitiesFilePath = resolve(generatedDirPath, 'shakenUtilities.ts');
-
-    const typesFilePath = resolve(generatedDirPath, 'types.ts');
     const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
+    /* --------------------------- Write utility & theme files -------------------------- */
+    const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
+    const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
 
-    const utilitiesIndexFilePath = resolve(generatedDirPath, 'index.ts');
+    // Utility files dir
+    const utilitiesFilePath = resolve(generatedUtilsDirPath, 'utilities.ts');
+    const shakenUtilitiesFilePath = resolve(generatedUtilsDirPath, 'shakenUtilities.ts');
+    const typesFilePath = resolve(generatedUtilsDirPath, 'types.ts');
+    const utilitiesIndexFilePath = resolve(generatedUtilsDirPath, 'index.ts');
     const utilitiesIndexFile = `/* eslint-disable @typescript-eslint/no-require-imports */\n${warningText}export * from './types';
 
 let utilities: any; // Use 'any' or a specific type if you know it
@@ -111,10 +117,19 @@ export type UtilitiesType = typeof utilities;
 
 `;
 
-    if (!fs.existsSync(generatedDirPath)) {
-      fs.mkdirSync(generatedDirPath, { recursive: true });
-      console.log(chalk.greenBright('Directory created successfully.'));
+    // Theme file dir
+    const themeFilePath = resolve(generatedThemeDirPath, 'index.ts');
+
+    // Make direction and write files
+    if (!fs.existsSync(generatedUtilsDirPath)) {
+      fs.mkdirSync(generatedUtilsDirPath, { recursive: true });
+      console.log(chalk.greenBright('Utilities directory created successfully.'));
     }
+    if (!fs.existsSync(generatedThemeDirPath)) {
+      fs.mkdirSync(generatedThemeDirPath, { recursive: true });
+      console.log(chalk.greenBright('Theme directory created successfully.'));
+    }
+
     // Wrtie all utilities
     fs.writeFileSync(
       utilitiesFilePath,
@@ -135,6 +150,12 @@ export type UtilitiesType = typeof utilities;
 
     // Write index file for handling utilities dynamic import
     fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
+
+    // Write theme index file
+    fs.writeFileSync(
+      themeFilePath,
+      `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
+    );
 
     console.log(chalk.greenBright('Theme utilities and types generated successfully!'));
   } catch (error) {

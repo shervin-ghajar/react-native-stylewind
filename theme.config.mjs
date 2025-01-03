@@ -1,6 +1,7 @@
-import { createTheme } from 'react-native-tailwind';
+import { createTheme } from './src/utils/createTheme';
 
 export default await createTheme({
+  mode: 'dark',
   colors: {
     primary: {
       default: '#1D4ED8',

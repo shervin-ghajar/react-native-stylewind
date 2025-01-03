@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { t as theme, b as defaultUtilities, i as isColorShade, s as spacing } from './isColorShade-C4qohUIA.js';
+import { C as CONSUMER_ROOT_PATH, T as THEME_CONFIG_FILE } from './index-BtSyWlPe.js';
+import { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CvLOjO_2.js';
 import { c as chalk } from './index-D0Mvf1ZH.js';
 import fs from 'fs';
-import { resolve } from 'path';
-import './_commonjsHelpers-BFTU3MAI.js';
+import require$$0, { resolve } from 'path';
 
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -457,8 +457,11 @@ function capitalize(string) {
 }
 
 // Generates Theme Utilities
-function generateUtilities() {
+async function generateUtilities() {
     try {
+        const themeConfigPath = require$$0.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
+        const themeConfigFile = await import(themeConfigPath);
+        const theme = themeConfigFile.default;
         const { colors } = theme;
         const utilities = defaultUtilities;
         const types = new Set([...Object.keys(defaultUtilities).map((du) => `'${du}'`)]);
@@ -514,13 +517,15 @@ function generateUtilities() {
                 }
             }
         }
-        /* ------------------------------- Write file ------------------------------- */
-        const generatedDirPath = resolve('./src/configs/generated/utilities');
-        const utilitiesFilePath = resolve(generatedDirPath, 'utilities.ts');
-        const shakenUtilitiesFilePath = resolve(generatedDirPath, 'shakenUtilities.ts');
-        const typesFilePath = resolve(generatedDirPath, 'types.ts');
         const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
-        const utilitiesIndexFilePath = resolve(generatedDirPath, 'index.ts');
+        /* --------------------------- Write utility & theme files -------------------------- */
+        const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
+        const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
+        // Utility files dir
+        const utilitiesFilePath = resolve(generatedUtilsDirPath, 'utilities.ts');
+        const shakenUtilitiesFilePath = resolve(generatedUtilsDirPath, 'shakenUtilities.ts');
+        const typesFilePath = resolve(generatedUtilsDirPath, 'types.ts');
+        const utilitiesIndexFilePath = resolve(generatedUtilsDirPath, 'index.ts');
         const utilitiesIndexFile = `/* eslint-disable @typescript-eslint/no-require-imports */\n${warningText}export * from './types';
 
 let utilities: any; // Use 'any' or a specific type if you know it
@@ -543,9 +548,16 @@ export { utilities };
 export type UtilitiesType = typeof utilities;
 
 `;
-        if (!fs.existsSync(generatedDirPath)) {
-            fs.mkdirSync(generatedDirPath, { recursive: true });
-            console.log(chalk.greenBright('Directory created successfully.'));
+        // Theme file dir
+        const themeFilePath = resolve(generatedThemeDirPath, 'index.ts');
+        // Make direction and write files
+        if (!fs.existsSync(generatedUtilsDirPath)) {
+            fs.mkdirSync(generatedUtilsDirPath, { recursive: true });
+            console.log(chalk.greenBright('Utilities directory created successfully.'));
+        }
+        if (!fs.existsSync(generatedThemeDirPath)) {
+            fs.mkdirSync(generatedThemeDirPath, { recursive: true });
+            console.log(chalk.greenBright('Theme directory created successfully.'));
         }
         // Wrtie all utilities
         fs.writeFileSync(utilitiesFilePath, `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`);
@@ -555,6 +567,8 @@ export type UtilitiesType = typeof utilities;
         fs.writeFileSync(shakenUtilitiesFilePath, `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`);
         // Write index file for handling utilities dynamic import
         fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
+        // Write theme index file
+        fs.writeFileSync(themeFilePath, `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`);
         console.log(chalk.greenBright('Theme utilities and types generated successfully!'));
     }
     catch (error) {
