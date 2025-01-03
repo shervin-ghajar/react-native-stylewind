@@ -2,15 +2,13 @@ import { c as colors, s as spacingConfigs, t as theme } from './isColorShade-CBd
 export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade-CBd5gJjA.js';
 import require$$0, { createContext, useContext, useState } from 'react';
 import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers-BFTU3MAI.js';
-import { StyleSheet } from 'react-native';
+import pkg from 'react-native';
 
-/* eslint-disable @typescript-eslint/no-require-imports */
 /**
  * AUTO GENERATED
  * <---DO NOT MODIFY THIS FILE--->
  */
 let utilities; // Use 'any' or a specific type if you know it
-console.log({ NodeEnv: process.env.NODE_ENV });
 // Use dynamic import instead of require
 if (process.env.NODE_ENV === 'production') {
     import('./shakenUtilities-Btx9h9Sx.js').then((module) => {
@@ -17260,6 +17258,7 @@ function requireLodash () {
 var lodashExports = requireLodash();
 var _ = /*@__PURE__*/getDefaultExportFromCjs(lodashExports);
 
+const { StyleSheet } = pkg;
 /* -------------------------------------------------------------------------- */
 /* eslint-disable react-hooks/rules-of-hooks */
 /**

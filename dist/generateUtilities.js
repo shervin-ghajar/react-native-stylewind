@@ -526,7 +526,7 @@ async function generateUtilities() {
         const shakenUtilitiesFilePath = resolve(generatedUtilsDirPath, 'shakenUtilities.ts');
         const typesFilePath = resolve(generatedUtilsDirPath, 'types.ts');
         const utilitiesIndexFilePath = resolve(generatedUtilsDirPath, 'index.ts');
-        const utilitiesIndexFile = `/* eslint-disable @typescript-eslint/no-require-imports */\n${warningText}export * from './types';
+        const utilitiesIndexFile = `${warningText}export * from './types';
 
 let utilities: any; // Use 'any' or a specific type if you know it
 

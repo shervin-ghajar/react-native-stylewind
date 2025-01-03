@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 /**
  * AUTO GENERATED
  * <---DO NOT MODIFY THIS FILE--->
@@ -7,7 +6,7 @@
 export * from './types';
 
 let utilities: any; // Use 'any' or a specific type if you know it
-console.log({ NodeEnv: process.env.NODE_ENV });
+
 // Use dynamic import instead of require
 if (process.env.NODE_ENV === 'production') {
   import('./shakenUtilities').then((module) => {
