@@ -164,7 +164,7 @@ export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
     } else {
       fs.writeFileSync(
         path.resolve(PATH, '../', 'utilities.js'),
-        `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
+        `${warningText}\nexport const theme = ${JSON.stringify(utilities, null, 2)};\n`,
       );
       fs.writeFileSync(
         path.resolve(PATH, '../', 'theme.js'),
