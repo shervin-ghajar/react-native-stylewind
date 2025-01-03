@@ -24,7 +24,7 @@ import require$$0 from 'path';
   `;
     fs.writeFileSync(themeConfigPath, themeConfigFile);
     console.log(chalk.greenBright(`theme.config.mjs created on ${themeConfigPath}`));
-    execSync('npm run generate-rn-tailwind');
+    execSync('npx generate-rn-tailwind');
     console.log(chalk.greenBright('react-native-tailwind configuration completed!'));
 })();
 //# sourceMappingURL=init.js.map
