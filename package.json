@@ -24,6 +24,7 @@
   },
   "bin": {
     "init-rn-tailwind": "./dist/init.js",
+    "generate-rn-tailwind": "./dist/generateUtilities.js",
     "compile-rn-tailwind": "./dist/treeShakeUtilities.js"
   },
   "dependencies": {
