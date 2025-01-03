@@ -2,7 +2,7 @@ import { utilities, UtilitiesType, UtilityKeys } from '../configs/generated/util
 import { useTheme } from '../hooks';
 import { ThemeViewStyle } from '../types';
 import { capitalize } from 'lodash';
-import RN from 'react-native';
+import { StyleProp, StyleSheet } from 'react-native';
 
 /* -------------------------------------------------------------------------- */
 /* eslint-disable react-hooks/rules-of-hooks */
@@ -18,12 +18,12 @@ import RN from 'react-native';
  * ```
  */
 
-export const styles = <T extends UtilityKeys | RN.StyleProp<ThemeViewStyle>>(
+export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(
   stylesArray: T[],
-): RN.StyleSheet.NamedStyles<unknown> => {
+): StyleSheet.NamedStyles<unknown> => {
   const { theme } = useTheme();
   console.log({ theme, utilities });
-  const styleAccumulator: RN.StyleSheet.NamedStyles<unknown> = {};
+  const styleAccumulator: StyleSheet.NamedStyles<unknown> = {};
 
   for (const style of stylesArray) {
     if (typeof style === 'string') {
@@ -49,5 +49,5 @@ export const styles = <T extends UtilityKeys | RN.StyleProp<ThemeViewStyle>>(
       Object.assign(styleAccumulator, style);
     }
   }
-  return RN.StyleSheet.create({ styleAccumulator }).styleAccumulator;
+  return StyleSheet.create({ styleAccumulator }).styleAccumulator;
 };

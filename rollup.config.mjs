@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import del from 'rollup-plugin-delete';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 
@@ -23,6 +24,10 @@ export default {
       sourcemap: true,
     },
   ],
+  external: [
+    'react', // Exclude React
+    'react-native', // Exclude React Native
+  ],
   plugins: [
     resolve(), // Helps Rollup find external modules
     commonjs(), // Converts CommonJS modules to ES6
@@ -30,6 +35,7 @@ export default {
       tsconfig: './tsconfig.json',
     }),
     del({ targets: 'dist/*' }),
+    peerDepsExternal(),
     // terser(), // Optional: Minify the output
   ],
   external: ['react', 'react-native'], // Mark these as external dependencies
