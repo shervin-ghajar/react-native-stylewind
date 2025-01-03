@@ -11,13 +11,11 @@ export const ThemeProvider = ({ children }: ThemeProviderType) => {
   const [mode, setMode] = useState<ThemeMode>(theme.mode);
   const isDarkMode = mode === 'dark';
   useEffect(() => {
+    console.log('ThemeProvider Effect');
     getUtilities()
-      .then((utilities) => {
-        console.log('provider', { utilities });
-        setUtilities(utilities);
-      })
-      .catch((err) => {
-        console.log('provider err', err);
+      .then(setUtilities)
+      .catch((error) => {
+        console.log('getUtilities err', error);
       });
   }, []);
 

@@ -19607,9 +19607,9 @@ function requireJsxRuntime () {
 var jsxRuntimeExports = requireJsxRuntime();
 
 /**
-* AUTO GENERATED
-* <---DO NOT MODIFY THIS FILE--->
-*/
+ * AUTO GENERATED
+ * <---DO NOT MODIFY THIS FILE--->
+ */
 // Use dynamic import instead of require
 // Define the function to get utilities
 const utilitiesConfig = {
@@ -19627,13 +19627,11 @@ const ThemeProvider = ({ children }) => {
     const [mode, setMode] = useState(theme.mode);
     const isDarkMode = mode === 'dark';
     useEffect(() => {
+        console.log('ThemeProvider Effect');
         getUtilities()
-            .then((utilities) => {
-            console.log('provider', { utilities });
-            setUtilities(utilities);
-        })
-            .catch((err) => {
-            console.log('provider err', err);
+            .then(setUtilities)
+            .catch((error) => {
+            console.log('getUtilities err', error);
         });
     }, []);
     return (jsxRuntimeExports.jsx(ThemeContext.Provider, { value: { theme, utilities: utilities$1, isDarkMode, setMode }, children: children }));
