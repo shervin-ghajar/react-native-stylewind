@@ -10,7 +10,7 @@ import chalk from 'chalk';
 import fs from 'fs';
 import { capitalize } from 'lodash-es';
 import path, { resolve } from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 const PATH = path.resolve(fileURLToPath(import.meta.url));
 const isDir = PATH.includes('dist');
@@ -20,7 +20,7 @@ type ThemeColors = NonNullable<typeof theme.colors>;
 export async function generateUtilities() {
   try {
     const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
-    const themeConfigFile = await import(themeConfigPath);
+    const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
     const theme = themeConfigFile.default as Theme;
     const { colors } = theme;
     const utilities: Record<string, unknown> = defaultUtilities;
@@ -100,21 +100,19 @@ export async function generateUtilities() {
     const utilitiesIndexFilePath = resolve(generatedUtilsDirPath, 'index.ts');
     const utilitiesIndexFile = `${warningText}export * from './types';
 
-// Use dynamic import instead of require
-// Define the function to get utilities
-const utilitiesConfig = {
-  production: () => import('./shakenUtilities'),
-  development: () => import('./utilities'),
-};
+    // Use dynamic import instead of require
+    // Define the function to get utilities
 
-export async function getUtilities() {
-  const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-  const utilsFile = await utilitiesConfig[environment]();
-  return utilsFile.utilities;
-}
-// Define the type for UtilitiesType
-export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
-`;
+    export async function getUtilities() {
+      const utilsFile =
+        process.env.NODE_ENV === 'production'
+          ? await import('./shakenUtilities')
+          : await import('./utilities');
+      return utilsFile.default;
+    }
+    // Define the type for UtilitiesType
+    export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
+    `;
 
     // Theme file dir
     const themeFilePath = resolve(generatedThemeDirPath, 'index.ts');

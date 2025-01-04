@@ -5,6 +5,7 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import 'url';
+import './utilities.js';
 
 (function init() {
     const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);

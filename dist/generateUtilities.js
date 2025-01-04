@@ -4,8 +4,9 @@ import { d as defaultUtilities, i as isColorShade, a as spacing } from './isColo
 import { c as chalk } from './index2.js';
 import fs from 'fs';
 import path, { resolve } from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import './theme.js';
+import './utilities.js';
 
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -464,7 +465,7 @@ const isDir = PATH.includes('dist');
 async function generateUtilities() {
     try {
         const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
-        const themeConfigFile = await import(themeConfigPath);
+        const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
         const theme = themeConfigFile.default;
         const { colors } = theme;
         const utilities = defaultUtilities;
@@ -533,21 +534,19 @@ async function generateUtilities() {
         const utilitiesIndexFilePath = resolve(generatedUtilsDirPath, 'index.ts');
         const utilitiesIndexFile = `${warningText}export * from './types';
 
-// Use dynamic import instead of require
-// Define the function to get utilities
-const utilitiesConfig = {
-  production: () => import('./shakenUtilities'),
-  development: () => import('./utilities'),
-};
+    // Use dynamic import instead of require
+    // Define the function to get utilities
 
-export async function getUtilities() {
-  const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-  const utilsFile = await utilitiesConfig[environment]();
-  return utilsFile.utilities;
-}
-// Define the type for UtilitiesType
-export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
-`;
+    export async function getUtilities() {
+      const utilsFile =
+        process.env.NODE_ENV === 'production'
+          ? await import('./shakenUtilities')
+          : await import('./utilities');
+      return utilsFile.default;
+    }
+    // Define the type for UtilitiesType
+    export type UtilitiesType = Awaited<ReturnType<typeof getUtilities>>;
+    `;
         // Theme file dir
         const themeFilePath = resolve(generatedThemeDirPath, 'index.ts');
         const distThemeFilePath = resolve(generatedDistThemeDirPath, 'theme.js');

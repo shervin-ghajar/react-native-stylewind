@@ -7,14 +7,12 @@ export * from './types';
 
 // Use dynamic import instead of require
 // Define the function to get utilities
-const utilitiesConfig = {
-  production: () => import('./shakenUtilities'),
-  development: () => import('./utilities'),
-};
 
 export async function getUtilities() {
-  const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-  const utilsFile = await utilitiesConfig[environment]();
+  const utilsFile =
+    process.env.NODE_ENV === 'production'
+      ? await import('./shakenUtilities')
+      : await import('./utilities');
   console.log({ getUtilities: utilsFile });
   return utilsFile.default;
 }
