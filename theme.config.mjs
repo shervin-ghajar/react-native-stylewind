@@ -9,9 +9,7 @@ export default await createTheme({
     },
   },
   spacing: {
-    default: 8,
+    default: 16,
   },
   // Modify other theme settings if needed
 });
-
-  

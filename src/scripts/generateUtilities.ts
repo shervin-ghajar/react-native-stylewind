@@ -160,12 +160,35 @@ export async function generateUtilities() {
         `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
       );
     } else {
+      const utilitiesFilePath = path.resolve(PATH, '../', 'utilities.js');
+      const themeFilePath = path.resolve(PATH, '../', 'theme.js');
+      if (!(fs.existsSync(utilitiesFilePath) && fs.existsSync(themeFilePath)))
+        throw new Error('Utilities and Theme files not exist.\nPlease contact us!');
+      fs.readFile(utilitiesFilePath, 'utf8', (err, data) => {
+        if (err) {
+          console.error('Error reading the file:', err);
+          return;
+        }
+
+        // Replace the existing variables with new data
+        const updatedUtilities = data
+          .replace(
+            /(var shakenUtilities =)[\s\S]*?(;)/,
+            `$1 ${JSON.stringify(utilities, null, 4)}$2`,
+          )
+          .replace(/(var utilities =)[\s\S]*?(;)/, `$1 ${JSON.stringify(utilities, null, 4)}$2`);
+
+        // Write the updated data back to the file
+        fs.writeFile(utilitiesFilePath, updatedUtilities, 'utf8', (err) => {
+          if (err) {
+            console.error('Error generate utilities:', err);
+            return;
+          }
+        });
+      });
+
       fs.writeFileSync(
-        path.resolve(PATH, '../', 'utilities.js'),
-        `${warningText}\nvar shakenUtilities = ${JSON.stringify(utilities, null, 2)};\n`,
-      );
-      fs.writeFileSync(
-        path.resolve(PATH, '../', 'theme.js'),
+        themeFilePath,
         `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
       );
     }
