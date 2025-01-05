@@ -162,7 +162,7 @@ export async function generateUtilities() {
     } else {
       fs.writeFileSync(
         path.resolve(PATH, '../', 'utilities.js'),
-        `${warningText}\nexport const theme = ${JSON.stringify(utilities, null, 2)};\n`,
+        `${warningText}\nvar shakenUtilities = ${JSON.stringify(utilities, null, 2)};\n`,
       );
       fs.writeFileSync(
         path.resolve(PATH, '../', 'theme.js'),

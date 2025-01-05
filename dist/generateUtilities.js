@@ -573,7 +573,7 @@ async function generateUtilities() {
             fs.writeFileSync(distThemeFilePath, `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`);
         }
         else {
-            fs.writeFileSync(path.resolve(PATH, '../', 'utilities.js'), `${warningText}\nexport const theme = ${JSON.stringify(utilities, null, 2)};\n`);
+            fs.writeFileSync(path.resolve(PATH, '../', 'utilities.js'), `${warningText}\nvar shakenUtilities = ${JSON.stringify(utilities, null, 2)};\n`);
             fs.writeFileSync(path.resolve(PATH, '../', 'theme.js'), `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`);
         }
         console.log(chalk.greenBright('Theme utilities and types generated successfully!'));
