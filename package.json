@@ -2,7 +2,7 @@
   "name": "react-native-tailwind",
   "private": false,
   "version": "0.0.70",
-  "main": "./main.tsx",
+  "main": "./dist/main.js",
   "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "type": "module",
