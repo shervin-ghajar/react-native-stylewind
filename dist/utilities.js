@@ -969,16 +969,15 @@ var shakenUtilities$1 = /*#__PURE__*/Object.freeze({
 });
 
 /**
- * AUTO GENERATED
- * <---DO NOT MODIFY THIS FILE--->
- */
+* AUTO GENERATED
+* <---DO NOT MODIFY THIS FILE--->
+*/
 // Use dynamic import instead of require
 // Define the function to get utilities
 async function getUtilities() {
     const utilsFile = process.env.NODE_ENV === 'production'
         ? await Promise.resolve().then(function () { return shakenUtilities$1; })
         : await Promise.resolve().then(function () { return utilities$1; });
-    console.log({ getUtilities: utilsFile });
     return utilsFile.default;
 }
 

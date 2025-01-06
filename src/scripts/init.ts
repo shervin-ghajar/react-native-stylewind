@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { CONSUMER_ROOT_PATH, NODEMON_CONFIG_FILE, THEME_CONFIG_FILE } from '../configs/constatns';
 import chalk from 'chalk';
-import { execSync } from 'child_process';
+import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
@@ -24,11 +24,12 @@ import path from 'path';
 
   `;
   fs.writeFileSync(themeConfigPath, themeConfigFile);
+  console.log(chalk.greenBright(`CREATE:${THEME_CONFIG_FILE} created on ${themeConfigPath}`));
 
   //Init nodemon
   const nodemonConfigPath = path.resolve(CONSUMER_ROOT_PATH, NODEMON_CONFIG_FILE);
   const nodemonConfigFile = `{
-  "watch": [${themeConfigFile}],
+  "watch": ["${THEME_CONFIG_FILE}"],
   "ext": "ts,tsx",
   "exec": "npm run generate-rn-taiwlind",
   "ignore": ["node_modules/*"],
@@ -36,8 +37,43 @@ import path from 'path';
 }
 `;
   fs.writeFileSync(nodemonConfigPath, nodemonConfigFile);
+  console.log(chalk.greenBright(`CREATE:${NODEMON_CONFIG_FILE} created on ${nodemonConfigPath}`));
+  // Modify consumer package.json
 
-  console.log(chalk.greenBright(`theme.config.mjs created on ${themeConfigPath}`));
-  execSync('npx generate-rn-tailwind');
-  console.log(chalk.greenBright('react-native-tailwind configuration completed!'));
+  const packageJsonPath = path.resolve(CONSUMER_ROOT_PATH, 'package.json');
+  fs.readFile(packageJsonPath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading package.json:', err);
+      return;
+    }
+    try {
+      // Parse the JSON data
+      const packageJson = JSON.parse(data);
+
+      // Add a new script command
+      const newScriptName = 'theme:watch'; // Replace with your script name
+      const newScriptCommand = 'nodemon'; // Replace with your script command
+      packageJson.scripts = packageJson.scripts || {};
+      packageJson.scripts[newScriptName] = newScriptCommand;
+
+      // Convert the updated object back to JSON
+      const updatedData = JSON.stringify(packageJson, null, 2);
+
+      // Write the updated JSON back to package.json
+      fs.writeFile(packageJsonPath, updatedData, 'utf8', (err) => {
+        if (err) {
+          console.error('Error writing package.json:', err);
+          return;
+        }
+        console.log(chalk.yellow('MODIFY:theme:watch added to package.json'));
+      });
+    } catch (parseError) {
+      console.error('Error parsing package.json:', parseError);
+    }
+  });
+
+  exec('npx generate-rn-tailwind', (error) => {
+    if (error) return console.error('Error executing generate command:', error);
+    console.log(chalk.greenBright('react-native-tailwind configuration completed!'));
+  });
 })();

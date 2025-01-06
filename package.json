@@ -20,13 +20,13 @@
     "lint": "eslint .",
     "init-rn-tailwind": "tsx ./src/scripts/init.ts",
     "generate": "tsx ./src/scripts/generateUtilities.ts",
-    "compile": "tsx ./src/scripts/treeShakeUtilities.ts"
+    "compile": "tsx ./src/scripts/treeShakeUtilities.ts",
+    "theme:watch": "nodemon"
   },
   "bin": {
     "init-rn-tailwind": "./dist/init.js",
     "generate-rn-tailwind": "./dist/generateUtilities.js",
-    "compile-rn-tailwind": "./dist/treeShakeUtilities.js",
-    "rebuild-rn-tailwind": "./dist/rebuild.js"
+    "compile-rn-tailwind": "./dist/treeShakeUtilities.js"
   },
   "dependencies": {
     "@types/debug": "4.1.12",
