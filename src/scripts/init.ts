@@ -1,11 +1,12 @@
 #!/usr/bin/env node
-import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
+import { CONSUMER_ROOT_PATH, NODEMON_CONFIG_FILE, THEME_CONFIG_FILE } from '../configs/constatns';
 import chalk from 'chalk';
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
 (function init() {
+  // Init theme.config.mjs
   const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
   const themeConfigFile = `import { createTheme } from 'react-native-tailwind';\n\nexport default await createTheme({
   colors: {
@@ -23,6 +24,19 @@ import path from 'path';
 
   `;
   fs.writeFileSync(themeConfigPath, themeConfigFile);
+
+  //Init nodemon
+  const nodemonConfigPath = path.resolve(CONSUMER_ROOT_PATH, NODEMON_CONFIG_FILE);
+  const nodemonConfigFile = `{
+  "watch": [${themeConfigFile}],
+  "ext": "ts,tsx",
+  "exec": "npm run generate-rn-taiwlind",
+  "ignore": ["node_modules/*"],
+  "delay": "1000"
+}
+`;
+  fs.writeFileSync(nodemonConfigPath, nodemonConfigFile);
+
   console.log(chalk.greenBright(`theme.config.mjs created on ${themeConfigPath}`));
   execSync('npx generate-rn-tailwind');
   console.log(chalk.greenBright('react-native-tailwind configuration completed!'));
