@@ -34,7 +34,7 @@ import 'node:tty';
     const nodemonConfigFile = `{
   "watch": ["${THEME_CONFIG_FILE}"],
   "ext": "ts,tsx",
-  "exec": "npm run generate-rn-taiwlind",
+  "exec": "npx generate-rn-tailwind",
   "ignore": ["node_modules/*"],
   "delay": "1000"
 }
