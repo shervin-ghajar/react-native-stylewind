@@ -5,7 +5,9 @@ import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import 'url';
-import './utilities.js';
+import 'node:process';
+import 'node:os';
+import 'node:tty';
 
 (function init() {
     // Init theme.config.mjs
@@ -50,10 +52,12 @@ import './utilities.js';
             // Parse the JSON data
             const packageJson = JSON.parse(data);
             // Add a new script command
-            const newScriptName = 'theme:watch'; // Replace with your script name
-            const newScriptCommand = 'nodemon'; // Replace with your script command
             packageJson.scripts = packageJson.scripts || {};
-            packageJson.scripts[newScriptName] = newScriptCommand;
+            packageJson.scripts = {
+                ...packageJson.scripts,
+                'theme:compile': 'npx compile-rn-tailwind',
+                'theme:watch': 'nodemon',
+            };
             // Convert the updated object back to JSON
             const updatedData = JSON.stringify(packageJson, null, 2);
             // Write the updated JSON back to package.json

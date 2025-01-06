@@ -1,6 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
-import path from 'path';
 import del from 'rollup-plugin-delete';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { terser } from 'rollup-plugin-terser';
@@ -22,11 +21,6 @@ export default {
       entryFileNames: '[name].js', // Ensure entry files do not include hashes
       chunkFileNames: '[name].js', // Ensure dynamically generated chunks do not include hashes
       assetFileNames: '[name].[ext]', // Ensure assets (like CSS) do not include hashes,
-      manualChunks(id) {
-        if (id.includes('shakenUtilities') || id.includes('utilities')) {
-          return 'utilities';
-        }
-      },
     },
   ],
   external: [
@@ -35,7 +29,7 @@ export default {
   ],
   plugins: [
     peerDepsExternal(), // Automatically mark peer dependencies as external
-    resolve(), // Helps Rollup find external modules
+    resolve({ exportConditions: ['node'] }), // Helps Rollup find external modules
     commonjs(), // Converts CommonJS modules to ES6
     typescript({
       tsconfig: './tsconfig.json',

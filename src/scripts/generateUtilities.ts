@@ -171,12 +171,10 @@ export async function generateUtilities() {
         }
 
         // Replace the existing variables with new data
-        const updatedUtilities = data
-          .replace(
-            /(var shakenUtilities =)[\s\S]*?(;)/,
-            `$1 ${JSON.stringify(utilities, null, 4)}$2`,
-          )
-          .replace(/(var utilities =)[\s\S]*?(;)/, `$1 ${JSON.stringify(utilities, null, 4)}$2`);
+        const updatedUtilities = data.replace(
+          /(var utilities =)[\s\S]*?(;)/,
+          `$1 ${JSON.stringify(utilities, null, 4)}$2`,
+        );
 
         // Write the updated data back to the file
         fs.writeFile(utilitiesFilePath, updatedUtilities, 'utf8', (err) => {

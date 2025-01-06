@@ -1,75 +1,83 @@
 #!/usr/bin/env node
 import chalk from 'chalk';
 import fs from 'fs';
-import { resolve } from 'path';
+import path, { resolve } from 'path';
 import { Project, Node, SyntaxKind } from 'ts-morph';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 // Define the path to your generated styles file
-const generatedUtilitiesPath = resolve('./src/configs/generated/utilities/utilities.ts');
-
-// Load the generated styles using dynamic import
-let generatedUtilities: Record<string, unknown>;
+const PATH = path.resolve(fileURLToPath(import.meta.url));
+const generatedUtilitiesPath = resolve(PATH, '../', 'utilities.js');
 
 (async () => {
   try {
-    const module = await import(generatedUtilitiesPath);
-    generatedUtilities = module.utilities; // Access the 'utilities' export
+    const module = await import(pathToFileURL(generatedUtilitiesPath).href);
+    const generatedUtilities: Record<string, unknown> = module.utilities; // Access the 'utilities' export
+
+    // Initialize a set to keep track of used styles
+    const usedStyles = new Set<string>();
+
+    // Create a new project
+    const project = new Project({
+      tsConfigFilePath: 'tsconfig.json', // Adjust this path as needed
+    });
+
+    // Get all TSX files in the project
+    const sourceFiles = project.getSourceFiles(['**/*.tsx', '**/*.js']);
+
+    sourceFiles.forEach((sourceFile) => {
+      // Find all calls to the styles function
+      const styleCalls = sourceFile.getDescendantsOfKind(SyntaxKind.CallExpression);
+
+      styleCalls.forEach((call) => {
+        const expression = call.getExpression();
+        if (expression.getText() === 'styles') {
+          const args = call.getArguments();
+          args.forEach((arg) => {
+            // Check if arg is an ArrayLiteralExpression
+            if (Node.isArrayLiteralExpression(arg)) {
+              const elements = arg.getElements();
+              elements.forEach((element) => {
+                // Check if element is a StringLiteral
+                if (Node.isStringLiteral(element)) {
+                  usedStyles.add(element.getText().replace(/['"]/g, '')); // Remove quotes
+                }
+              });
+            }
+          });
+        }
+      });
+    });
+    // Filter the generated styles to keep only the used ones
+    const filteredUtilities: Record<string, unknown> = {};
+    for (const [key, value] of Object.entries(generatedUtilities)) {
+      if (usedStyles.has(key)) filteredUtilities[key] = value;
+    }
+
+    /* ------------------------------ Rewrite file ------------------------------ */
+    fs.readFile(generatedUtilitiesPath, 'utf8', (err, data) => {
+      if (err) {
+        console.error('Error reading the file:', err);
+        return;
+      }
+
+      // Replace the existing variables with new data
+      const updatedUtilities = data.replace(
+        /(var utilities =)[\s\S]*?(;)/,
+        `$1 ${JSON.stringify(filteredUtilities, null, 4)}$2`,
+      );
+
+      // Write the updated data back to the file
+      fs.writeFile(generatedUtilitiesPath, updatedUtilities, 'utf8', (err) => {
+        if (err) {
+          console.error('Error generate utilities:', err);
+          return;
+        }
+      });
+      console.log(chalk.greenBright('Theme Tree-Shake Completed!'));
+    });
   } catch (error) {
     console.error('Error loading generated utils:', error);
     process.exit(1);
-  }
-
-  // Initialize a set to keep track of used styles
-  const usedStyles = new Set<string>();
-
-  // Create a new project
-  const project = new Project({
-    tsConfigFilePath: 'tsconfig.json', // Adjust this path as needed
-  });
-
-  // Get all TSX files in the project
-  const sourceFiles = project.getSourceFiles(['**/*.tsx', '**/*.js']);
-
-  sourceFiles.forEach((sourceFile) => {
-    // Find all calls to the styles function
-    const styleCalls = sourceFile.getDescendantsOfKind(SyntaxKind.CallExpression);
-
-    styleCalls.forEach((call) => {
-      const expression = call.getExpression();
-      if (expression.getText() === 'styles') {
-        const args = call.getArguments();
-        args.forEach((arg) => {
-          // Check if arg is an ArrayLiteralExpression
-          if (Node.isArrayLiteralExpression(arg)) {
-            const elements = arg.getElements();
-            elements.forEach((element) => {
-              // Check if element is a StringLiteral
-              if (Node.isStringLiteral(element)) {
-                usedStyles.add(element.getText().replace(/['"]/g, '')); // Remove quotes
-              }
-            });
-          }
-        });
-      }
-    });
-  });
-  // Filter the generated styles to keep only the used ones
-  const filteredUtilities: Record<string, unknown> = {};
-  console.log({ filteredUtilities });
-  for (const [key, value] of Object.entries(generatedUtilities)) {
-    if (usedStyles.has(key)) filteredUtilities[key] = value;
-  }
-  /* ------------------------------ Rewrite file ------------------------------ */
-  // Rewrite the filtered utils back to the generated utils file
-  const shakenUtilitiesPath = './src/configs/generated/utilities/shakenUtilities.ts';
-  const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
-  try {
-    fs.writeFileSync(
-      shakenUtilitiesPath,
-      `${warningText}\nexport const utilities = ${JSON.stringify(filteredUtilities, null, 2)};\n`,
-    );
-    console.log(chalk.greenBright('Theme Tree-Shake Completed.'));
-  } catch (error) {
-    console.error('Error writing filtered styles:', error);
   }
 })();

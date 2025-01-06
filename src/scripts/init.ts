@@ -51,10 +51,12 @@ import path from 'path';
       const packageJson = JSON.parse(data);
 
       // Add a new script command
-      const newScriptName = 'theme:watch'; // Replace with your script name
-      const newScriptCommand = 'nodemon'; // Replace with your script command
       packageJson.scripts = packageJson.scripts || {};
-      packageJson.scripts[newScriptName] = newScriptCommand;
+      packageJson.scripts = {
+        ...packageJson.scripts,
+        'theme:compile': 'npx compile-rn-tailwind',
+        'theme:watch': 'nodemon',
+      };
 
       // Convert the updated object back to JSON
       const updatedData = JSON.stringify(packageJson, null, 2);
