@@ -24,7 +24,7 @@ import path from 'path';
 
   `;
   fs.writeFileSync(themeConfigPath, themeConfigFile);
-  console.log(chalk.greenBright(`CREATE:${THEME_CONFIG_FILE} created on ${themeConfigPath}`));
+  console.log(chalk.white(`CREATE: ${THEME_CONFIG_FILE} created on ${themeConfigPath}`));
 
   //Init nodemon
   const nodemonConfigPath = path.resolve(CONSUMER_ROOT_PATH, NODEMON_CONFIG_FILE);
@@ -37,7 +37,7 @@ import path from 'path';
 }
 `;
   fs.writeFileSync(nodemonConfigPath, nodemonConfigFile);
-  console.log(chalk.greenBright(`CREATE:${NODEMON_CONFIG_FILE} created on ${nodemonConfigPath}`));
+  console.log(chalk.white(`CREATE: ${NODEMON_CONFIG_FILE} created on ${nodemonConfigPath}`));
   // Modify consumer package.json
 
   const packageJsonPath = path.resolve(CONSUMER_ROOT_PATH, 'package.json');
@@ -67,7 +67,7 @@ import path from 'path';
           console.error('Error writing package.json:', err);
           return;
         }
-        console.log(chalk.yellow('MODIFY:theme:watch added to package.json'));
+        console.log(chalk.yellow('MODIFY: package.json scripts modified'));
       });
     } catch (parseError) {
       console.error('Error parsing package.json:', parseError);
@@ -76,6 +76,6 @@ import path from 'path';
 
   exec('npx generate-rn-tailwind', (error) => {
     if (error) return console.error('Error executing generate command:', error);
-    console.log(chalk.greenBright('react-native-tailwind configuration completed!'));
+    console.log(chalk.greenBright('COMPLETE: react-native-tailwind configuration completed!'));
   });
 })();

@@ -1,7 +1,0 @@
-{
-  "watch": ["theme.config.mjs"],
-  "ext": "ts,tsx",
-  "exec": "npm run generate-rn-taiwlind",
-  "ignore": ["node_modules/*"],
-  "delay": "1000"
-}
