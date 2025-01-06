@@ -8,6 +8,7 @@ import 'url';
 import 'node:process';
 import 'node:os';
 import 'node:tty';
+import './utilities.js';
 
 (function init() {
     // Init theme.config.mjs

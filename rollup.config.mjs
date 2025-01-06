@@ -21,6 +21,11 @@ export default {
       entryFileNames: '[name].js', // Ensure entry files do not include hashes
       chunkFileNames: '[name].js', // Ensure dynamically generated chunks do not include hashes
       assetFileNames: '[name].[ext]', // Ensure assets (like CSS) do not include hashes,
+      manualChunks(id) {
+        if (id.includes('shakenUtilities') || id.includes('utilities')) {
+          return 'utilities';
+        }
+      },
     },
   ],
   external: [

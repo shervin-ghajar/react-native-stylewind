@@ -9,6 +9,7 @@ import './theme.js';
 import 'node:process';
 import 'node:os';
 import 'node:tty';
+import './utilities.js';
 
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -585,7 +586,9 @@ async function generateUtilities() {
                     return;
                 }
                 // Replace the existing variables with new data
-                const updatedUtilities = data.replace(/(var utilities =)[\s\S]*?(;)/, `$1 ${JSON.stringify(utilities, null, 4)}$2`);
+                const updatedUtilities = data
+                    .replace(/(var utilities =)[\s\S]*?(;)/, `$1 ${JSON.stringify(utilities, null, 4)}$2`)
+                    .replace(/(var shakenUtilities =)[\s\S]*?(;)/, `$1 ${JSON.stringify(utilities, null, 4)}$2`);
                 // Write the updated data back to the file
                 fs.writeFile(utilitiesFilePath, updatedUtilities, 'utf8', (err) => {
                     if (err) {
