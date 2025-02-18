@@ -1,11 +1,13 @@
-import { execSync } from 'child_process';
+'use strict';
+
+var child_process = require('child_process');
 
 function withRNTailwind(metroConfigs) {
     // Watch for changes in the specific file
     console.log('withRNTailwind');
-    execSync('npx init-rn-tailwind');
+    child_process.execSync('npx init-rn-tailwind');
     return metroConfigs;
 }
 
-export { withRNTailwind as default };
+module.exports = withRNTailwind;
 //# sourceMappingURL=withRNTailwind.js.map
