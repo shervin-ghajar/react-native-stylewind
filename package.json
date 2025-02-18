@@ -11,7 +11,7 @@
       "import": "./dist/main.js",
       "require": "./dist/main.cjs"
     },
-    "./metro": "./dist/withRNTailwind.js"
+    "./metro": "./dist/withRNTailwind.cjs"
   },
   "files": [
     "dist/**/*"

@@ -6,7 +6,7 @@ export default function withRNTailwind(metroConfigs: any) {
   // Watch for changes in the specific file
   console.log('withRNTailwind');
   execSync('npx init-rn-tailwind');
-  const fileToWatch = path.resolve(process.cwd(), 'theme.config.js'); // Change to your file path
+  const fileToWatch = path.resolve(process.cwd(), 'theme.config.cjs'); // Change to your file path
   console.log('fileToWatch', fileToWatch);
   fs.watch(fileToWatch, (eventType) => {
     if (eventType === 'change') {
