@@ -12,6 +12,7 @@ export default {
     generateUtilities: 'src/scripts/generateUtilities.ts', // Your CLI entry point
     treeShakeUtilities: 'src/scripts/treeShakeUtilities.ts', // Your CLI entry point
     theme: 'src/configs/generated/theme/index.ts',
+    withRNTailwind: 'src/utils/withRNTailwind.ts',
   },
   output: [
     {
