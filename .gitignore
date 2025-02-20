@@ -23,3 +23,4 @@ node_modules
 *.sln
 *.sw?
 ./generated
+theme.config.mjs
