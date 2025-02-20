@@ -2,18 +2,19 @@
 import { TREE_SHAKE_TAG } from '../configs/constatns';
 import chalk from 'chalk';
 import fs from 'fs';
-import path, { resolve } from 'path';
+import path from 'path';
 import { Project, Node, SyntaxKind } from 'ts-morph';
-import { fileURLToPath, pathToFileURL } from 'url';
+import { pathToFileURL } from 'url';
 
 // Define the path to your generated styles file
-const PATH = path.resolve(fileURLToPath(import.meta.url));
-const generatedUtilitiesPath = resolve(PATH, '../', 'utilities.js');
+const generatedUtilitiesPath = path.resolve(__dirname, 'utilities.js');
 
 (async () => {
   try {
+    if (!fs.existsSync(generatedUtilitiesPath))
+      throw new Error(`${generatedUtilitiesPath} not exists`);
     const module = await import(pathToFileURL(generatedUtilitiesPath).href);
-    const generatedUtilities: Record<string, unknown> = module.utilities; // Access the 'utilities' export
+    const generatedUtilities: Record<string, unknown> = module.u; // Access the 'utilities' export
 
     // Initialize a set to keep track of used styles
     const usedStyles = new Set<string>();

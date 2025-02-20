@@ -5,84 +5,62 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 
+const externalDependencies = ['react', 'react-native']; // External dependencies
+
+const createConfig = (input, output, format) => ({
+  input,
+  output: {
+    ...output,
+    sourcemap: true,
+  },
+  external: externalDependencies,
+  plugins: [
+    peerDepsExternal(),
+    resolve({ exportConditions: ['node'] }),
+    commonjs(),
+    typescript({ tsconfig: './tsconfig.json' }),
+    del({ targets: output.file || 'dist', hook: 'buildEnd' }), // Clean output directory or specific file
+    // terser(), // Uncomment to enable minification
+  ],
+});
+
 export default [
-  {
-    input: {
-      main: 'src/main.tsx', // Your main entry point
-      init: 'src/scripts/init.ts', // Your CLI entry point
-      generateUtilities: 'src/scripts/generateUtilities.ts', // Your CLI entry point
+  createConfig(
+    {
+      main: 'src/main.tsx',
+      init: 'src/scripts/init.ts',
+      generateUtilities: 'src/scripts/generateUtilities.ts',
       theme: 'src/configs/generated/theme/index.ts',
     },
-    output: {
-      dir: 'dist', // Output directory for ES module format
-      format: 'es', // ES module format for all outputs
-      sourcemap: true,
-      entryFileNames: '[name].js', // Ensure entry files do not include hashes
-      chunkFileNames: '[name].js', // Ensure dynamically generated chunks do not include hashes
-      assetFileNames: '[name].[ext]', // Ensure assets (like CSS) do not include hashes
+    {
+      dir: 'dist',
+      format: 'es',
+      exports: 'named',
+      entryFileNames: '[name].js',
+      chunkFileNames: '[name].js',
+      assetFileNames: '[name].[ext]',
       manualChunks(id) {
         if (id.includes('utilities')) {
           return 'utilities';
         }
       },
     },
-    external: [
-      'react', // Exclude React
-      'react-native', // Exclude React Native
-    ],
-    plugins: [
-      peerDepsExternal(), // Automatically mark peer dependencies as external
-      resolve({ exportConditions: ['node'] }), // Helps Rollup find external modules
-      commonjs(), // Converts CommonJS modules to ES6
-      typescript({
-        tsconfig: './tsconfig.json',
-      }),
-      del({ targets: 'dist' }), // Clean ES output directory
-      // terser(), // Optional: Minify the output
-    ],
-  },
-  {
-    input: 'src/utils/withRNTailwind.ts', // Input for the CJS module
-    output: {
-      file: 'dist/withRNTailwind.cjs', // Output file for CJS format
-      format: 'cjs', // CommonJS format
-      sourcemap: true,
+    'es',
+  ),
+  createConfig(
+    'src/utils/withRNTailwind.ts',
+    {
+      file: 'dist/withRNTailwind.cjs',
+      format: 'cjs',
     },
-    external: [
-      'react', // Exclude React
-      'react-native', // Exclude React Native
-    ],
-    plugins: [
-      peerDepsExternal(), // Automatically mark peer dependencies as external
-      resolve({ exportConditions: ['node'] }), // Helps Rollup find external modules
-      commonjs(), // Converts CommonJS modules to ES6
-      typescript({
-        tsconfig: './tsconfig.json',
-      }),
-      del({ targets: 'dist/withRNTailwind.cjs', hook: 'buildEnd' }), // Clean specific CJS output file
-      // terser(), // Optional: Minify the output
-    ],
-  },
-  {
-    input: 'src/scripts/treeShakeUtilities.ts', // Input for the CJS module
-    output: {
-      file: 'dist/treeShakeUtilities.cjs', // Output file for CJS format
-      format: 'cjs', // CommonJS format
-      sourcemap: true,
+    'cjs',
+  ),
+  createConfig(
+    'src/scripts/treeShakeUtilities.ts',
+    {
+      file: 'dist/treeShakeUtilities.cjs',
+      format: 'cjs',
     },
-    external: [
-      'react', // Exclude React
-      'react-native', // Exclude React Native
-    ],
-    plugins: [
-      peerDepsExternal(), // Automatically mark peer dependencies as external
-      resolve({ exportConditions: ['node'] }), // Helps Rollup find external modules
-      commonjs(), // Converts CommonJS modules to ES6
-      typescript({
-        tsconfig: './tsconfig.json',
-      }),
-      del({ targets: 'dist/treeShakeUtilities.cjs', hook: 'buildEnd' }), // Clean specific CJS output file
-      // terser(), // Optional: Minify the output
-    ],
-  },
+    'cjs',
+  ),
 ];
