@@ -1,7 +1,7 @@
 import { c as colors, s as spacingConfigs, t as theme } from './isColorShade.js';
 export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade.js';
-import { s as shakenUtilities, g as getUtilities } from './utilities.js';
-import require$$0, { createContext, useContext, useState, useEffect } from 'react';
+import { u as utilities } from './utilities.js';
+import require$$0, { createContext, useContext, useState } from 'react';
 import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers.js';
 import './theme.js';
 
@@ -20,9 +20,10 @@ const defaultTheme = {
 
 const ThemeContext = createContext({
     theme: defaultTheme,
-    utilities: shakenUtilities,
+    utilities,
     isDarkMode: defaultTheme.mode === 'dark',
     setMode: (mode) => mode,
+    toggleMode: () => null,
 });
 
 /* -------------------------------------------------------------------------- */
@@ -17258,7 +17259,6 @@ var _ = /*@__PURE__*/getDefaultExportFromCjs(lodashExports);
  */
 const styles = (stylesArray) => {
     const { theme, utilities } = useTheme();
-    console.log({ theme, utilities });
     const styleAccumulator = {};
     for (const style of stylesArray) {
         if (typeof style === 'string') {
@@ -18637,22 +18637,14 @@ function requireJsxRuntime () {
 
 var jsxRuntimeExports = requireJsxRuntime();
 
+/* -------------------------------------------------------------------------- */
 const ThemeProvider = ({ children }) => {
-    const [utilities, setUtilities] = useState(shakenUtilities);
     const [mode, setMode] = useState(theme.mode);
     const isDarkMode = mode === 'dark';
-    useEffect(() => {
-        console.log('ThemeProvider Effect');
-        getUtilities()
-            .then((utilities) => {
-            console.log('getUtilities');
-            setUtilities(utilities);
-        })
-            .catch((error) => {
-            console.log('getUtilities err', error);
-        });
-    }, []);
-    return (jsxRuntimeExports.jsx(ThemeContext.Provider, { value: { theme, utilities, isDarkMode, setMode }, children: children }));
+    const toggleMode = () => {
+        setMode((prev) => (prev === 'default' || prev === 'light' ? 'dark' : 'light'));
+    };
+    return (jsxRuntimeExports.jsx(ThemeContext.Provider, { value: { theme, utilities, isDarkMode, setMode, toggleMode }, children: children }));
 };
 
 export { ThemeProvider, createStyle, createTheme, defaultTheme, styles, theme, useTheme };

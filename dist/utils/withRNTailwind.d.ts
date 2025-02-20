@@ -1,1 +1,2 @@
-export default function withRNTailwind(metroConfigs: any): any;
+import { ConfigT } from 'metro-config';
+export default function withRNTailwind(metroConfigs: ConfigT): ConfigT;

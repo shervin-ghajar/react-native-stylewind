@@ -20,7 +20,6 @@ import { StyleProp } from 'react-native';
 
 export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(stylesArray: T[]) => {
   const { theme, utilities } = useTheme();
-  console.log({ theme, utilities });
   const styleAccumulator: any = {};
 
   for (const style of stylesArray) {

@@ -1,9 +1,9 @@
 /**
-* AUTO GENERATED
-* <---DO NOT MODIFY THIS FILE--->
-*/
+ * AUTO GENERATED
+ * <---DO NOT MODIFY THIS FILE--->
+ */
 declare const _default: {
-    "flex-1": {
+    'flex-1': {
         flex: number;
     };
     flexRow: {
@@ -63,22 +63,22 @@ declare const _default: {
     relative: {
         position: string;
     };
-    "top-0": {
+    'top-0': {
         top: number;
     };
-    "right-0": {
+    'right-0': {
         right: number;
     };
-    "bottom-0": {
+    'bottom-0': {
         bottom: number;
     };
-    "left-0": {
+    'left-0': {
         left: number;
     };
-    "zIndex-1": {
+    'zIndex-1': {
         zIndex: number;
     };
-    "zIndex-10": {
+    'zIndex-10': {
         zIndex: number;
     };
     textCenter: {
@@ -187,19 +187,19 @@ declare const _default: {
     pointerEventAuto: {
         pointerEvents: string;
     };
-    "opacity-0": {
+    'opacity-0': {
         opacity: number;
     };
-    "opacity-25": {
+    'opacity-25': {
         opacity: number;
     };
-    "opacity-50": {
+    'opacity-50': {
         opacity: number;
     };
-    "opacity-75": {
+    'opacity-75': {
         opacity: number;
     };
-    "opacity-100": {
+    'opacity-100': {
         opacity: number;
     };
     bgPrimary: {
@@ -499,466 +499,466 @@ declare const _default: {
     textGrey: {
         color: string;
     };
-    "p-0": {
+    'p-0': {
         padding: number;
     };
-    "pt-0": {
+    'pt-0': {
         paddingTop: number;
     };
-    "pr-0": {
+    'pr-0': {
         paddingRight: number;
     };
-    "pb-0": {
+    'pb-0': {
         paddingBottom: number;
     };
-    "pl-0": {
+    'pl-0': {
         paddingLeft: number;
     };
-    "px-0": {
+    'px-0': {
         paddingHorizontal: number;
     };
-    "py-0": {
+    'py-0': {
         paddingVertical: number;
     };
-    "m-0": {
+    'm-0': {
         margin: number;
     };
-    "mt-0": {
+    'mt-0': {
         marginTop: number;
     };
-    "mr-0": {
+    'mr-0': {
         marginRight: number;
     };
-    "mb-0": {
+    'mb-0': {
         marginBottom: number;
     };
-    "ml-0": {
+    'ml-0': {
         marginLeft: number;
     };
-    "mx-0": {
+    'mx-0': {
         marginHorizontal: number;
     };
-    "my-0": {
+    'my-0': {
         marginVertical: number;
     };
-    "p-1": {
+    'p-1': {
         padding: number;
     };
-    "pt-1": {
+    'pt-1': {
         paddingTop: number;
     };
-    "pr-1": {
+    'pr-1': {
         paddingRight: number;
     };
-    "pb-1": {
+    'pb-1': {
         paddingBottom: number;
     };
-    "pl-1": {
+    'pl-1': {
         paddingLeft: number;
     };
-    "px-1": {
+    'px-1': {
         paddingHorizontal: number;
     };
-    "py-1": {
+    'py-1': {
         paddingVertical: number;
     };
-    "m-1": {
+    'm-1': {
         margin: number;
     };
-    "mt-1": {
+    'mt-1': {
         marginTop: number;
     };
-    "mr-1": {
+    'mr-1': {
         marginRight: number;
     };
-    "mb-1": {
+    'mb-1': {
         marginBottom: number;
     };
-    "ml-1": {
+    'ml-1': {
         marginLeft: number;
     };
-    "mx-1": {
+    'mx-1': {
         marginHorizontal: number;
     };
-    "my-1": {
+    'my-1': {
         marginVertical: number;
     };
-    "p-2": {
+    'p-2': {
         padding: number;
     };
-    "pt-2": {
+    'pt-2': {
         paddingTop: number;
     };
-    "pr-2": {
+    'pr-2': {
         paddingRight: number;
     };
-    "pb-2": {
+    'pb-2': {
         paddingBottom: number;
     };
-    "pl-2": {
+    'pl-2': {
         paddingLeft: number;
     };
-    "px-2": {
+    'px-2': {
         paddingHorizontal: number;
     };
-    "py-2": {
+    'py-2': {
         paddingVertical: number;
     };
-    "m-2": {
+    'm-2': {
         margin: number;
     };
-    "mt-2": {
+    'mt-2': {
         marginTop: number;
     };
-    "mr-2": {
+    'mr-2': {
         marginRight: number;
     };
-    "mb-2": {
+    'mb-2': {
         marginBottom: number;
     };
-    "ml-2": {
+    'ml-2': {
         marginLeft: number;
     };
-    "mx-2": {
+    'mx-2': {
         marginHorizontal: number;
     };
-    "my-2": {
+    'my-2': {
         marginVertical: number;
     };
-    "p-3": {
+    'p-3': {
         padding: number;
     };
-    "pt-3": {
+    'pt-3': {
         paddingTop: number;
     };
-    "pr-3": {
+    'pr-3': {
         paddingRight: number;
     };
-    "pb-3": {
+    'pb-3': {
         paddingBottom: number;
     };
-    "pl-3": {
+    'pl-3': {
         paddingLeft: number;
     };
-    "px-3": {
+    'px-3': {
         paddingHorizontal: number;
     };
-    "py-3": {
+    'py-3': {
         paddingVertical: number;
     };
-    "m-3": {
+    'm-3': {
         margin: number;
     };
-    "mt-3": {
+    'mt-3': {
         marginTop: number;
     };
-    "mr-3": {
+    'mr-3': {
         marginRight: number;
     };
-    "mb-3": {
+    'mb-3': {
         marginBottom: number;
     };
-    "ml-3": {
+    'ml-3': {
         marginLeft: number;
     };
-    "mx-3": {
+    'mx-3': {
         marginHorizontal: number;
     };
-    "my-3": {
+    'my-3': {
         marginVertical: number;
     };
-    "p-4": {
+    'p-4': {
         padding: number;
     };
-    "pt-4": {
+    'pt-4': {
         paddingTop: number;
     };
-    "pr-4": {
+    'pr-4': {
         paddingRight: number;
     };
-    "pb-4": {
+    'pb-4': {
         paddingBottom: number;
     };
-    "pl-4": {
+    'pl-4': {
         paddingLeft: number;
     };
-    "px-4": {
+    'px-4': {
         paddingHorizontal: number;
     };
-    "py-4": {
+    'py-4': {
         paddingVertical: number;
     };
-    "m-4": {
+    'm-4': {
         margin: number;
     };
-    "mt-4": {
+    'mt-4': {
         marginTop: number;
     };
-    "mr-4": {
+    'mr-4': {
         marginRight: number;
     };
-    "mb-4": {
+    'mb-4': {
         marginBottom: number;
     };
-    "ml-4": {
+    'ml-4': {
         marginLeft: number;
     };
-    "mx-4": {
+    'mx-4': {
         marginHorizontal: number;
     };
-    "my-4": {
+    'my-4': {
         marginVertical: number;
     };
-    "p-5": {
+    'p-5': {
         padding: number;
     };
-    "pt-5": {
+    'pt-5': {
         paddingTop: number;
     };
-    "pr-5": {
+    'pr-5': {
         paddingRight: number;
     };
-    "pb-5": {
+    'pb-5': {
         paddingBottom: number;
     };
-    "pl-5": {
+    'pl-5': {
         paddingLeft: number;
     };
-    "px-5": {
+    'px-5': {
         paddingHorizontal: number;
     };
-    "py-5": {
+    'py-5': {
         paddingVertical: number;
     };
-    "m-5": {
+    'm-5': {
         margin: number;
     };
-    "mt-5": {
+    'mt-5': {
         marginTop: number;
     };
-    "mr-5": {
+    'mr-5': {
         marginRight: number;
     };
-    "mb-5": {
+    'mb-5': {
         marginBottom: number;
     };
-    "ml-5": {
+    'ml-5': {
         marginLeft: number;
     };
-    "mx-5": {
+    'mx-5': {
         marginHorizontal: number;
     };
-    "my-5": {
+    'my-5': {
         marginVertical: number;
     };
-    "p-6": {
+    'p-6': {
         padding: number;
     };
-    "pt-6": {
+    'pt-6': {
         paddingTop: number;
     };
-    "pr-6": {
+    'pr-6': {
         paddingRight: number;
     };
-    "pb-6": {
+    'pb-6': {
         paddingBottom: number;
     };
-    "pl-6": {
+    'pl-6': {
         paddingLeft: number;
     };
-    "px-6": {
+    'px-6': {
         paddingHorizontal: number;
     };
-    "py-6": {
+    'py-6': {
         paddingVertical: number;
     };
-    "m-6": {
+    'm-6': {
         margin: number;
     };
-    "mt-6": {
+    'mt-6': {
         marginTop: number;
     };
-    "mr-6": {
+    'mr-6': {
         marginRight: number;
     };
-    "mb-6": {
+    'mb-6': {
         marginBottom: number;
     };
-    "ml-6": {
+    'ml-6': {
         marginLeft: number;
     };
-    "mx-6": {
+    'mx-6': {
         marginHorizontal: number;
     };
-    "my-6": {
+    'my-6': {
         marginVertical: number;
     };
-    "p-7": {
+    'p-7': {
         padding: number;
     };
-    "pt-7": {
+    'pt-7': {
         paddingTop: number;
     };
-    "pr-7": {
+    'pr-7': {
         paddingRight: number;
     };
-    "pb-7": {
+    'pb-7': {
         paddingBottom: number;
     };
-    "pl-7": {
+    'pl-7': {
         paddingLeft: number;
     };
-    "px-7": {
+    'px-7': {
         paddingHorizontal: number;
     };
-    "py-7": {
+    'py-7': {
         paddingVertical: number;
     };
-    "m-7": {
+    'm-7': {
         margin: number;
     };
-    "mt-7": {
+    'mt-7': {
         marginTop: number;
     };
-    "mr-7": {
+    'mr-7': {
         marginRight: number;
     };
-    "mb-7": {
+    'mb-7': {
         marginBottom: number;
     };
-    "ml-7": {
+    'ml-7': {
         marginLeft: number;
     };
-    "mx-7": {
+    'mx-7': {
         marginHorizontal: number;
     };
-    "my-7": {
+    'my-7': {
         marginVertical: number;
     };
-    "p-8": {
+    'p-8': {
         padding: number;
     };
-    "pt-8": {
+    'pt-8': {
         paddingTop: number;
     };
-    "pr-8": {
+    'pr-8': {
         paddingRight: number;
     };
-    "pb-8": {
+    'pb-8': {
         paddingBottom: number;
     };
-    "pl-8": {
+    'pl-8': {
         paddingLeft: number;
     };
-    "px-8": {
+    'px-8': {
         paddingHorizontal: number;
     };
-    "py-8": {
+    'py-8': {
         paddingVertical: number;
     };
-    "m-8": {
+    'm-8': {
         margin: number;
     };
-    "mt-8": {
+    'mt-8': {
         marginTop: number;
     };
-    "mr-8": {
+    'mr-8': {
         marginRight: number;
     };
-    "mb-8": {
+    'mb-8': {
         marginBottom: number;
     };
-    "ml-8": {
+    'ml-8': {
         marginLeft: number;
     };
-    "mx-8": {
+    'mx-8': {
         marginHorizontal: number;
     };
-    "my-8": {
+    'my-8': {
         marginVertical: number;
     };
-    "p-9": {
+    'p-9': {
         padding: number;
     };
-    "pt-9": {
+    'pt-9': {
         paddingTop: number;
     };
-    "pr-9": {
+    'pr-9': {
         paddingRight: number;
     };
-    "pb-9": {
+    'pb-9': {
         paddingBottom: number;
     };
-    "pl-9": {
+    'pl-9': {
         paddingLeft: number;
     };
-    "px-9": {
+    'px-9': {
         paddingHorizontal: number;
     };
-    "py-9": {
+    'py-9': {
         paddingVertical: number;
     };
-    "m-9": {
+    'm-9': {
         margin: number;
     };
-    "mt-9": {
+    'mt-9': {
         marginTop: number;
     };
-    "mr-9": {
+    'mr-9': {
         marginRight: number;
     };
-    "mb-9": {
+    'mb-9': {
         marginBottom: number;
     };
-    "ml-9": {
+    'ml-9': {
         marginLeft: number;
     };
-    "mx-9": {
+    'mx-9': {
         marginHorizontal: number;
     };
-    "my-9": {
+    'my-9': {
         marginVertical: number;
     };
-    "p-10": {
+    'p-10': {
         padding: number;
     };
-    "pt-10": {
+    'pt-10': {
         paddingTop: number;
     };
-    "pr-10": {
+    'pr-10': {
         paddingRight: number;
     };
-    "pb-10": {
+    'pb-10': {
         paddingBottom: number;
     };
-    "pl-10": {
+    'pl-10': {
         paddingLeft: number;
     };
-    "px-10": {
+    'px-10': {
         paddingHorizontal: number;
     };
-    "py-10": {
+    'py-10': {
         paddingVertical: number;
     };
-    "m-10": {
+    'm-10': {
         margin: number;
     };
-    "mt-10": {
+    'mt-10': {
         marginTop: number;
     };
-    "mr-10": {
+    'mr-10': {
         marginRight: number;
     };
-    "mb-10": {
+    'mb-10': {
         marginBottom: number;
     };
-    "ml-10": {
+    'ml-10': {
         marginLeft: number;
     };
-    "mx-10": {
+    'mx-10': {
         marginHorizontal: number;
     };
-    "my-10": {
+    'my-10': {
         marginVertical: number;
     };
 };

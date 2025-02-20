@@ -9,4 +9,5 @@ export interface ThemeContextType {
     utilities: UtilitiesType;
     isDarkMode: boolean;
     setMode: (mode: ThemeMode) => void;
+    toggleMode: () => void;
 }

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { TREE_SHAKE_TAG } from '../configs/constatns';
 import chalk from 'chalk';
 import fs from 'fs';
 import path, { resolve } from 'path';
@@ -62,10 +63,12 @@ const generatedUtilitiesPath = resolve(PATH, '../', 'utilities.js');
       }
 
       // Replace the existing variables with new data
-      const updatedUtilities = data.replace(
-        /(var utilities =)[\s\S]*?(;)/,
-        `$1 ${JSON.stringify(filteredUtilities, null, 4)}$2`,
-      );
+      const updatedUtilities = data
+        .replace(/(var utilities =)/, `// ${TREE_SHAKE_TAG}\n$1`)
+        .replace(
+          /(var utilities =)[\s\S]*?(;)/,
+          `$1 ${JSON.stringify(filteredUtilities, null, 4)}$2`,
+        );
 
       // Write the updated data back to the file
       fs.writeFile(generatedUtilitiesPath, updatedUtilities, 'utf8', (err) => {

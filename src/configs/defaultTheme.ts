@@ -10,3 +10,5 @@ export const defaultTheme: Theme = {
   spacing: spacingConfigs,
   typography,
 };
+
+export type DefaultThemeType = typeof defaultTheme;
