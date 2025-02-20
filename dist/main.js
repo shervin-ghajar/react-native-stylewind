@@ -2,7 +2,6 @@ import { c as colors, s as spacingConfigs, t as theme } from './isColorShade.js'
 export { d as defaultUtilities, i as isColorShade, a as spacing } from './isColorShade.js';
 import { u as utilities } from './utilities.js';
 import require$$0, { createContext, useContext, useState } from 'react';
-import { c as commonjsGlobal, g as getDefaultExportFromCjs } from './_commonjsHelpers.js';
 import './theme.js';
 
 /* -------------------------------------------------------------------------- */
@@ -31,6 +30,12 @@ const useTheme = () => {
     const themeContext = useContext(ThemeContext);
     return themeContext;
 };
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
 
 var lodash$1 = {exports: {}};
 

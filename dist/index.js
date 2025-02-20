@@ -6,7 +6,6 @@ import { s as stringReplaceAll, a as stringEncaseCRLFWithFirstIndex } from './ut
 
 const CONSUMER_ROOT_PATH = path.resolve(process.cwd());
 const THEME_CONFIG_FILE = 'theme.config.mjs';
-const TREE_SHAKE_TAG = '#tree-shaked-utilities';
 
 const ANSI_BACKGROUND_OFFSET = 10;
 
@@ -599,5 +598,5 @@ Object.defineProperties(createChalk.prototype, styles);
 const chalk = createChalk();
 createChalk({level: stderrColor ? stderrColor.level : 0});
 
-export { CONSUMER_ROOT_PATH as C, THEME_CONFIG_FILE as T, TREE_SHAKE_TAG as a, chalk as c };
+export { CONSUMER_ROOT_PATH as C, THEME_CONFIG_FILE as T, chalk as c };
 //# sourceMappingURL=index.js.map

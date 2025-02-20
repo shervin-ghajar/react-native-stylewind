@@ -11,7 +11,6 @@ export default [
       main: 'src/main.tsx', // Your main entry point
       init: 'src/scripts/init.ts', // Your CLI entry point
       generateUtilities: 'src/scripts/generateUtilities.ts', // Your CLI entry point
-      treeShakeUtilities: 'src/scripts/treeShakeUtilities.ts', // Your CLI entry point
       theme: 'src/configs/generated/theme/index.ts',
     },
     output: {
@@ -61,6 +60,28 @@ export default [
         tsconfig: './tsconfig.json',
       }),
       del({ targets: 'dist/withRNTailwind.cjs', hook: 'buildEnd' }), // Clean specific CJS output file
+      // terser(), // Optional: Minify the output
+    ],
+  },
+  {
+    input: 'src/scripts/treeShakeUtilities.ts', // Input for the CJS module
+    output: {
+      file: 'dist/treeShakeUtilities.cjs', // Output file for CJS format
+      format: 'cjs', // CommonJS format
+      sourcemap: true,
+    },
+    external: [
+      'react', // Exclude React
+      'react-native', // Exclude React Native
+    ],
+    plugins: [
+      peerDepsExternal(), // Automatically mark peer dependencies as external
+      resolve({ exportConditions: ['node'] }), // Helps Rollup find external modules
+      commonjs(), // Converts CommonJS modules to ES6
+      typescript({
+        tsconfig: './tsconfig.json',
+      }),
+      del({ targets: 'dist/treeShakeUtilities.cjs', hook: 'buildEnd' }), // Clean specific CJS output file
       // terser(), // Optional: Minify the output
     ],
   },
