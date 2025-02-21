@@ -1,5 +1,5 @@
 {
-  "name": "react-native-stylewind",
+  "name": "rn-stylewind",
   "private": false,
   "version": "1.0.0",
   "description": "A utility-first styling library for React Native with dynamic theming",
