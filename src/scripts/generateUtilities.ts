@@ -1,18 +1,26 @@
-import { defaultUtilities } from '../configs';
+#!/usr/bin/env node
 import { ThemeColorValues } from '../configs/colors/types';
-import { theme } from '../theme';
+import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
+import { DefaultThemeType, defaultUtilities } from '../configs/index';
+import { Theme } from '../types';
 import { isColorShade } from '../utils/isColorShade';
 import { spacing } from '../utils/spacing';
 import chalk from 'chalk';
 import fs from 'fs';
-import { capitalize } from 'lodash';
-import { resolve } from 'path';
+import { capitalize } from 'lodash-es';
+import path, { resolve } from 'path';
+import { fileURLToPath, pathToFileURL } from 'url';
 
+const PATH = path.resolve(fileURLToPath(import.meta.url));
+const isDist = PATH.includes('dist');
 /* -------------------------------------------------------------------------- */
-type ThemeColors = NonNullable<typeof theme.colors>;
+type ThemeColors = NonNullable<DefaultThemeType['colors']>;
 // Generates Theme Utilities
-export function generateUtilities() {
+export async function generateUtilities() {
   try {
+    const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
+    const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
+    const theme = themeConfigFile.default as Theme;
     const { colors } = theme;
     const utilities: Record<string, unknown> = defaultUtilities;
 
@@ -28,8 +36,8 @@ export function generateUtilities() {
       ) {
         for (const shadeKey in colorValue) {
           const shadeValue = colorValue[shadeKey as keyof ThemeColorValues];
-          const capitalizedShadeKey = shadeKey === 'default' ? '' :capitalize(shadeKey);
-          const capitalizedColorKey=capitalize(colorKey)
+          const capitalizedShadeKey = shadeKey === 'default' ? '' : capitalize(shadeKey);
+          const capitalizedColorKey = capitalize(colorKey);
           utilities[`bg${capitalizedColorKey}${capitalizedShadeKey}`] = {
             backgroundColor: shadeValue,
           };
@@ -54,7 +62,7 @@ export function generateUtilities() {
     /* ------------------------- Spacing-based Utilities ------------------------ */
     const spacingLimit = 10;
     for (let i = 0; i <= spacingLimit; i++) {
-      const spacingValue = spacing(i);
+      const spacingValue = spacing(i, theme);
 
       // Padding & Margin Utilities
       const pmDictionary = { p: 'padding', m: 'margin' }; // Padding & Margin dictionary
@@ -78,54 +86,88 @@ export function generateUtilities() {
       }
     }
 
-    /* ------------------------------- Write file ------------------------------- */
-    const generatedDirPath = resolve('./src/theme/configs/generated/utilities');
-    const utilitiesFilePath = resolve(generatedDirPath, 'utilities.ts');
-    const shakenUtilitiesFilePath = resolve(
-      generatedDirPath,
-      'shakenUtilities.ts',
-    );
-
-    const typesFilePath = resolve(generatedDirPath, 'types.ts');
     const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
+    /* --------------------------- Write utility & theme files -------------------------- */
+    const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
+    const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
 
-    const utilitiesIndexFilePath = resolve(generatedDirPath, 'index.ts');
-    const utilitiesIndexFile = `/* eslint-disable @typescript-eslint/no-require-imports */\n${warningText}export  * from './types';\nlet utilities: typeof import('./utilities');\n
-if (process.env.NODE_ENV === 'production') {
-  utilities = require('./shakenUtilities').utilities;
-} else {
-  utilities = require('./utilities').utilities;
-}
-
-export { utilities };
-
+    // Utility files dir
+    const utilitiesFilePath = resolve(generatedUtilsDirPath, 'utilities.ts');
+    const typesFilePath = resolve(generatedUtilsDirPath, 'types.ts');
+    const utilitiesIndexFilePath = resolve(generatedUtilsDirPath, 'index.ts');
+    const utilitiesIndexFile = `
+    ${warningText}export * from './types';
+import utilities from './utilities';
+export {utilities}
 export type UtilitiesType = typeof utilities;
-`;
+    
+    `;
 
-    if (!fs.existsSync(generatedDirPath)) {
-      fs.mkdirSync(generatedDirPath, { recursive: true });
-      console.log(chalk.greenBright('Directory created successfully.'));
+    // Theme file dir
+    const themeFilePath = resolve(generatedThemeDirPath, 'index.ts');
+    if (!isDist) {
+      // Make direction and write files
+      if (!fs.existsSync(generatedUtilsDirPath)) {
+        fs.mkdirSync(generatedUtilsDirPath, { recursive: true });
+        console.log(chalk.greenBright('Utilities directory created successfully.'));
+      }
+      if (!fs.existsSync(generatedThemeDirPath)) {
+        fs.mkdirSync(generatedThemeDirPath, { recursive: true });
+        console.log(chalk.greenBright('Theme directory created successfully.'));
+      }
+      // Wrtie all utilities
+      fs.writeFileSync(
+        utilitiesFilePath,
+        `${warningText}\nexport default ${JSON.stringify(utilities, null, 2)};\n`,
+      );
+
+      // Write all utility keys type
+      fs.writeFileSync(
+        typesFilePath,
+        `${warningText}export type UtilityKeys = ${[...types].join(' | ')};\n`,
+      );
+
+      // Write index file for handling utilities dynamic import
+      fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
+
+      // Write theme index file
+      fs.writeFileSync(
+        themeFilePath,
+        `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
+      );
+    } else {
+      // Regenerating inside /dist folder
+
+      const utilitiesFilePath = path.resolve(PATH, '../', 'utilities.js');
+      const themeFilePath = path.resolve(PATH, '../', 'theme.js');
+      if (!(fs.existsSync(utilitiesFilePath) && fs.existsSync(themeFilePath)))
+        throw new Error('Utilities and Theme files not exist.\nPlease contact us!');
+      fs.readFile(utilitiesFilePath, 'utf8', (err, data) => {
+        if (err) {
+          console.error('Error reading the file:', err);
+          return;
+        }
+
+        // Replace the existing variables with new data
+        const updatedUtilities = data.replace(
+          /(var utilities =)[\s\S]*?(;)/,
+          `$1 ${JSON.stringify(utilities, null, 4)}$2`,
+        );
+
+        // Write the updated data back to the file
+        fs.writeFile(utilitiesFilePath, updatedUtilities, 'utf8', (err) => {
+          if (err) {
+            console.error('Error generate utilities:', err);
+            return;
+          }
+        });
+      });
+
+      fs.writeFileSync(
+        themeFilePath,
+        `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
+      );
     }
-    // Wrtie all utilities
-    fs.writeFileSync(
-      utilitiesFilePath,
-      `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`,
-    );
-
-    // Write all utility keys type
-    fs.writeFileSync(
-      typesFilePath,
-      `${warningText}export type UtilityKeys = ${[...types].join(' | ')};\n`,
-    );
-
-    // Write duplicated utilities for tree shaking
-    fs.writeFileSync(
-      shakenUtilitiesFilePath,
-      `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n`,
-    );
-
-    // Write index file for handling utilities dynamic import
-    fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
 
     console.log(chalk.greenBright('Theme utilities and types generated successfully!'));
   } catch (error) {

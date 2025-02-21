@@ -1,8 +1,8 @@
-import { utilities, UtilitiesType, UtilityKeys } from '../configs/generated/utilities';
+import { UtilitiesType, UtilityKeys } from '../configs/generated/utilities';
 import { useTheme } from '../hooks';
 import { ThemeViewStyle } from '../types';
 import { capitalize } from 'lodash';
-import { StyleProp, Platform, StyleSheet } from 'react-native';
+import { StyleProp } from 'react-native';
 
 /* -------------------------------------------------------------------------- */
 /* eslint-disable react-hooks/rules-of-hooks */
@@ -18,11 +18,9 @@ import { StyleProp, Platform, StyleSheet } from 'react-native';
  * ```
  */
 
-export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(
-  stylesArray: T[],
-): StyleSheet.NamedStyles<unknown> => {
-  const { theme } = useTheme();
-  const styleAccumulator: StyleSheet.NamedStyles<unknown> = {};
+export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(stylesArray: T[]) => {
+  const { theme, utilities } = useTheme();
+  const styleAccumulator: any = {};
 
   for (const style of stylesArray) {
     if (typeof style === 'string') {
@@ -40,12 +38,13 @@ export const styles = <T extends UtilityKeys | StyleProp<ThemeViewStyle>>(
       for (const [attrKey, atrrValue] of Object.entries(style!)) {
         if (typeof atrrValue !== 'function') continue;
 
-        (style as any)[attrKey] = atrrValue(theme, Platform);
+        // (style as any)[attrKey] = atrrValue(theme, Platform);
+        (style as any)[attrKey] = atrrValue(theme);
       }
 
       // Merge custom style objects
       Object.assign(styleAccumulator, style);
     }
   }
-  return StyleSheet.create({ styleAccumulator }).styleAccumulator;
+  return styleAccumulator;
 };

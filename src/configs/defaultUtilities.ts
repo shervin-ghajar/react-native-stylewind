@@ -1,5 +1,5 @@
 import { spacing } from '../utils/spacing';
-import { colors } from './colors';
+import { colors } from './colors/index';
 
 /* -------------------------------------------------------------------------- */
 export const defaultUtilities: Record<string, any> = {

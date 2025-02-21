@@ -1,7 +1,7 @@
 import { Theme } from '../types';
-import { colors } from './colors';
-import { spacingConfigs } from './spacing';
-import { typography } from './typography';
+import { colors } from './colors/index';
+import { spacingConfigs } from './spacing/index';
+import { typography } from './typography/index';
 
 /* -------------------------------------------------------------------------- */
 export const defaultTheme: Theme = {
@@ -10,3 +10,5 @@ export const defaultTheme: Theme = {
   spacing: spacingConfigs,
   typography,
 };
+
+export type DefaultThemeType = typeof defaultTheme;
