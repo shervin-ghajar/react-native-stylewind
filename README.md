@@ -32,11 +32,11 @@ Before diving in, wrap your **Metro bundler config** to enable dynamic style gen
 
 ```javascript
 const { getDefaultConfig } = require('expo/metro-config');
-const withRNTailwind = require('rn-stylewind/metro');
+const withRNStylewind = require('rn-stylewind/metro');
 
 const defaultConfig = getDefaultConfig(__dirname);
 
-module.exports = withRNTailwind(defaultConfig);
+module.exports = withRNStylewind(defaultConfig);
 ```
 
 And that’s it—you're ready to build beautifully styled components! 🚀
