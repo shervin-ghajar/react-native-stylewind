@@ -26,7 +26,7 @@ import path from 'path';
   fs.writeFileSync(themeConfigPath, themeConfigFile);
   console.log(chalk.white(`CREATE: ${THEME_CONFIG_FILE} created on ${themeConfigPath}`));
 
-  exec('yarn generate', (error) => {
+  exec('npx generate-rn-stylewind', (error) => {
     if (error) return console.error('Error executing generate command:', error);
     console.log(chalk.greenBright('COMPLETE: rn-stylewind configuration completed!'));
   });
