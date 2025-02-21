@@ -1,21 +1,69 @@
-# React Native Stylewind Library
+🚀 React Native Stylewind
+Ever wished you had the flexibility of utility-first styling in React Native, but with better maintainability, type-safety, and more developer freedom? Well, that's exactly what React Native Stylewind delivers! 🎉 With this library, you can enjoy dynamic style generation based on your custom theme, and still keep your styles clean, reusable, and highly maintainable.
 
-A dynamic theme library for React Native that generates Stylewind-like utility styles based on a customizable configuration. Simplify your styling process with responsive design, color modes, spacing, and more.
+Use utility classes for quick styling or leverage createStyle for more structured, theme-based styles. With full TypeScript support, you get the best of both worlds—ease of use and robust, type-safe development.
 
-## Features
+✨ Features
+🎨 Dynamic Theming – Utility styles are generated on the fly based on your theme.config.ts.
+⚡ Tailwind-Like Styling – Use familiar utility classes for a seamless styling experience.
+🛠️ Highly Customizable – Define your own colors, spacing, typography, and more.
+🔐 Type-Safe – Full TypeScript support ensures your styles are always correct.
+🚀 Real-Time Updates – Styles regenerate automatically when your theme changes.
+📦 Tree-Shaking for Performance – Unused styles get kicked out, keeping your bundle lean.
+📥 Installation
+First, install the package via npm or yarn:
 
-- **Dynamic Theming**: Generate utility styles dynamically based on your custom `theme.config.ts`.
-- **Stylewind-Like Styling**: Use utility classes for seamless and consistent styling in React Native.
-- **Customizable**: Easily configure colors, spacing, and other properties to match your brand.
-- **Type-Safe**: Ensure full type safety with TypeScript support.
-- **Real-Time Updates**: Automatically regenerate styles when your theme configuration changes.
-
-## Installation
-
-Install the library via npm or yarn:
-
-```bash
+bash
+Copy
+Edit
 npm install react-native-stylewind
+
 # or
+
 yarn add react-native-stylewind
-```
+🛠️ Setup
+Before diving in, wrap your Metro bundler config to enable dynamic style generation.
+
+1️⃣ Add to metro.config.js
+javascript
+Copy
+Edit
+const { getDefaultConfig } = require('expo/metro-config');
+const withRNTailwind = require('react-native-stylewind/metro');
+
+const defaultConfig = getDefaultConfig(\_\_dirname);
+
+module.exports = withRNTailwind(defaultConfig);
+And that’s it—you're ready to build beautifully styled components! 🚀
+
+🎯 Usage
+Here’s how simple and powerful react-native-stylewind is:
+
+tsx
+Copy
+Edit
+import { Text, Pressable } from 'react-native';
+import { createStyle, styles } from 'react-native-stylewind';
+
+// 🚀 Utility-first styling at its finest!
+export const Button = ({ title, ...rest }) => {
+return (
+<Pressable style={styles(['bgError', 'p-5', customStyle.button])} {...rest}>
+<Text style={styles(['textWhite', 'text-lg'])}>{title}</Text>
+</Pressable>
+);
+};
+
+// 🎨 Custom styles stay modular & scalable
+const customStyle = createStyle({
+button: {
+padding: (theme) => theme.spacing.small,
+},
+});
+🔥 Why You'll Love It
+✅ No more inline styles cluttering your components
+✅ Faster development with utility-driven styling
+✅ Built for performance with tree-shaking
+✅ Theming that just makes sense
+
+Now go forth and style like a boss! 🚀
