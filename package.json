@@ -2,6 +2,14 @@
   "name": "react-native-stylewind",
   "private": false,
   "version": "1.0.0",
+  "description": "A utility-first styling library for React Native with dynamic theming",
+  "keywords": [
+    "react-native",
+    "style",
+    "tailwind",
+    "theme",
+    "utility"
+  ],
   "main": "./dist/main.js",
   "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
@@ -73,5 +81,15 @@
     "ts-node": "10.9.2",
     "typescript": "5.7.2",
     "typescript-eslint": "8.18.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shervin-ghajar/react-native-stylewind"
+  },
+  "bugs": {
+    "url": "https://github.com/shervin-ghajar/react-native-stylewind/issues"
+  },
+  "homepage": "https://github.com/shervin-ghajar/react-native-stylewind#readme",
+  "author": "Shervin Ghajar",
+  "license": "MIT"
 }
