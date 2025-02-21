@@ -19,9 +19,9 @@ Use **utility classes** for quick styling or leverage **createStyle** for more s
 First, install the package via npm or yarn:
 
 ```bash
-npm install react-native-stylewind
+npm install rn-stylewind
 # or
-yarn add react-native-stylewind
+yarn add rn-stylewind
 ```
 
 ## 🛠️ Setup
@@ -32,7 +32,7 @@ Before diving in, wrap your **Metro bundler config** to enable dynamic style gen
 
 ```javascript
 const { getDefaultConfig } = require('expo/metro-config');
-const withRNTailwind = require('react-native-stylewind/metro');
+const withRNTailwind = require('rn-stylewind/metro');
 
 const defaultConfig = getDefaultConfig(__dirname);
 
@@ -43,11 +43,11 @@ And that’s it—you're ready to build beautifully styled components! 🚀
 
 ## 🎯 Usage
 
-Here’s how simple and powerful `react-native-stylewind` is:
+Here’s how simple and powerful `rn-stylewind` is:
 
 ```tsx
 import { Text, Pressable } from 'react-native';
-import { createStyle, styles } from 'react-native-stylewind';
+import { createStyle, styles } from 'rn-stylewind';
 
 // 🚀 Utility-first styling at its finest!
 export const Button = ({ title, ...rest }) => {
