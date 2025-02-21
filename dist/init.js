@@ -11,7 +11,7 @@ import './utilities.js';
 (function init() {
     // Init theme.config.mjs
     const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
-    const themeConfigFile = `import { createTheme } from 'react-native-tailwind';\n\nexport default await createTheme({
+    const themeConfigFile = `import { createTheme } from 'react-native-stylewind';\n\nexport default await createTheme({
   colors: {
     primary: {
       default: '#1D4ED8',
@@ -31,7 +31,7 @@ import './utilities.js';
     exec('yarn generate', (error) => {
         if (error)
             return console.error('Error executing generate command:', error);
-        console.log(chalk.greenBright('COMPLETE: react-native-tailwind configuration completed!'));
+        console.log(chalk.greenBright('COMPLETE: react-native-stylewind configuration completed!'));
     });
 })();
 //# sourceMappingURL=init.js.map

@@ -1,5 +1,5 @@
 {
-  "name": "react-native-tailwind",
+  "name": "react-native-stylewind",
   "private": false,
   "version": "0.0.70",
   "main": "./dist/main.js",
@@ -11,7 +11,7 @@
       "import": "./dist/main.js",
       "require": "./dist/main.cjs"
     },
-    "./metro": "./dist/withRNTailwind.cjs"
+    "./metro": "./dist/withRNStylewind.cjs"
   },
   "files": [
     "dist/**/*"
@@ -19,14 +19,14 @@
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
     "lint": "eslint .",
-    "init-rn-tailwind": "tsx ./src/scripts/init.ts",
+    "init-rn-stylewind": "tsx ./src/scripts/init.ts",
     "generate": "tsx ./src/scripts/generateUtilities.ts",
     "compile": "tsx ./src/scripts/treeShakeUtilities.ts"
   },
   "bin": {
-    "init-rn-tailwind": "./dist/init.js",
-    "generate-rn-tailwind": "./dist/generateUtilities.js",
-    "compile-rn-tailwind": "./dist/treeShakeUtilities.cjs"
+    "init-rn-stylewind": "./dist/init.js",
+    "generate-rn-stylewind": "./dist/generateUtilities.js",
+    "compile-rn-stylewind": "./dist/treeShakeUtilities.cjs"
   },
   "dependencies": {
     "@rollup/plugin-commonjs": "28.0.2",

@@ -48,9 +48,9 @@ export default [
     'es',
   ),
   createConfig(
-    'src/utils/withRNTailwind.ts',
+    'src/utils/withRNStylewind.ts',
     {
-      file: 'dist/withRNTailwind.cjs',
+      file: 'dist/withRNStylewind.cjs',
       format: 'cjs',
     },
     'cjs',
