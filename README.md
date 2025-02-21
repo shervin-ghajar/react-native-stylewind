@@ -26,9 +26,21 @@ yarn add rn-stylewind
 
 ## 🛠️ Setup
 
-Before diving in, wrap your **Metro bundler config** to enable dynamic style generation.
+After installing the library, you'll need to initialize the project with a default theme configuration.
 
-### 1️⃣ Add to `metro.config.js`
+Run the following command to create the default `theme.config.mjs` file in the root directory of your project:
+
+```bash
+npx init-rn-stylewind
+```
+
+This will set up the default theme configuration, which you can later customize to fit your design system needs.
+
+### Wrapping the Metro Configuration
+
+To ensure compatibility with React Native, you'll need to wrap your `metro.config.js` with `withRNTailwind`. This step ensures the styles are correctly processed and ready for use.
+
+Edit your `metro.config.js` like this:
 
 ```javascript
 const { getDefaultConfig } = require('expo/metro-config');
