@@ -3,9 +3,7 @@ import { colors } from './colors/index';
 
 /* -------------------------------------------------------------------------- */
 export const defaultUtilities: Record<string, any> = {
-  /* -------------------------------------------------------------------------- */
-  /*                                   Flexbox                                  */
-  /* -------------------------------------------------------------------------- */
+  /* ----------------------------- Flexbox ----------------------------- */
   'flex-1': { flex: 1 },
   flexRow: { flexDirection: 'row' },
   flexCol: { flexDirection: 'column' },
@@ -23,14 +21,11 @@ export const defaultUtilities: Record<string, any> = {
   selfStart: { alignSelf: 'flex-start' },
   selfEnd: { alignSelf: 'flex-end' },
 
-  /* -------------------------------------------------------------------------- */
-  /*                                   Display                                  */
-  /* -------------------------------------------------------------------------- */
+  /* ----------------------------- Display ----------------------------- */
   hidden: { display: 'none' },
   flex: { display: 'flex' },
-  /* -------------------------------------------------------------------------- */
-  /*                                  Position                                  */
-  /* -------------------------------------------------------------------------- */
+
+  /* ----------------------------- Position ----------------------------- */
   absolute: { position: 'absolute' },
   relative: { position: 'relative' },
   'top-0': { top: 0 },
@@ -39,17 +34,20 @@ export const defaultUtilities: Record<string, any> = {
   'left-0': { left: 0 },
   'zIndex-1': { zIndex: 1 },
   'zIndex-10': { zIndex: 10 },
-  /* -------------------------------------------------------------------------- */
-  /*                                    Text                                    */
-  /* -------------------------------------------------------------------------- */
+
+  /* ----------------------------- Text ----------------------------- */
   textCenter: { textAlign: 'center' },
   textLeft: { textAlign: 'left' },
   textRight: { textAlign: 'right' },
   textJustify: { textAlign: 'justify' },
+  textUnderline: { textDecorationLine: 'underline' },
+  textLineThrough: { textDecorationLine: 'line-through' },
+  textNoDecoration: { textDecorationLine: 'none' },
+  textUppercase: { textTransform: 'uppercase' },
+  textLowercase: { textTransform: 'lowercase' },
+  textCapitalize: { textTransform: 'capitalize' },
 
-  /* -------------------------------------------------------------------------- */
-  /*                                 Font Weight                                */
-  /* -------------------------------------------------------------------------- */
+  /* ----------------------------- Font Weight ----------------------------- */
   fontThin: { fontWeight: '100' },
   fontLight: { fontWeight: '300' },
   fontNormal: { fontWeight: '400' },
@@ -58,9 +56,7 @@ export const defaultUtilities: Record<string, any> = {
   fontExtraBold: { fontWeight: '800' },
   fontBlack: { fontWeight: '900' },
 
-  /* -------------------------------------------------------------------------- */
-  /*                                   Border                                   */
-  /* -------------------------------------------------------------------------- */
+  /* ----------------------------- Border ----------------------------- */
   border: { borderWidth: 1, borderColor: colors.grey.default },
   borderTop: { borderTopWidth: 1 },
   borderBottom: { borderBottomWidth: 1 },
@@ -71,60 +67,48 @@ export const defaultUtilities: Record<string, any> = {
   roundedLg: { borderRadius: spacing('large') },
   roundedFull: { borderRadius: 9999 },
 
-  /* -------------------------------------------------------------------------- */
-  /*                                 Background                                 */
-  /* -------------------------------------------------------------------------- */
+  /* ----------------------------- Background ----------------------------- */
   bgWhite: { backgroundColor: colors.common.white },
   bgBlack: { backgroundColor: colors.common.black },
   bgTransparent: { backgroundColor: 'transparent' },
-  /* -------------------------------------------------------------------------- */
-  /*                                    Text                                    */
-  /* -------------------------------------------------------------------------- */
+
+  /* ----------------------------- Text Colors ----------------------------- */
   text: { color: colors.text.default },
   textDark: { color: colors.text.dark },
   textLight: { color: colors.text.light },
-  /* -------------------------------------------------------------------------- */
-  /*                                   Shadow                                   */
-  /* -------------------------------------------------------------------------- */
-  // shadow: {
-  //     shadowColor: colors.common.black,
-  //     shadowOffset: { width: 0, height: 2 },
-  //     shadowOpacity: 0.23,
-  //     shadowRadius: 2.62,
-  //     elevation: 4,
-  // },
-  // shadowLg: {
-  //     shadowColor: colors.common.black,
-  //     shadowOffset: { width: 0, height: 4 },
-  //     shadowOpacity: 0.3,
-  //     shadowRadius: 4.65,
-  //     elevation: 8,
-  // },
 
-  /* -------------------------------------------------------------------------- */
-  /*                              Width and Height                              */
-  /* -------------------------------------------------------------------------- */
+  /* ----------------------------- Shadow ----------------------------- */
+  shadow: {
+    shadowColor: colors.common.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+  },
+  shadowLg: {
+    shadowColor: colors.common.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 8,
+  },
+
+  /* ----------------------------- Width and Height ----------------------------- */
   wFull: { width: '100%' },
   hFull: { height: '100%' },
   wHalf: { width: '50%' },
   hHalf: { height: '50%' },
 
-  /* -------------------------------------------------------------------------- */
-  /*                                  Overflow                                  */
-  /* -------------------------------------------------------------------------- */
+  /* ----------------------------- Overflow ----------------------------- */
   overflowHidden: { overflow: 'hidden' },
   overflowVisible: { overflow: 'visible' },
   overflowScroll: { overflow: 'scroll' },
 
-  /* -------------------------------------------------------------------------- */
-  /*                                PointerEvents                               */
-  /* -------------------------------------------------------------------------- */
+  /* ----------------------------- Pointer Events ----------------------------- */
   pointerEventNone: { pointerEvents: 'none' },
   pointerEventAuto: { pointerEvents: 'auto' },
 
-  /* -------------------------------------------------------------------------- */
-  /*                                   Opacity                                  */
-  /* -------------------------------------------------------------------------- */
+  /* ----------------------------- Opacity ----------------------------- */
   'opacity-0': { opacity: 0 },
   'opacity-25': { opacity: 0.25 },
   'opacity-50': { opacity: 0.5 },

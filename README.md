@@ -11,10 +11,10 @@ Use **utility classes** for quick styling or leverage **createStyle** for more s
 - **🛠️ Highly Customizable** – Define your own colors, spacing, typography, and more.
 - **🔐 Type-Safe** – Full TypeScript support ensures your styles are always correct.
 - **🚀 Real-Time Updates** – Styles regenerate automatically when your theme changes.
-- **📦 Tree-Shaking for Performance** – Unused styles get kicked out, keeping your bundle lean.
+- **🛆 Tree-Shaking for Performance** – Unused styles get kicked out, keeping your bundle lean.
 - **💡 Flexible Usage** – Use utility-first classes or `createStyle` with theme configurations.
 
-## 📥 Installation
+## 👥 Installation
 
 First, install the package via npm or yarn:
 
@@ -26,21 +26,9 @@ yarn add rn-stylewind
 
 ## 🛠️ Setup
 
-After installing the library, you'll need to initialize the project with a default theme configuration.
+Before diving in, wrap your **Metro bundler config** to enable dynamic style generation.
 
-Run the following command to create the default `theme.config.mjs` file in the root directory of your project:
-
-```bash
-npx init-rn-stylewind
-```
-
-This will set up the default theme configuration, which you can later customize to fit your design system needs.
-
-### Wrapping the Metro Configuration
-
-To ensure compatibility with React Native, you'll need to wrap your `metro.config.js` with `withRNTailwind`. This step ensures the styles are correctly processed and ready for use.
-
-Edit your `metro.config.js` like this:
+### 1️⃣ Add to `metro.config.js`
 
 ```javascript
 const { getDefaultConfig } = require('expo/metro-config');
@@ -51,39 +39,80 @@ const defaultConfig = getDefaultConfig(__dirname);
 module.exports = withRNStylewind(defaultConfig);
 ```
 
-And that’s it—you're ready to build beautifully styled components! 🚀
+### 2️⃣ Initialize Default Theme Configuration
 
-## 🎯 Usage
+To initialize and create the default `theme.config.mjs` file, run the following command:
 
-Here’s how simple and powerful `rn-stylewind` is:
+```bash
+npx init-rn-stylewind
+```
 
-```tsx
-import { Text, Pressable } from 'react-native';
-import { createStyle, styles } from 'rn-stylewind';
+This will generate a `theme.config.mjs` file in the root directory of your project as below. You can customize this file to define your theme colors, spacing, typography, and more.
+```javascript
+// theme.config.mjs
+import { createTheme } from 'rn-stylewind';
 
-// 🚀 Utility-first styling at its finest!
-export const Button = ({ title, ...rest }) => {
-  return (
-    <Pressable style={styles(['bgError', 'p-5', customStyle.button])} {...rest}>
-      <Text style={styles(['textWhite', 'text-lg'])}>{title}</Text>
-    </Pressable>
-  );
-};
-
-// 🎨 Custom styles stay modular & scalable
-const customStyle = createStyle({
-  button: {
-    padding: (theme) => theme.spacing.small,
+export default await createTheme({
+  mode:'light',
+  colors: {
+    primary: {
+      default: '#1D4ED8',
+      light: '#93C5FD',
+      dark: '#1E3A8A',
+    },
   },
+  spacing: {
+    default: 8,
+  },
+  // Modify other theme settings if needed
 });
 ```
 
+## 🎯 Usage
+
+Wrap your application with `ThemeProvider` to ensure your styles and theme configurations are accessible throughout the project:
+
+```tsx
+import { ThemeProvider } from 'rn-stylewind';
+import Main from './main';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Main />
+    </ThemeProvider>
+  );
+}
+```
+
+### Using `useTheme` Hook
+
+To access the theme context and utilities, use the `useTheme` hook:
+
+```tsx
+import { useTheme } from 'rn-stylewind';
+
+function MyComponent() {
+  const { theme, isDarkMode, toggleMode } = useTheme();
+  
+  return (
+    <View style={styles([isDarkMode ? 'bgBlack' : 'bgWhite'])}>
+      <Text style={styles(['textPrimary'])}>Current Theme: {theme.mode}</Text>
+      <Button title="Toggle Theme" onPress={toggleMode} />
+    </View>
+  );
+}
+```
+
+Now, you can use `useTheme()` in your components to access the theme and utilities dynamically.
+
 ### 🔥 Why You'll Love It
 
-✅ **No more inline styles cluttering your components**  
-✅ **Faster development with utility-driven styling**  
-✅ **Built for performance with tree-shaking**  
-✅ **Theming that just makes sense**  
+✅ **No more inline styles cluttering your components**\
+✅ **Faster development with utility-driven styling**\
+✅ **Built for performance with tree-shaking**\
+✅ **Theming that just makes sense**\
 ✅ **Flexibility to use utility classes or structured styles**
 
 Now go forth and **style like a boss**! 🚀
+
