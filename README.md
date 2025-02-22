@@ -84,13 +84,35 @@ function App() {
   );
 }
 ```
+Here’s how simple and powerful `react-native-stylewind` is:
+
+```tsx
+import { Text, Pressable } from 'react-native';
+import { createStyle, styles } from 'react-native-stylewind';
+
+// 🚀 Utility-first styling at its finest!
+export const Button = ({ title, ...rest }) => {
+  return (
+    <Pressable style={styles(['bgError', 'p-5', customStyle.button])} {...rest}>
+      <Text style={styles(['textWhite', 'text-lg'])}>{title}</Text>
+    </Pressable>
+  );
+};
+
+// 🎨 Custom styles stay modular & scalable
+const customStyle = createStyle({
+  button: {
+    padding: (theme) => theme.spacing.small,
+  },
+});
+```
 
 ### Using `useTheme` Hook
 
-To access the theme context and utilities, use the `useTheme` hook:
+To access the theme context, use the `useTheme` hook:
 
 ```tsx
-import { useTheme } from 'rn-stylewind';
+import { useTheme,styles } from 'rn-stylewind';
 
 function MyComponent() {
   const { theme, isDarkMode, toggleMode } = useTheme();
