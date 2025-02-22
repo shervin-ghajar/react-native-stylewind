@@ -74,12 +74,12 @@ Wrap your application with `ThemeProvider` to ensure your styles and theme confi
 
 ```tsx
 import { ThemeProvider } from 'rn-stylewind';
-import Main from './main';
+import MyComponent from './MyComponent';
 
 function App() {
   return (
     <ThemeProvider>
-      <Main />
+      <MyComponent />
     </ThemeProvider>
   );
 }
@@ -103,8 +103,46 @@ export const Button = ({ title, ...rest }) => {
 const customStyle = createStyle({
   button: {
     padding: (theme) => theme.spacing.small,
+    backgroundColor: (theme) => theme.mode === 'light' ? theme.colors.primary.light : theme.colors.primary.dark,
   },
 });
+```
+
+### Using `styles` Function
+
+The `styles` function allows developers to apply utility classes easily. If a color-based utility class does not specify a Dark or Light mode variant, `styles` will automatically pick the appropriate color based on the current theme `mode`.
+
+```tsx
+<View style={styles(['bgPrimary'])}> // if mode is `light`, `bgPrimary` will return `bgPrimaryLight` color
+  <Text style={styles(['textBase'])}>Dynamic Themed Text</Text> 
+</View>
+```
+
+### Using `createStyles`
+
+The `createStyles` function enables structured, reusable styles with full TypeScript support and theme-based values.
+
+```tsx
+import { createStyles } from 'rn-stylewind';
+
+const useMyStyles = createStyles((theme) => ({
+  container: {
+    padding: theme.spacing.md,
+    backgroundColor: theme.colors.primary.light,
+  },
+  text: {
+    color: theme.colors.primary,
+  },
+}));
+
+function MyComponent() {
+  const styles = useMyStyles();
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Hello, world!</Text>
+    </View>
+  );
+}
 ```
 
 ### Using `useTheme` Hook
@@ -114,7 +152,7 @@ To access the theme context, use the `useTheme` hook:
 ```tsx
 import { useTheme,styles } from 'rn-stylewind';
 
-function MyComponent() {
+export const MyComponent = () => {
   const { theme, isDarkMode, toggleMode } = useTheme();
   
   return (
