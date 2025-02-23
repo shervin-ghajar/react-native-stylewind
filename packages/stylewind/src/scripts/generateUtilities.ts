@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { ThemeColorValues } from '../configs/colors/types';
-import { CONSUMER_ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
+import { CONSUMER_ROOT_PATH, ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
 import { DefaultThemeType, defaultUtilities } from '../configs/index';
 import { Theme } from '../types';
 import { isColorShade } from '../utils/isColorShade';
@@ -9,10 +9,9 @@ import chalk from 'chalk';
 import fs from 'fs';
 import { capitalize } from 'lodash-es';
 import path, { resolve } from 'path';
-import { fileURLToPath, pathToFileURL } from 'url';
+import { pathToFileURL } from 'url';
 
-const PATH = path.resolve(fileURLToPath(import.meta.url));
-const isDist = PATH.includes('dist');
+const isDist = ROOT_PATH.includes('dist');
 /* -------------------------------------------------------------------------- */
 type ThemeColors = NonNullable<DefaultThemeType['colors']>;
 // Generates Theme Utilities
@@ -138,8 +137,8 @@ export type UtilitiesType = typeof utilities;
     } else {
       // Regenerating inside /dist folder
 
-      const utilitiesFilePath = path.resolve(PATH, '../', 'utilities.js');
-      const themeFilePath = path.resolve(PATH, '../', 'theme.js');
+      const utilitiesFilePath = path.resolve(ROOT_PATH, 'utilities.js');
+      const themeFilePath = path.resolve(ROOT_PATH, 'theme.js');
       if (!(fs.existsSync(utilitiesFilePath) && fs.existsSync(themeFilePath)))
         throw new Error('Utilities and Theme files not exist.\nPlease contact us!');
       fs.readFile(utilitiesFilePath, 'utf8', (err, data) => {

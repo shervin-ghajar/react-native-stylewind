@@ -1,91 +1,18 @@
 {
-  "name": "rn-stylewind",
-  "private": false,
-  "version": "1.0.10",
-  "description": "A utility-first styling library for React Native with dynamic theming",
-  "keywords": [
-    "react-native",
-    "style",
-    "tailwind",
-    "theme",
-    "utility"
-  ],
-  "main": "./dist/main.js",
-  "module": "./dist/main.js",
-  "types": "./dist/main.d.ts",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/main.js",
-      "require": "./dist/main.cjs"
-    },
-    "./metro": "./dist/withRNStylewind.cjs"
-  },
-  "files": [
-    "dist/**/*"
+  "name": "react-native-stylewind-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "build": "rollup -c rollup.config.mjs",
-    "lint": "eslint .",
-    "init-rn-stylewind": "tsx ./src/scripts/init.ts",
-    "generate": "tsx ./src/scripts/generateUtilities.ts",
-    "compile": "tsx ./src/scripts/treeShakeUtilities.ts",
-    "publish": "npm run build && npm publish"
-  },
-  "bin": {
-    "init-rn-stylewind": "./dist/init.js",
-    "generate-rn-stylewind": "./dist/generateUtilities.js",
-    "compile-rn-stylewind": "./dist/treeShakeUtilities.cjs"
-  },
-  "dependencies": {
-    "chalk": "5.3.0",
-    "fs": "0.0.1-security",
-    "lodash-es": "4.17.21",
-    "metro-config": "0.81.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-native": "0.74.3",
-    "tsx": "4.19.2"
-  },
-  "devDependencies": {
-    "@eslint/js": "9.17.0",
-    "@rollup/plugin-commonjs": "28.0.2",
-    "@rollup/plugin-node-resolve": "16.0.0",
-    "@trivago/prettier-plugin-sort-imports": "5.2.0",
-    "@types/lodash-es": "4.17.12",
-    "@types/node": "22.10.2",
-    "@types/react": "18.3.18",
-    "@types/react-dom": "18.3.5",
-    "@types/react-native": "0.73.0",
-    "@typescript-eslint/eslint-plugin": "8.18.2",
-    "@typescript-eslint/parser": "8.18.2",
-    "eslint": "9.17.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-react-hooks": "5.0.0",
-    "eslint-plugin-react-refresh": "0.4.16",
-    "globals": "15.14.0",
-    "husky": "9.1.7",
-    "lint-staged": "15.2.11",
-    "prettier": "3.4.2",
-    "rollup": "4.29.1",
-    "rollup-plugin-delete": "2.1.0",
-    "rollup-plugin-peer-deps-external": "2.2.4",
-    "rollup-plugin-replace": "2.2.0",
-    "rollup-plugin-terser": "7.0.2",
-    "rollup-plugin-typescript2": "0.36.0",
-    "ts-morph": "24.0.0",
-    "ts-node": "10.9.2",
-    "typescript": "5.7.2",
-    "typescript-eslint": "8.18.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shervin-ghajar/react-native-stylewind"
-  },
-  "bugs": {
-    "url": "https://github.com/shervin-ghajar/react-native-stylewind/issues"
-  },
-  "homepage": "https://github.com/shervin-ghajar/react-native-stylewind#readme",
-  "author": "Shervin Ghajar",
-  "license": "MIT"
+    "build": "pnpm --filter=rn-stylewind build",
+    "lint": "pnpm --filter=rn-stylewind lint",
+    "init-rn-stylewind": "pnpm --filter=rn-stylewind init-rn-stylewind",
+    "generate": "pnpm --filter=rn-stylewind generate",
+    "compile": "pnpm --filter=rn-stylewind compile",
+    "publish": "pnpm --filter=rn-stylewind run publish",
+    "docs:start": "pnpm --filter=docs start",
+    "docs:build": "pnpm --filter=docs build",
+    "docs:deploy": "pnpm --filter=docs deploy"
+  }
 }
