@@ -1,7 +1,7 @@
 {
   "name": "rn-stylewind",
   "private": false,
-  "version": "0.2.13",
+  "version": "0.2.16",
   "description": "A utility-first styling library for React Native with dynamic theming",
   "keywords": [
     "react-native",
@@ -30,7 +30,7 @@
     "init-rn-stylewind": "tsx ./src/scripts/init.ts",
     "generate": "tsx ./src/scripts/generateUtilities.ts",
     "compile": "tsx ./src/scripts/treeShakeUtilities.ts",
-    "publish": "pnpm run build && pnpm publish"
+    "stylewind:publish": "npm run build && npm publish"
   },
   "bin": {
     "init-rn-stylewind": "./dist/init.js",
