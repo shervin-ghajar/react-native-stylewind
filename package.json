@@ -10,7 +10,7 @@
     "init-rn-stylewind": "pnpm --filter=rn-stylewind init-rn-stylewind",
     "generate": "pnpm --filter=rn-stylewind generate",
     "compile": "pnpm --filter=rn-stylewind compile",
-    "publish": "pnpm --filter=rn-stylewind run publish",
+    "stylewind:publish": "pnpm --filter=rn-stylewind run publish",
     "docs:start": "pnpm --filter=docs start",
     "docs:build": "pnpm --filter=docs build",
     "docs:deploy": "pnpm --filter=docs deploy"
