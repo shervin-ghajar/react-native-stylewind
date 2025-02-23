@@ -30,7 +30,7 @@
     "init-rn-stylewind": "tsx ./src/scripts/init.ts",
     "generate": "tsx ./src/scripts/generateUtilities.ts",
     "compile": "tsx ./src/scripts/treeShakeUtilities.ts",
-    "publish": "npm run build && npm publish"
+    "publish": "pnpm run build && pnpm publish"
   },
   "bin": {
     "init-rn-stylewind": "./dist/init.js",

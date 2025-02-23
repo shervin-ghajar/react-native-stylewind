@@ -18,15 +18,13 @@ export default function withRNStylewind(metroConfigs: ConfigT) {
     console.log('[Stylewind]: Development build detected');
     const fileToWatch = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE); // Change to your file path
     execSync('npx generate-rn-stylewind', { stdio: 'inherit' });
-    fs.watch(fileToWatch, (eventType) => {
-      if (eventType === 'change') {
-        console.log(`Regenerating stylewind utilities...`);
-        try {
-          execSync('npx generate-rn-stylewind', { stdio: 'inherit' });
-          console.log('Command executed successfully.');
-        } catch (error) {
-          console.error('Error executing command:', error);
-        }
+    fs.watchFile(fileToWatch, { interval: 200 }, () => {
+      console.log(`Regenerating stylewind utilities...`);
+      try {
+        execSync('npx generate-rn-stylewind', { stdio: 'inherit' });
+        console.log('Command executed successfully.');
+      } catch (error) {
+        console.error('Error executing command:', error);
       }
     });
   }
