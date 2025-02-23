@@ -19,12 +19,11 @@ export default function withRNStylewind(metroConfigs: ConfigT) {
     const fileToWatch = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE); // Change to your file path
     execSync('npx generate-rn-stylewind', { stdio: 'inherit' });
     fs.watchFile(fileToWatch, { interval: 200 }, () => {
-      console.log(`Regenerating stylewind utilities...`);
+      console.log(`Regenerating stylewind theme & utilities...`);
       try {
         execSync('npx generate-rn-stylewind', { stdio: 'inherit' });
-        console.log('Command executed successfully.');
       } catch (error) {
-        console.error('Error executing command:', error);
+        console.error('Error regenerating stylewind:', error);
       }
     });
   }

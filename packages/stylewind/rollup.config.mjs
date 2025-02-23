@@ -35,6 +35,8 @@ export default [
       init: 'src/scripts/init.ts',
       generateUtilities: 'src/scripts/generateUtilities.ts',
       treeShakeUtilities: 'src/scripts/treeShakeUtilities.ts',
+      theme: 'src/configs/generated/theme/index.ts',
+      utilities: 'src/configs/generated/utilities/index.ts',
     },
     {
       dir: 'dist',
