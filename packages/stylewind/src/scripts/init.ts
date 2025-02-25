@@ -9,6 +9,7 @@ import path from 'path';
   // Init theme.config.mjs
   const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
   const themeConfigFile = `import { createTheme } from 'rn-stylewind';\n\nexport default await createTheme({
+  mode:'light',
   colors: {
     primary: {
       default: '#1D4ED8',

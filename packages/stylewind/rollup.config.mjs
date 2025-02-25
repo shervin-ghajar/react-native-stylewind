@@ -47,27 +47,13 @@ export default [
       assetFileNames: '[name].[ext]',
     },
     'es',
-    [terser()], // Minify the output
-  ),
-
-  // Theme configuration
-  createConfig(
-    'src/configs/generated/theme/index.ts',
-    {
-      file: 'dist/theme.js',
-      format: 'es',
-    },
-    'es',
-  ),
-
-  // Utilities configuration
-  createConfig(
-    'src/configs/generated/utilities/index.ts',
-    {
-      file: 'dist/utilities.js',
-      format: 'es',
-    },
-    'es',
+    [
+      terser({
+        mangle: {
+          reserved: ['theme', 'utilities'], //Exceptions
+        },
+      }),
+    ], // Minify the output
   ),
 
   // CommonJS utility for React Native Stylewind

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { ThemeColorValues } from '../configs/colors/types';
 import { CONSUMER_ROOT_PATH, ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
-import { DefaultThemeType, defaultUtilities } from '../configs/index';
+import { defaultTheme, DefaultThemeType } from '../configs/index';
 import { Theme } from '../types';
 import { isColorShade } from '../utils/isColorShade';
 import { spacing } from '../utils/spacing';
@@ -18,12 +18,14 @@ type ThemeColors = NonNullable<DefaultThemeType['colors']>;
 export async function generateUtilities() {
   try {
     const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
-    const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
-    const theme = themeConfigFile.default as Theme;
-    const { colors } = theme;
-    const utilities: Record<string, unknown> = defaultUtilities;
-
-    const types: Set<string> = new Set([...Object.keys(defaultUtilities).map((du) => `'${du}'`)]);
+    let theme = defaultTheme;
+    if (fs.existsSync(themeConfigPath)) {
+      const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
+      theme = themeConfigFile.default as Theme;
+    }
+    const { colors, utilities: themeUtilities } = theme;
+    const utilities: Record<string, unknown> = themeUtilities;
+    // const types: Set<string> = new Set([...Object.keys(utilities).map((du) => `'${du}'`)]);
 
     // /* -------------------------- Color-based Utilities ------------------------- */
     const colorKeyWhiteList: Array<keyof ThemeColors> = ['grey'];
@@ -46,9 +48,9 @@ export async function generateUtilities() {
           utilities[`text${capitalizedColorKey}${capitalizedShadeKey}`] = { color: shadeValue };
 
           // Add type definitions
-          types.add(`'bg${capitalizedColorKey}${capitalizedShadeKey}'`);
-          types.add(`'border${capitalizedColorKey}${capitalizedShadeKey}'`);
-          types.add(`'text${capitalizedColorKey}${capitalizedShadeKey}'`);
+          // types.add(`'bg${capitalizedColorKey}${capitalizedShadeKey}'`);
+          // types.add(`'border${capitalizedColorKey}${capitalizedShadeKey}'`);
+          // types.add(`'text${capitalizedColorKey}${capitalizedShadeKey}'`);
         }
       }
     };
@@ -80,7 +82,7 @@ export async function generateUtilities() {
           utilities[utilityKey] = { [`${pmValue}${dirValue}`]: spacingValue };
 
           // Add type definitions
-          types.add(`"${utilityKey}"`);
+          // types.add(`"${utilityKey}"`);
         }
       }
     }
@@ -91,16 +93,7 @@ export async function generateUtilities() {
     const generatedThemeDirPath = resolve('./src/configs/generated/theme'); // theme path
 
     // Utility files dir
-    const utilitiesFilePath = resolve(generatedUtilsDirPath, 'utilities.ts');
-    const typesFilePath = resolve(generatedUtilsDirPath, 'types.ts');
-    const utilitiesIndexFilePath = resolve(generatedUtilsDirPath, 'index.ts');
-    const utilitiesIndexFile = `
-    ${warningText}export * from './types';
-import utilities from './utilities';
-export {utilities}
-export type UtilitiesType = typeof utilities;
-    
-    `;
+    const utilitiesFilePath = resolve(generatedUtilsDirPath, 'index.ts');
 
     // Theme file dir
     const themeFilePath = resolve(generatedThemeDirPath, 'index.ts');
@@ -114,20 +107,11 @@ export type UtilitiesType = typeof utilities;
         fs.mkdirSync(generatedThemeDirPath, { recursive: true });
         console.log(chalk.greenBright('Theme directory created successfully.'));
       }
-      // Wrtie all utilities
+      // Wrtie utilities & types
       fs.writeFileSync(
         utilitiesFilePath,
-        `${warningText}\nexport default ${JSON.stringify(utilities, null, 2)};\n`,
+        `${warningText}\nexport const utilities = ${JSON.stringify(utilities, null, 2)};\n\nexport type UtilitiesType = typeof utilities;\n\nexport type UtilityKeys = keyof UtilitiesType;\n`,
       );
-
-      // Write all utility keys type
-      fs.writeFileSync(
-        typesFilePath,
-        `${warningText}export type UtilityKeys = ${[...types].join(' | ')};\n`,
-      );
-
-      // Write index file for handling utilities dynamic import
-      fs.writeFileSync(utilitiesIndexFilePath, utilitiesIndexFile, 'utf8');
 
       // Write theme index file
       fs.writeFileSync(
@@ -139,8 +123,11 @@ export type UtilitiesType = typeof utilities;
 
       const utilitiesFilePath = path.resolve(ROOT_PATH, 'utilities.js');
       const themeFilePath = path.resolve(ROOT_PATH, 'theme.js');
+      const utilitiesTypesPath = path.resolve(ROOT_PATH, 'configs/generated/utilities/index.d.ts');
+
       if (!(fs.existsSync(utilitiesFilePath) && fs.existsSync(themeFilePath)))
         throw new Error('Utilities and Theme files not exist.\nPlease contact us!');
+      //utilities.js
       fs.readFile(utilitiesFilePath, 'utf8', (err, data) => {
         if (err) {
           console.error('Error reading the file:', err);
@@ -149,7 +136,7 @@ export type UtilitiesType = typeof utilities;
 
         // Replace the existing variables with new data
         const updatedUtilities = data.replace(
-          /(var utilities =)[\s\S]*?(;)/,
+          /(const utilities=)[\s\S]*?(;)/,
           `$1 ${JSON.stringify(utilities, null, 4)}$2`,
         );
 
@@ -161,11 +148,41 @@ export type UtilitiesType = typeof utilities;
           }
         });
       });
-
       fs.writeFileSync(
         themeFilePath,
         `${warningText}\nexport const theme = ${JSON.stringify(theme, null, 2)};\n`,
       );
+
+      //utilities.d.ts
+      fs.readFile(utilitiesTypesPath, 'utf8', (err, data) => {
+        if (err) {
+          console.error('Error reading the file:', err);
+          return;
+        }
+
+        // Dynamically create the type definitions for the utilities object
+        let newUtilityesTypes = '';
+        for (const [key, value] of Object.entries(utilities)) {
+          if (value && Object.keys(value).length > 0) {
+            const valueType = Object.entries(value)
+              .map(([prop, propValue]) => `${prop}: ${typeof propValue};`)
+              .join('\n        ');
+            newUtilityesTypes += `    "${key}": {\n        ${valueType}\n    };\n`;
+          }
+        }
+        // Replace the existing variables with new data
+        const updatedUtilitiesTypes = data.replace(
+          /(\s*export declare const utilities:\s*{)/,
+          `$1\n${newUtilityesTypes}`,
+        );
+        // Write the updated data back to the file
+        fs.writeFile(utilitiesTypesPath, updatedUtilitiesTypes, 'utf8', (err) => {
+          if (err) {
+            console.error('Error generate utilities:', err);
+            return;
+          }
+        });
+      });
     }
 
     console.log(chalk.greenBright('Theme utilities and types generated successfully!'));

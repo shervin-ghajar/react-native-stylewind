@@ -47,7 +47,7 @@ To initialize and create the default `theme.config.mjs` file, run the following 
 npx init-rn-stylewind
 ```
 
-This will generate a `theme.config.mjs` file in the root directory of your project as below. You can customize this file to define your theme colors, spacing, typography, and more.
+This will generate a `theme.config.mjs` file in the root directory of your project as below. You can customize this file to define your theme colors, spacing, typography, utilities.
 ```javascript
 // theme.config.mjs
 import { createTheme } from 'rn-stylewind';
@@ -93,19 +93,11 @@ import { createStyle, styles } from 'react-native-stylewind';
 // 🚀 Utility-first styling at its finest!
 export const Button = ({ title, ...rest }) => {
   return (
-    <Pressable style={styles(['bgError', 'p-5', customStyle.button])} {...rest}>
+    <Pressable style={styles(['bgError', 'p-5'])} {...rest}>
       <Text style={styles(['textWhite', 'text-lg'])}>{title}</Text>
     </Pressable>
   );
 };
-
-// 🎨 Custom styles stay modular & scalable
-const customStyle = createStyle({
-  button: {
-    padding: (theme) => theme.spacing.small,
-    backgroundColor: (theme) => theme.mode === 'light' ? theme.colors.primary.light : theme.colors.primary.dark,
-  },
-});
 ```
 
 ### Using `styles` Function
@@ -123,23 +115,24 @@ The `styles` function allows developers to apply utility classes easily. If a co
 The `createStyles` function enables structured, reusable styles with full TypeScript support and theme-based values.
 
 ```tsx
-import { createStyles } from 'rn-stylewind';
+import { createStyles, styles } from 'rn-stylewind';
 
-const useMyStyles = createStyles((theme) => ({
-  container: {
+const useMyStyles = createStyles({
+  container: (theme) => ({
     padding: theme.spacing.md,
-    backgroundColor: theme.colors.primary.light,
-  },
+    backgroundColor: theme.utilities.bgBackground.backgroundColor,
+    ...theme.utilities['p-1'] // using utility style
+  }),
   text: {
-    color: theme.colors.primary,
+    padding: 4
   },
-}));
+});
 
 function MyComponent() {
-  const styles = useMyStyles();
+  const myStyles = useMyStyles();
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello, world!</Text>
+    <View style={styles[myStyles.container]}>
+      <Text style={styles[myStyles.text]}>Hello, world!</Text>
     </View>
   );
 }

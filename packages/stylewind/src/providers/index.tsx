@@ -1,4 +1,3 @@
-import { utilities } from '../configs/generated/utilities';
 import { theme } from '../theme';
 import { ThemeMode } from '../types';
 import { ThemeContext } from './context';
@@ -15,7 +14,7 @@ export const ThemeProvider = ({ children }: ThemeProviderType) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, utilities, isDarkMode, setMode, toggleMode }}>
+    <ThemeContext.Provider value={{ theme, isDarkMode, setMode, toggleMode }}>
       {children}
     </ThemeContext.Provider>
   );
