@@ -1,7 +1,7 @@
 import { ThemeSpacing } from './types';
 
 /* -------------------------------------------------------------------------- */
-const defaultSpacing = 4;
+const defaultSpacing = 8;
 /* -------------------------------------------------------------------------- */
 /**
  * Configuration for theme spacing values.

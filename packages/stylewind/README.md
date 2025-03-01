@@ -88,7 +88,7 @@ Here’s how simple and powerful `react-native-stylewind` is:
 
 ```tsx
 import { Text, Pressable } from 'react-native';
-import { createStyle, styles } from 'react-native-stylewind';
+import {  styles } from 'rn-stylewind';
 
 // 🚀 Utility-first styling at its finest!
 export const Button = ({ title, ...rest }) => {
@@ -110,14 +110,14 @@ The `styles` function allows developers to apply utility classes easily. If a co
 </View>
 ```
 
-### Using `createStyles`
+### Using `createStyle`
 
-The `createStyles` function enables structured, reusable styles with full TypeScript support and theme-based values.
+The `createStyle` function enables structured, reusable styles with full TypeScript support and theme-based values.
 
 ```tsx
-import { createStyles, styles } from 'rn-stylewind';
+import { createStyle, styles } from 'rn-stylewind';
 
-const useMyStyles = createStyles({
+const useMyStyles = createStyle({
   container: (theme) => ({
     padding: theme.spacing.md,
     backgroundColor: theme.utilities.bgBackground.backgroundColor,
@@ -131,8 +131,8 @@ const useMyStyles = createStyles({
 function MyComponent() {
   const myStyles = useMyStyles();
   return (
-    <View style={styles[myStyles.container]}>
-      <Text style={styles[myStyles.text]}>Hello, world!</Text>
+    <View style={styles([myStyles.container])}>
+      <Text style={styles([myStyles.text])}>Hello, world!</Text>
     </View>
   );
 }

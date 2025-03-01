@@ -62,8 +62,9 @@ export const defaultUtilities: Record<string, any> = {
   borderBottom: { borderBottomWidth: 1 },
   borderLeft: { borderLeftWidth: 1 },
   borderRight: { borderRightWidth: 1 },
-  roundedSm: { borderRadius: spacing('small') },
+  borderNone: { borderWidth: 0 },
   rounded: { borderRadius: spacing('default') },
+  roundedSm: { borderRadius: spacing('small') },
   roundedLg: { borderRadius: spacing('large') },
   roundedFull: { borderRadius: 9999 },
 

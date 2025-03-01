@@ -1,0 +1,117 @@
+---
+sidebar_position: 2
+---
+
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+
+# Getting Started
+
+<Tabs>
+  <TabItem value="npm" label="NPM" default>
+    First, install the package via npm:
+
+    ```bash
+    npm install rn-stylewind
+    ```
+
+  </TabItem>
+  
+  <TabItem value="yarn" label="Yarn">
+    First, install the package via yarn:
+
+    ```bash
+    yarn add rn-stylewind
+    ```
+
+  </TabItem>
+
+    <TabItem value="pnpm" label="PNPM">
+    First, install the package via pnpm:
+
+    ```bash
+    pnpm add rn-stylewind
+    ```
+
+  </TabItem>
+</Tabs>
+
+## 🛠️ Setup
+
+Before diving in, wrap your **Metro bundler config** to enable dynamic style generation.
+
+### 1️⃣ Add to `metro.config.js`
+
+```javascript
+const { getDefaultConfig } = require('expo/metro-config');
+const withRNStylewind = require('rn-stylewind/metro');
+
+const defaultConfig = getDefaultConfig(__dirname);
+
+module.exports = withRNStylewind(defaultConfig); // wrap your defaultConfig with withRNStylewind HOF
+```
+
+### 2️⃣ Initialize Default Theme Configuration
+
+To initialize and create the default `theme.config.mjs` file, run the following command:
+
+```bash
+npx init-rn-stylewind
+```
+
+This will generate a `theme.config.mjs` file in the root directory of your project as below. You can customize this file to define your theme colors, spacing, typography, utilities.
+
+```javascript
+// theme.config.mjs
+import { createTheme } from 'rn-stylewind';
+
+export default await createTheme({
+  mode: 'light',
+  colors: {
+    primary: {
+      default: '#1D4ED8',
+      light: '#93C5FD',
+      dark: '#1E3A8A',
+    },
+  },
+  spacing: {
+    default: 8,
+  },
+  // Modify other theme settings if needed
+});
+```
+
+## 🎯 Usage
+
+Wrap your application with `ThemeProvider` to ensure your styles and theme configurations are accessible throughout the project:
+
+```tsx
+import MyComponent from './MyComponent';
+import { ThemeProvider } from 'rn-stylewind';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <MyComponent />
+    </ThemeProvider>
+  );
+}
+```
+
+Here’s how simple and powerful `rn-stylewind` is:
+
+```tsx
+import { Text, Pressable } from 'react-native';
+import { styles } from 'rn-stylewind';
+
+// 🚀 Utility-first styling at its finest!
+export const Button = ({ title, ...rest }) => {
+  return (
+    <Pressable style={styles(['bgError', 'p-5'])} {...rest}>
+      <Text style={styles(['textWhite', 'text-lg'])}>{title}</Text>
+    </Pressable>
+  );
+};
+```
+
+Now go forth and **style like a boss**! 🚀

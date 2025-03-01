@@ -1,0 +1,17 @@
+---
+title: 'styles()'
+sidebar_label: 'styles'
+---
+
+The `styles` function allows developers to apply utility classes dynamically. It automatically selects the appropriate styles based on the current theme mode, ensuring a seamless dark/light mode experience.
+
+### Example Usage
+
+```tsx
+import { styles } from 'rn-stylewind';
+
+<View style={styles(['bgPrimary'])}>
+  {/* If the theme mode is `light`, `bgPrimary` will resolve to `bgPrimaryLight` */}
+  <Text style={styles(['textBase'])}>Dynamic Themed Text</Text>
+</View>;
+```

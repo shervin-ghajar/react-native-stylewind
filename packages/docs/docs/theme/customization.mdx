@@ -1,0 +1,99 @@
+---
+title: 'Theme customization'
+sidebar_label: 'Customization'
+---
+
+The `rn-stylewind` theme can be customized by modifying `theme.config.mjs`. You can override colors, spacing, typography, and utilities.
+
+> **Note:** After each customization of the `theme.config.mjs` file, the theme and utilities will be regenerated with no need of rebuilding the React Native app.
+
+---
+
+## Colors
+
+Colors define the primary, secondary, status, background, text, and grey shades used in the theme.
+
+### Customizing Colors
+
+To modify colors, update `theme.config.mjs`:
+
+```ts
+import { createTheme } from 'rn-stylewind';
+
+export default await createTheme({
+  colors: {
+    primary: {
+      default: '#FF5733',
+      light: '#FF8F66',
+      dark: '#C70039',
+    },
+  },
+});
+```
+
+Save the file and restart your application for changes to take effect.
+
+---
+
+## Spacing
+
+Spacing controls margin and padding values across the theme.
+
+### Customizing Spacing
+
+Update `theme.config.mjs`:
+
+```js
+import { createTheme } from 'rn-stylewind';
+
+export default await createTheme({
+  spacing: {
+    default: 10,
+    small: 15,
+    large: 30,
+  },
+});
+```
+
+---
+
+## Typography
+
+Typography allows you to define custom fonts for your application.
+
+### Customizing Typography
+
+Modify `theme.config.mjs`:
+
+```js
+import { createTheme } from 'rn-stylewind';
+
+export default await createTheme({
+  typography: {
+    fontFamily: ['Inter', 'Arial'],
+  },
+});
+```
+
+---
+
+## Utilities
+
+Utilities help define reusable styles for layout, flexbox, and more.
+
+### Customizing Utilities
+
+Extend or override utilities in `theme.config.mjs`:
+
+```js
+import { createTheme } from 'rn-stylewind';
+
+export default await createTheme({
+  utilities: {
+    textCenter: { textAlign: 'center' },
+    roundedFull: { borderRadius: 9999 },
+  },
+});
+```
+
+Now, `textCenter` and `roundedFull` can be used throughout your styles.

@@ -1,99 +1,104 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
-import type * as Preset from "@docusaurus/preset-classic";
+import type * as Preset from '@docusaurus/preset-classic';
+import type { Config } from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
 
 const config: Config = {
-  title: "React Native Stylewind",
-  tagline: "A utility-first CSS framework designed for React Native",
-  favicon: "img/favicon.ico",
+  title: 'React Native Stylewind',
+  tagline: 'A utility-first CSS framework designed for React Native',
+  favicon: 'img/favicon.ico',
 
   // GitHub Pages Deployment
-  url: "https://shervin-ghajar.github.io", // GitHub Pages URL
-  baseUrl: "/react-native-stylewind/", // Your repo name
+  url: 'https://shervin-ghajar.github.io', // GitHub Pages URL
+  baseUrl: '/react-native-stylewind/', // Your repo name
 
   // GitHub Configuration
-  organizationName: "shervin-ghajar", // Your GitHub username
-  projectName: "react-native-stylewind", // Your repo name
-  deploymentBranch: "gh-pages", // Default branch for GitHub Pages deployment
+  organizationName: 'shervin-ghajar', // Your GitHub username
+  projectName: 'react-native-stylewind', // Your repo name
+  deploymentBranch: 'gh-pages', // Default branch for GitHub Pages deployment
 
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
   presets: [
     [
-      "classic",
+      'classic',
       {
         docs: {
-          sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/shervin-ghajar/react-native-stylewind/edit/main/website/",
+          sidebarPath: './sidebars.ts',
+          editUrl: 'https://github.com/shervin-ghajar/react-native-stylewind/edit/main/website/',
         },
         blog: {
           showReadingTime: true,
           feedOptions: {
-            type: ["rss", "atom"],
+            type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: "https://github.com/shervin-ghajar/react-native-stylewind/edit/main/website/",
+          editUrl: 'https://github.com/shervin-ghajar/react-native-stylewind/edit/main/website/',
         },
         theme: {
-          customCss: "./src/css/custom.css",
+          customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
-    image: "img/docusaurus-social-card.jpg",
+    image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: "React Native Stylewind",
+      title: 'React Native Stylewind',
       logo: {
-        alt: "React Native Stylewind Logo",
-        src: "img/logo.svg",
+        alt: 'React Native Stylewind Logo',
+        src: 'img/logo.svg',
       },
       items: [
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "left",
-          label: "Docs",
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Docs',
         },
-        { to: "/blog", label: "Blog", position: "left" },
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: "https://github.com/shervin-ghajar/react-native-stylewind",
-          label: "GitHub",
-          position: "right",
+          href: 'https://github.com/shervin-ghajar/react-native-stylewind',
+          label: 'GitHub',
+          position: 'right',
         },
       ],
     },
     footer: {
-      style: "dark",
+      style: 'dark',
       links: [
         {
-          title: "Docs",
-          items: [{ label: "Tutorial", to: "/docs/intro" }],
-        },
-        {
-          title: "Community",
+          title: 'Docs',
           items: [
-            { label: "Stack Overflow", href: "https://stackoverflow.com/questions/tagged/docusaurus" },
-            { label: "Discord", href: "https://discordapp.com/invite/docusaurus" },
-            { label: "X", href: "https://x.com/docusaurus" },
+            { label: 'Introduction', to: '/docs/intro' },
+            { label: 'Getting Started', to: '/docs/getting-started' },
+            { label: 'Usage', to: '/docs/usage' },
+            { label: 'API Reference', to: '/docs/api' },
+            { label: 'Customization', to: '/docs/customization' },
+            { label: 'Theming', to: '/docs/theming' },
+            { label: 'Examples', to: '/docs/examples' },
+            { label: 'CLI Commands', to: '/docs/cli-commands' },
+            { label: 'Troubleshooting', to: '/docs/troubleshooting' },
+            { label: 'Contributing', to: '/docs/contributing' },
           ],
         },
         {
-          title: "More",
+          title: 'Community',
           items: [
-            { label: "Blog", to: "/blog" },
-            { label: "GitHub", href: "https://github.com/shervin-ghajar/react-native-stylewind" },
+            {
+              label: 'GitHub Discussions',
+              href: 'https://github.com/shervin-ghajar/react-native-stylewind/discussions',
+            },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} React Native Stylewind. Built with Docusaurus.`,
+      copyright: 'Copyright © ' + new Date().getFullYear() + ' Shervin Ghajar.',
     },
     prism: {
       theme: prismThemes.github,

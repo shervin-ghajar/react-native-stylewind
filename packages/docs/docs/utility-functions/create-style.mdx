@@ -1,0 +1,29 @@
+---
+title: 'createStyle()'
+---
+
+The `createStyle` function allows you to define structured and reusable styles with full TypeScript support. It integrates with your theme, enabling dynamic values and utility-based styling.
+
+```tsx
+import { createStyle, styles } from 'rn-stylewind';
+
+const useMyStyles = createStyle({
+  container: (theme) => ({
+    padding: theme.spacing.md,
+    backgroundColor: theme.utilities.bgBackground.backgroundColor,
+    ...theme.utilities['p-1'], // Using utility style
+  }),
+  text: {
+    padding: 4,
+  },
+});
+
+function MyComponent() {
+  const myStyles = useMyStyles();
+  return (
+    <View style={styles([myStyles.container])}>
+      <Text style={styles([myStyles.text])}>Hello, world!</Text>
+    </View>
+  );
+}
+```

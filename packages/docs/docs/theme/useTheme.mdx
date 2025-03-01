@@ -1,0 +1,23 @@
+---
+title: 'useTheme()'
+sidebar_label: 'useTheme'
+---
+
+The `useTheme` hook allows you to access the theme context within your React Native components. This hook provides an easy way to retrieve the current theme properties, check if dark mode is enabled, and toggle between light and dark themes.
+
+To use the `useTheme` hook, follow the example below:
+
+```tsx
+import { useTheme, styles } from 'rn-stylewind';
+
+export const MyComponent = () => {
+  const { theme, isDarkMode, toggleMode } = useTheme();
+
+  return (
+    <View style={styles([isDarkMode ? 'bgBlack' : 'bgWhite'])}>
+      <Text style={styles(['textPrimary'])}>Current Theme: {theme.mode}</Text>
+      <Button title="Toggle Theme" onPress={toggleMode} />
+    </View>
+  );
+};
+```
