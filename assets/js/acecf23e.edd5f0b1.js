@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkstylewind_doc=self.webpackChunkstylewind_doc||[]).push([[1903],{1912:e=>{e.exports=JSON.parse('{"blogBasePath":"/react-native-stylewind/blog","blogTitle":"Blog","authorsListPath":"/react-native-stylewind/blog/authors"}')}}]);
