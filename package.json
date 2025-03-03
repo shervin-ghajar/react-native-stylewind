@@ -14,6 +14,6 @@
     "docs:build": "pnpm --filter=docs build",
     "docs:deploy": "pnpm --filter=docs run deploy",
     "publish:stylewind": "pnpm --filter=rn-stylewind stylewind:publish",
-    "publish:all": "pnpm publish:stylewind && deploy"
+    "publish:all": "pnpm publish:stylewind && pnpm docs:deploy"
   }
 }
