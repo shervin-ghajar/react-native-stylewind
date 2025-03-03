@@ -2,17 +2,17 @@
 
 Ever wished you had the flexibility of utility-first styling in React Native, but with **better maintainability, type-safety**, and more developer freedom? Well, that's exactly what **React Native Stylewind** delivers! 🎉 With this library, you can enjoy dynamic style generation based on your custom theme, and still keep your styles clean, reusable, and highly maintainable.
 
-Use **utility classes** for quick styling or leverage **createStyle** for more structured, theme-based styles. With full TypeScript support, you get the best of both worlds—**ease of use** and **robust, type-safe development**.
+Use **utility styles** for quick styling or leverage **createStyle** for more structured, theme-based styles. With full TypeScript support, you get the best of both worlds—**ease of use** and **robust, type-safe development**.
 
 ## ✨ Features
 
 - **🎨 Dynamic Theming** – Utility styles are generated on the fly based on your `theme.config.ts`.
-- **⚡ Tailwind-Like Styling** – Use familiar utility classes for a seamless styling experience.
+- **⚡ Tailwind-Like Styling** – Use familiar utility styles for a seamless styling experience.
 - **🛠️ Highly Customizable** – Define your own colors, utilities, spacing, typography.
 - **🔐 Type-Safe** – Full TypeScript support ensures your styles are always correct.
 - **🚀 Real-Time Updates** – Styles regenerate automatically when your theme changes.
 - **🛆 Tree-Shaking for Performance** – Unused styles get kicked out, keeping your bundle lean.
-- **💡 Flexible Usage** – Use utility-first classes or `createStyle` with theme configurations.
+- **💡 Flexible Usage** – Use utility-first styles or `createStyle` with theme configurations.
 
 ## 👥 Installation
 
@@ -102,7 +102,7 @@ export const Button = ({ title, ...rest }) => {
 
 ### Using `styles` Function
 
-The `styles` function allows developers to apply utility classes easily. If a color-based utility class does not specify a Dark or Light mode variant, `styles` will automatically pick the appropriate color based on the current theme `mode`.
+The `styles` function allows developers to apply utility styles easily. If a color-based utility class does not specify a Dark or Light mode variant, `styles` will automatically pick the appropriate color based on the current theme `mode`.
 
 ```tsx
 <View style={styles(['bgPrimary'])}> // if mode is `light`, `bgPrimary` will return `bgPrimaryLight` color
@@ -179,7 +179,7 @@ For full documentation, visit [React Native Stylewind](https://shervin-ghajar.gi
 ✅ **Faster development with utility-driven styling**\
 ✅ **Built for performance with tree-shaking**\
 ✅ **Theming that just makes sense**\
-✅ **Flexibility to use utility classes or structured styles**
+✅ **Flexibility to use utility styles or structured styles**
 
 Now go forth and **style like a boss**! 🚀
 
