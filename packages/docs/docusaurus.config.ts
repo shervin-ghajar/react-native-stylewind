@@ -4,7 +4,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 const config: Config = {
   title: 'React Native Stylewind',
-  tagline: 'A utility-first CSS framework designed for React Native',
+  tagline: 'A utility-first style design system for React Native',
   favicon: 'img/favicon.ico',
 
   // GitHub Pages Deployment
@@ -48,12 +48,12 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/icon.png',
     navbar: {
       title: 'React Native Stylewind',
       logo: {
         alt: 'React Native Stylewind Logo',
-        src: 'img/logo.svg',
+        src: 'img/icon.png',
       },
       items: [
         {
@@ -73,21 +73,21 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Docs',
-          items: [
-            { label: 'Introduction', to: '/docs/intro' },
-            { label: 'Getting Started', to: '/docs/getting-started' },
-            { label: 'Usage', to: '/docs/usage' },
-            { label: 'API Reference', to: '/docs/api' },
-            { label: 'Customization', to: '/docs/customization' },
-            { label: 'Theming', to: '/docs/theming' },
-            { label: 'Examples', to: '/docs/examples' },
-            { label: 'CLI Commands', to: '/docs/cli-commands' },
-            { label: 'Troubleshooting', to: '/docs/troubleshooting' },
-            { label: 'Contributing', to: '/docs/contributing' },
-          ],
-        },
+        // {
+        //   title: 'Docs',
+        //   items: [
+        //     { label: 'Introduction', to: '/docs/intro' },
+        //     { label: 'Getting Started', to: '/docs/getting-started' },
+        //     { label: 'Usage', to: '/docs/usage' },
+        //     { label: 'API Reference', to: '/docs/api' },
+        //     { label: 'Customization', to: '/docs/customization' },
+        //     { label: 'Theming', to: '/docs/theming' },
+        //     { label: 'Examples', to: '/docs/examples' },
+        //     { label: 'CLI Commands', to: '/docs/cli-commands' },
+        //     { label: 'Troubleshooting', to: '/docs/troubleshooting' },
+        //     { label: 'Contributing', to: '/docs/contributing' },
+        //   ],
+        // },
         {
           title: 'Community',
           items: [

@@ -5,7 +5,7 @@
 
 
 export const theme = {
-  "mode": "light",
+  "mode": "default",
   "colors": {
     "primary": {
       "default": "#1D4ED8",
@@ -69,12 +69,12 @@ export const theme = {
   "spacing": {
     "none": 0,
     "default": 8,
-    "xSmall": 2,
-    "small": 4,
-    "medium": 8,
-    "large": 12,
-    "xLarge": 16,
-    "xxLarg": 20
+    "xSmall": 4,
+    "small": 8,
+    "medium": 16,
+    "large": 24,
+    "xLarge": 32,
+    "xxLarg": 40
   },
   "typography": {
     "fontFamily": [
@@ -227,14 +227,17 @@ export const theme = {
     "borderRight": {
       "borderRightWidth": 1
     },
-    "roundedSm": {
-      "borderRadius": 4
+    "borderNone": {
+      "borderWidth": 0
     },
     "rounded": {
-      "borderRadius": 4
+      "borderRadius": 8
+    },
+    "roundedSm": {
+      "borderRadius": 8
     },
     "roundedLg": {
-      "borderRadius": 12
+      "borderRadius": 24
     },
     "roundedFull": {
       "borderRadius": 9999
@@ -508,103 +511,103 @@ export const theme = {
     "textBackgroundDark": {
       "color": "#333333"
     },
-    "bgGrey0": {
+    "bgGrey-0": {
       "backgroundColor": "#FFFFFF"
     },
-    "borderGrey0": {
+    "borderGrey-0": {
       "borderColor": "#FFFFFF"
     },
-    "textGrey0": {
+    "textGrey-0": {
       "color": "#FFFFFF"
     },
-    "bgGrey10": {
+    "bgGrey-10": {
       "backgroundColor": "#f5f5f5"
     },
-    "borderGrey10": {
+    "borderGrey-10": {
       "borderColor": "#f5f5f5"
     },
-    "textGrey10": {
+    "textGrey-10": {
       "color": "#f5f5f5"
     },
-    "bgGrey20": {
+    "bgGrey-20": {
       "backgroundColor": "#eeeeee"
     },
-    "borderGrey20": {
+    "borderGrey-20": {
       "borderColor": "#eeeeee"
     },
-    "textGrey20": {
+    "textGrey-20": {
       "color": "#eeeeee"
     },
-    "bgGrey30": {
+    "bgGrey-30": {
       "backgroundColor": "#e0e0e0"
     },
-    "borderGrey30": {
+    "borderGrey-30": {
       "borderColor": "#e0e0e0"
     },
-    "textGrey30": {
+    "textGrey-30": {
       "color": "#e0e0e0"
     },
-    "bgGrey40": {
+    "bgGrey-40": {
       "backgroundColor": "#c6c6c6"
     },
-    "borderGrey40": {
+    "borderGrey-40": {
       "borderColor": "#c6c6c6"
     },
-    "textGrey40": {
+    "textGrey-40": {
       "color": "#c6c6c6"
     },
-    "bgGrey50": {
+    "bgGrey-50": {
       "backgroundColor": "#999999"
     },
-    "borderGrey50": {
+    "borderGrey-50": {
       "borderColor": "#999999"
     },
-    "textGrey50": {
+    "textGrey-50": {
       "color": "#999999"
     },
-    "bgGrey60": {
+    "bgGrey-60": {
       "backgroundColor": "#8d8d8d"
     },
-    "borderGrey60": {
+    "borderGrey-60": {
       "borderColor": "#8d8d8d"
     },
-    "textGrey60": {
+    "textGrey-60": {
       "color": "#8d8d8d"
     },
-    "bgGrey70": {
+    "bgGrey-70": {
       "backgroundColor": "#666666"
     },
-    "borderGrey70": {
+    "borderGrey-70": {
       "borderColor": "#666666"
     },
-    "textGrey70": {
+    "textGrey-70": {
       "color": "#666666"
     },
-    "bgGrey80": {
+    "bgGrey-80": {
       "backgroundColor": "#4d4d4d"
     },
-    "borderGrey80": {
+    "borderGrey-80": {
       "borderColor": "#4d4d4d"
     },
-    "textGrey80": {
+    "textGrey-80": {
       "color": "#4d4d4d"
     },
-    "bgGrey90": {
+    "bgGrey-90": {
       "backgroundColor": "#333333"
     },
-    "borderGrey90": {
+    "borderGrey-90": {
       "borderColor": "#333333"
     },
-    "textGrey90": {
+    "textGrey-90": {
       "color": "#333333"
     },
-    "bgGrey100": {
+    "bgGrey-100": {
       "backgroundColor": "#1a1a1a"
     },
-    "borderGrey100": {
+    "borderGrey-100": {
       "borderColor": "#1a1a1a"
     },
-    "textGrey100": {
+    "textGrey-100": {
       "color": "#1a1a1a"
     },
     "bgGrey": {

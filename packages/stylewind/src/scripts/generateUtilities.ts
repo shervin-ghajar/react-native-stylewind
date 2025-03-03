@@ -37,7 +37,12 @@ export async function generateUtilities() {
       ) {
         for (const shadeKey in colorValue) {
           const shadeValue = colorValue[shadeKey as keyof ThemeColorValues];
-          const capitalizedShadeKey = shadeKey === 'default' ? '' : capitalize(shadeKey);
+          const capitalizedShadeKey =
+            shadeKey === 'default'
+              ? ''
+              : isNaN(Number(shadeKey))
+                ? capitalize(shadeKey)
+                : `-${shadeKey}`; // for Grey color number keys
           const capitalizedColorKey = capitalize(colorKey);
           utilities[`bg${capitalizedColorKey}${capitalizedShadeKey}`] = {
             backgroundColor: shadeValue,
@@ -46,11 +51,6 @@ export async function generateUtilities() {
             borderColor: shadeValue,
           };
           utilities[`text${capitalizedColorKey}${capitalizedShadeKey}`] = { color: shadeValue };
-
-          // Add type definitions
-          // types.add(`'bg${capitalizedColorKey}${capitalizedShadeKey}'`);
-          // types.add(`'border${capitalizedColorKey}${capitalizedShadeKey}'`);
-          // types.add(`'text${capitalizedColorKey}${capitalizedShadeKey}'`);
         }
       }
     };
@@ -80,9 +80,6 @@ export async function generateUtilities() {
         for (const [dirKey, dirValue] of Object.entries(directionsDictionary)) {
           const utilityKey = `${pmKey}${dirKey}-${i}`;
           utilities[utilityKey] = { [`${pmValue}${dirValue}`]: spacingValue };
-
-          // Add type definitions
-          // types.add(`"${utilityKey}"`);
         }
       }
     }
