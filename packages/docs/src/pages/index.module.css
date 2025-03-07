@@ -17,6 +17,16 @@
   }
 }
 
+
+.container {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo {
+  height:100px;
+}
 .buttons {
   display: flex;
   align-items: center;

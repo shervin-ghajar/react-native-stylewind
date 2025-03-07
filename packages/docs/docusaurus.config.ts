@@ -4,7 +4,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 const config: Config = {
   title: 'React Native Stylewind',
-  tagline: 'A utility-first style design system for React Native',
+  tagline: 'A utility-first design system for React Native',
   favicon: 'img/favicon.ico',
 
   // GitHub Pages Deployment
@@ -32,14 +32,14 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/shervin-ghajar/react-native-stylewind/edit/main/website/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          editUrl: 'https://github.com/shervin-ghajar/react-native-stylewind/edit/main/website/',
-        },
+        // blog: {
+        //   showReadingTime: true,
+        //   feedOptions: {
+        //     type: ['rss', 'atom'],
+        //     xslt: true,
+        //   },
+        //   editUrl: 'https://github.com/shervin-ghajar/react-native-stylewind/edit/main/website/',
+        // },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -48,12 +48,14 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/icon.png',
+    image: 'img/favicon.svg',
     navbar: {
       title: 'React Native Stylewind',
       logo: {
         alt: 'React Native Stylewind Logo',
-        src: 'img/icon.png',
+        src: 'img/favicon.svg',
+        height: 25,
+        width: 25,
       },
       items: [
         {
@@ -62,7 +64,6 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/shervin-ghajar/react-native-stylewind',
           label: 'GitHub',
@@ -99,6 +100,9 @@ const config: Config = {
         },
       ],
       copyright: 'Copyright © ' + new Date().getFullYear() + ' Shervin Ghajar.',
+    },
+    colorMode: {
+      defaultMode: 'dark',
     },
     prism: {
       theme: prismThemes.github,
