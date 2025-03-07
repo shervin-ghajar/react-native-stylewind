@@ -102,7 +102,7 @@ const config: Config = {
       copyright: 'Copyright © ' + new Date().getFullYear() + ' Shervin Ghajar.',
     },
     colorMode: {
-      defaultMode: 'dark',
+      defaultMode: 'light',
     },
     prism: {
       theme: prismThemes.github,
