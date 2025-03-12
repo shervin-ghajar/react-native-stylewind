@@ -9,6 +9,7 @@ export interface ThemeColors {
   text: ColorShade;
   grey: GreyColor;
   common: CommonColor;
+  [key: string]: { [key: string]: string } | ColorShade | GreyColor;
 }
 /* -------------------------------------------------------------------------- */
 export type ColorShade = {

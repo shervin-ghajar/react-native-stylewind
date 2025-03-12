@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { colors as defaultColors } from '../configs/colors';
 import { ThemeColorValues } from '../configs/colors/types';
 import { CONSUMER_ROOT_PATH, ROOT_PATH, THEME_CONFIG_FILE } from '../configs/constatns';
 import { defaultTheme, DefaultThemeType } from '../configs/index';
@@ -7,7 +8,7 @@ import { isColorShade } from '../utils/isColorShade';
 import { spacing } from '../utils/spacing';
 import chalk from 'chalk';
 import fs from 'fs';
-import { capitalize } from 'lodash-es';
+import { capitalize, cloneDeep } from 'lodash-es';
 import path, { resolve } from 'path';
 import { pathToFileURL } from 'url';
 
@@ -18,22 +19,21 @@ type ThemeColors = NonNullable<DefaultThemeType['colors']>;
 export async function generateUtilities() {
   try {
     const themeConfigPath = path.resolve(CONSUMER_ROOT_PATH, THEME_CONFIG_FILE);
-    let theme = defaultTheme;
+    let theme = cloneDeep(defaultTheme);
     if (fs.existsSync(themeConfigPath)) {
       const themeConfigFile = await import(pathToFileURL(themeConfigPath).href);
       theme = themeConfigFile.default as Theme;
     }
     const { colors, utilities: themeUtilities } = theme;
-    const utilities: Record<string, unknown> = themeUtilities;
-    // const types: Set<string> = new Set([...Object.keys(utilities).map((du) => `'${du}'`)]);
-
+    const utilities: Record<string, unknown> = cloneDeep(themeUtilities);
     // /* -------------------------- Color-based Utilities ------------------------- */
     const colorKeyWhiteList: Array<keyof ThemeColors> = ['grey'];
-    const colorKeyBlackList: Array<keyof ThemeColors> = ['text'];
+    const colorKeyBlackList: Array<keyof ThemeColors> = ['text']; // prevent creating textText utilitie
     const addColorUtilities = (colorKey: keyof ThemeColors, colorValue: ThemeColorValues) => {
       if (
-        (isColorShade(colorValue) || colorKeyWhiteList.includes(colorKey)) &&
-        !colorKeyBlackList.includes(colorKey)
+        ((isColorShade(colorValue) || colorKeyWhiteList.includes(colorKey)) &&
+          !colorKeyBlackList.includes(colorKey)) ||
+        !Object.keys(defaultColors).includes(colorKey.toString()) //for custom color keys
       ) {
         for (const shadeKey in colorValue) {
           const shadeValue = colorValue[shadeKey as keyof ThemeColorValues];
@@ -42,8 +42,8 @@ export async function generateUtilities() {
               ? ''
               : isNaN(Number(shadeKey))
                 ? capitalize(shadeKey)
-                : `-${shadeKey}`; // for Grey color number keys
-          const capitalizedColorKey = capitalize(colorKey);
+                : `-${shadeKey}`; // for number shade keys like grey color
+          const capitalizedColorKey = capitalize(colorKey.toString());
           utilities[`bg${capitalizedColorKey}${capitalizedShadeKey}`] = {
             backgroundColor: shadeValue,
           };
@@ -84,6 +84,10 @@ export async function generateUtilities() {
       }
     }
 
+    // update theme.utilities with last updates
+    theme.utilities = utilities as Theme['utilities'];
+
+    /* -------------------------------------------------------------------------- */
     const warningText = `/**\n* AUTO GENERATED\n* <---DO NOT MODIFY THIS FILE--->\n*/\n\n`;
     /* --------------------------- Write utility & theme files -------------------------- */
     const generatedUtilsDirPath = resolve('./src/configs/generated/utilities'); // utils path
@@ -164,13 +168,13 @@ export async function generateUtilities() {
             const valueType = Object.entries(value)
               .map(([prop, propValue]) => `${prop}: ${typeof propValue};`)
               .join('\n        ');
-            newUtilityesTypes += `    "${key}": {\n        ${valueType}\n    };\n`;
+            newUtilityesTypes += `    "${key}": {\n        ${valueType}\n    }\n`;
           }
         }
         // Replace the existing variables with new data
         const updatedUtilitiesTypes = data.replace(
-          /(\s*export declare const utilities:\s*{)/,
-          `$1\n${newUtilityesTypes}`,
+          /(\s*export declare const utilities: {)[\s\S]*?(};)/,
+          `$1\n${newUtilityesTypes}\n$3`,
         );
         // Write the updated data back to the file
         fs.writeFile(utilitiesTypesPath, updatedUtilitiesTypes, 'utf8', (err) => {
