@@ -9,7 +9,7 @@ import typescript from 'rollup-plugin-typescript2';
 const externalDependencies = ['react', 'react-native'];
 
 // Function to create Rollup configuration
-const createConfig = (input, output, format, additionalPlugins = []) => ({
+const createConfig = (input, output, additionalPlugins = []) => ({
   input,
   output: {
     ...output,
@@ -46,7 +46,6 @@ export default [
       chunkFileNames: '[name].js',
       assetFileNames: '[name].[ext]',
     },
-    'es',
     [
       terser({
         mangle: {
@@ -63,7 +62,6 @@ export default [
       file: 'dist/withRNStylewind.cjs',
       format: 'cjs',
     },
-    'cjs',
     [terser()], // Minify the output
   ),
 ];

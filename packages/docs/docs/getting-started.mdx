@@ -108,7 +108,7 @@ import { styles } from 'rn-stylewind';
 export const Button = ({ title, ...rest }) => {
   return (
     <Pressable style={styles(['bgError', 'p-5'])} {...rest}>
-      <Text style={styles(['textWhite', 'text-lg'])}>{title}</Text>
+      <Text style={styles(['bgBackgroundLight', 'textCenter'])}>{title}</Text>
     </Pressable>
   );
 };

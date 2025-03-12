@@ -94,7 +94,7 @@ import {  styles } from 'rn-stylewind';
 export const Button = ({ title, ...rest }) => {
   return (
     <Pressable style={styles(['bgError', 'p-5'])} {...rest}>
-      <Text style={styles(['textWhite', 'text-lg'])}>{title}</Text>
+      <Text style={styles(['bgBackgroundLight', 'textCenter'])}>{title}</Text>
     </Pressable>
   );
 };
@@ -106,7 +106,7 @@ The `styles` function allows developers to apply utility styles easily. If a col
 
 ```tsx
 <View style={styles(['bgPrimary'])}> // if mode is `light`, `bgPrimary` will return `bgPrimaryLight` color
-  <Text style={styles(['textBase'])}>Dynamic Themed Text</Text> 
+  <Text style={styles(['textSecondary'])}>Dynamic Themed Text</Text> 
 </View>
 ```
 
@@ -120,7 +120,7 @@ import { createStyle, styles } from 'rn-stylewind';
 const useMyStyles = createStyle({
   container: (theme) => ({
     padding: theme.spacing.md,
-    backgroundColor: theme.utilities.bgBackground.backgroundColor,
+    backgroundColor: theme.utilities.bgBackground.backgroundColor // using specific style of an utility,
     ...theme.utilities['p-1'] // using utility style
   }),
   text: {
@@ -150,7 +150,7 @@ export const MyComponent = () => {
   
   return (
     <View style={styles([isDarkMode ? 'bgBlack' : 'bgWhite'])}>
-      <Text style={styles(['textPrimary'])}>Current Theme: {theme.mode}</Text>
+      <Text style={styles(['textSecondary'])}>Current Theme: {theme.mode}</Text>
       <Button title="Toggle Theme" onPress={toggleMode} />
     </View>
   );
